@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Publications | Sanchit Minocha</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+  <link href="assets/css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top">
+    <div class="container d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo"><h1>Sanchit Minocha</h1></a>
+    </div>
+  </header>
+
+  <main id="main" class="mt-5 pt-5">
+    <!-- Publications Section -->
+    <section id="publications" class="faq section">
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Publications</h2>
+        <p>Complete list of peer-reviewed articles and conference proceedings.</p>
+      </div>
+
+      <div id="pub-list" class="container faq-container" data-aos="fade-up" data-aos-delay="100">
+        <!-- Populated dynamically -->
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer" class="footer mt-5">
+    <div class="container text-center">
+      <p>&copy; <span id="year"></span> Sanchit Minocha. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+  <!-- JS Dependencies -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Publications Script -->
+  <script src="assets/js/publications.js"></script>
+  <script>
+    // Render all publications on this page
+    renderPublications();
+  </script>
+</body>
+</html>
