@@ -64,7 +64,7 @@
     "title": "GRILSS: Reservoir Sedimentation Dataset",
     "meta": "Dataset",
     "description": "A first-of-its-kind open dataset of global reservoir sedimentation records spanning 1,000+ reservoirs, compiled from hundreds of multilingual sources and enriched with spatial geometries for large-scale analysis. Large Language Models were also used to extract and curate the data from multilingual sources and the visualizer has been generated using Agentic AI.",
-    "coverImage": "assets/img/portfolio/grilss/GRILSS_WI_1.png",
+    "coverImage": "assets/img/portfolio/grilss/grilss_WI_1.png",
     "detailPage": "portfolio-details.html?project=grilss",
     "filters": ["Datasets", "Visualization"],
     "gallery": "portfolio-gallery",
@@ -73,11 +73,11 @@
         "assets/img/portfolio/grilss/grilss_visualiser.gif"
       ],
       "galleryImages": [
-        "assets/img/portfolio/grilss/GRILSS_WI_1.png",
-        "assets/img/portfolio/grilss/GRILSS_WI_2.png",
-        "assets/img/portfolio/grilss/GRILSS_WI_3.png",
-        "assets/img/portfolio/grilss/GRILSS_WI_4.png",
-        "assets/img/portfolio/grilss/GRILSS_logo.png"
+        "assets/img/portfolio/grilss/grilss_WI_1.png",
+        "assets/img/portfolio/grilss/grilss_WI_2.png",
+        "assets/img/portfolio/grilss/grilss_WI_3.png",
+        "assets/img/portfolio/grilss/grilss_WI_4.png",
+        "assets/img/portfolio/grilss/grilss_logo.png"
       ],
       "techStack": [
         "Python",
