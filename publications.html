@@ -5,52 +5,155 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Publications | Sanchit Minocha</title>
 
-  <!-- Bootstrap CSS -->
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
-  <link href="assets/css/style.css" rel="stylesheet" />
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet" />
 </head>
 
 <body>
-  <!-- ======= Header ======= -->
-  <header id="header" class="header fixed-top">
-    <div class="container d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo"><h1>Sanchit Minocha</h1></a>
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <!-- <img src="assets/img/logo.webp" alt=""> -->
+        <!-- Uncomment the line below if you also wish to use an text logo -->
+        <!-- <h1 class="sitename">Style</h1>  -->
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+
+        <div class="profile-img">
+          <img src="assets/img/profile/main-profile-square-2.jpg" alt="" class="img-fluid rounded-circle">
+        </div>
+
+        <a href="index.html" class="logo d-flex align-items-center justify-content-center active">
+          <!-- Uncomment the line below if you also wish to use an image logo -->
+          <!-- <img src="assets/img/logo.webp" alt=""> -->
+          <h1 class="sitename">Sanchit Minocha</h1>
+        </a>
+
+        <div class="social-links text-center">
+          <a href="https://www.linkedin.com/in/sanchitminochaiitr/" target="_blank"><i class="bi bi-linkedin"></i></a>
+          <a href="https://github.com/SanchitMinocha" target="_blank"><i class="bi bi-github"></i></a>
+          <a href="https://scholar.google.com/citations?user=60hD2msAAAAJ&hl=en" target="_blank"><i class="fa-brands fa-google-scholar"></i></a>
+          <a href="assets/data/Sanchit_Resume.pdf" target="_blank"><i class="bi bi-file-earmark-text"></i></a>
+          <a href="https://orcid.org/0009-0007-1969-7521" target="_blank"><i class="ai ai-orcid"></i></a>
+          <a href="https://www.youtube.com/@sanchitminocha479" target="_blank"><i class="bi bi-youtube"></i></a>
+        </div>
+
+        <ul>
+          <li><a href="index.html#hero">Home</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#portfolio">Portfolio</a></li>
+          <li><a href="index.html#skills">Skills</a></li>
+          <li><a href="index.html#publications" class="active">Publications</a></li>
+          <li><a href="index.html#resume">Resume</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
     </div>
   </header>
 
-  <main id="main" class="mt-5 pt-5">
+  <main id="main">
+
+    <!-- Page Title -->
+    <div class="page-title light-background">
+      <div class="container d-lg-flex justify-content-between align-items-center">
+        <nav class="breadcrumbs">
+          <ol>
+            <li> <a href="index.html#publications">&lt; Back </a></li>
+          </ol>
+        </nav>
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li class="current">Publications</li>
+          </ol>
+        </nav>
+      </div>
+    </div><!-- End Page Title -->
+
     <!-- Publications Section -->
-    <section id="publications" class="faq section">
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Publications</h2>
-        <p>Complete list of peer-reviewed articles and conference proceedings.</p>
+    <section id="publications" class="faq section main-section pt-2">
+      <div class="container section-title pb-4" data-aos="fade-up">
+        <h2>Publications of Sanchit</h2>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Complete list of peer-reviewed articles.</p>
       </div>
 
-      <div id="pub-list" class="container faq-container" data-aos="fade-up" data-aos-delay="100">
+      <!-- Show more control -->
+      <div id="pub-show-more" class="container" data-aos="fade-up" data-aos-delay="400">
+        <button id="toggle-all-pubs-page" class="btn btn-sm btn-outline-primary">
+          <i class="bi bi-plus-circle me-1"></i> Show Details
+        </button>
+        <div class="pub-limit-control">
+          <label for="pub-limit">Show:</label>
+          <select id="pub-limit" class="form-select d-inline w-auto">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="all" selected>All</option>
+          </select>
+
+          <!-- hidden link -->
+          <a id="pub-all-link" href="publications.html" target="_blank" rel="noopener" hidden></a>
+        </div>
+      </div>
+
+      <div id="pub-list-page" class="container faq-container" data-aos="fade-up" data-aos-delay="100">
         <!-- Populated dynamically -->
       </div>
     </section>
   </main>
 
   <footer id="footer" class="footer mt-5">
-    <div class="container text-center">
-      <p>&copy; <span id="year"></span> Sanchit Minocha. All Rights Reserved.</p>
-    </div>
+    <div class="copyright text-center ">
+        <p>© <strong class="px-1 sitename">Sanchit Minocha</strong> <span>2022-2026. All Rights Reserved.</span></p>
+      </div>
+      <div class="social-links d-flex justify-content-center">
+        <a href="https://www.youtube.com/@sanchitminocha479"><i class="bi bi-youtube"></i></a>
+        <a href="https://www.instagram.com/sat.chit.n.bliss/"><i class="bi bi-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/sanchitminochaiitr/"><i class="bi bi-linkedin"></i></a>
+      </div>
   </footer>
+ 
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 
-  <!-- JS Dependencies -->
+  <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/typed.js/typed.umd.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
 
-  <!-- Publications Script -->
+  <!-- Main JS File -->
   <script src="assets/js/publications.js"></script>
+  <script src="assets/js/main.js"></script>
   <script>
-    // Render all publications on this page
-    renderPublications();
+    // Render all publications on this page (expanded by default)
+    renderPublications(null, 'pub-list', false);
   </script>
 </body>
 </html>

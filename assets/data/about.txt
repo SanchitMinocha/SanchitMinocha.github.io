@@ -1,0 +1,8 @@
+Hero: 
+    I merge geo-science, data, and sustainability — a GeoDataScientist by passion, environmentalist at heart, and problem solver by mind.
+
+About: 
+    “Data is the new oil,” they say. But beyond oil lies an even more essential resource: water. This duality between luxury and necessity has shaped my journey from geophysicist to hydrologist, and ultimately, to Geo-Data Scientist.
+Geophysicists interpret gravity, magnetic, and seismic data to reveal the Earth's hidden layers, much like Data Scientists extract insights from raw information. But over time, I realized that while we search deep below, we often forget to look within and around us. The most vital elements—air and water—are not buried beneath the surface; they flow around us, sustaining life. This realization brought a shift from pure science to conscious awareness, leading me to combine the two.
+Water, in particular, holds a quiet wisdom. It moves with purpose yet remains calm in its flow—reminding us that progress and peace can coexist. Through remote sensing and data science, I aim to bring that same clarity and balance into research by using technology to understand and sustain what truly matters.
+In this journey, the role of a Geo-Data Scientist emerges not only as a profession but as a calling, rooted in the belief that combining geoscience knowledge with data science skills can create real-world solutions that drive meaningful environmental change and promote sustainability.
