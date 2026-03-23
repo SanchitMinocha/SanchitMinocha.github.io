@@ -249,33 +249,59 @@ document.querySelectorAll('#publications .faq-item .num').forEach((num, i) => {
   num.textContent = `${i + 1}.`;
 });
 
-  // Abstract toggle
-document.querySelectorAll('.btn-abstract').forEach((btn) => {
-  btn.addEventListener('click', (e) => {
-    e.preventDefault();
-    e.stopPropagation(); // prevent expanding/collapsing FAQ when clicking Abstract
-    const abstract = btn.closest('.faq-item').querySelector('.pub-abstract');
-    abstract.classList.toggle('show');
-  });
-});
-
 // Publications auto-filler
 const pubListContainer = "pub-list"; // the ID of the container
+const pubListPageContainer = "pub-list-page"; // the ID of the container of publications.html
 
 // Initial render (top 5 by default)
-renderPublications(5, pubListContainer);
+if (document.getElementById(pubListContainer)) {
+  renderPublications(5, pubListContainer);
+}
 
 // Handle change of dropdown
-document.getElementById("pub-limit").addEventListener("change", function() {
-  let value = this.value;
-  let limit = value === "all" ? null : parseInt(value, 10);
+// Initial render for publications page
+if (document.getElementById(pubListPageContainer)) {
+  renderPublications(null, pubListPageContainer); // or pubData.length
+}
 
-  // Clear the container before re-rendering
-  document.getElementById(pubListContainer).innerHTML = "";
+// Handle dropdown change only if dropdown exists
+const pubLimit = document.getElementById("pub-limit");
 
-  // Render publications based on selected limit
-  renderPublications(limit, pubListContainer);
-});
+if (pubLimit) {
+  pubLimit.addEventListener("change", function () {
+    const value = this.value;
+
+    if (value === "all") {
+      window.location.href = "publications.html";
+      return;
+    }
+
+    renderPublications(parseInt(value, 10), pubListContainer);
+    renderPublications(parseInt(value, 10), pubListPageContainer);
+  });
+}
+
+// Toggle all publications details
+function setupToggleButton(buttonId, listId) {
+  const btn = document.getElementById(buttonId);
+  if (!btn) return;
+
+  btn.addEventListener("click", function () {
+    const items = document.querySelectorAll(`#${listId} .faq-item`);
+    const isExpanding = this.innerText.includes("Show Details");
+
+    items.forEach(item => {
+      item.classList.toggle("faq-active", isExpanding);
+    });
+
+    this.innerHTML = isExpanding
+      ? '<i class="bi bi-dash-circle me-1"></i> Hide Details'
+      : '<i class="bi bi-plus-circle me-1"></i> Show Details';
+  });
+}
+
+setupToggleButton("toggle-all-pubs", "pub-list");
+setupToggleButton("toggle-all-pubs-page", "pub-list-page");
 
 // Function to link media mentions
 document.querySelectorAll('.critic-review').forEach((card) => {
@@ -341,5 +367,32 @@ document.querySelector('.php-email-form').addEventListener('submit', async funct
   } else {
     error.innerHTML = result.message;
     error.style.display = "block";
+  }
+});
+
+// Remove the hash from the URL when the page loads
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    const target = document.querySelector(this.getAttribute("href"));
+    target.scrollIntoView({ behavior: "smooth" });
+
+    // Remove hash from URL
+    history.replaceState(null, null, " ");
+  });
+});
+
+// Handle hash when arriving from another page
+window.addEventListener("load", function () {
+  if (window.location.hash) {
+    const target = document.querySelector(window.location.hash);
+
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" });
+
+      // Remove hash from URL after scrolling
+      history.replaceState(null, null, window.location.pathname + window.location.search);
+    }
   }
 });

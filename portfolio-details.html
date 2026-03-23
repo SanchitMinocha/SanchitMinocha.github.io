@@ -214,6 +214,11 @@
         const featuresRight = details.featuresRight.map(feat => 
           `<li><i class="bi bi-check2-circle"></i> ${feat}</li>`
         ).join('');
+        
+        // Build Badges from list
+        const badgesHtml = (details.badges || []).map(badge => 
+          `<a href="${badge.url}" target="_blank"><img src="${badge.imgSrc}" alt="${badge.alt}" style="margin:4px 6px 4px 0; height:22px;"></a>`
+        ).join('');
 
         container.innerHTML = `
         <div class="row gy-4">
@@ -257,6 +262,13 @@
               <div class="tech-stack-badges" data-aos="fade-up" data-aos-delay="300">
                 ${techStack}
               </div>
+
+              <div class="cta-buttons" data-aos="fade-up" data-aos-delay="400">
+                ${details.liveProjectLink && details.liveProjectLink !== '#' ? `<a href="${details.liveProjectLink}" class="btn-view-project" target="_blank"><i class="bi bi-box-arrow-up-right"></i> Live Project</a>` : ''}
+                ${details.codeLink && details.codeLink !== '#' ? `<a href="${details.codeLink}" class="btn-outlined" target="_blank"><i class="bi bi-github"></i> View Code</a>` : ''}
+                ${details.paperLink && details.paperLink !== '#' ? `<a href="${details.paperLink}" class="btn-outlined" target="_blank"><i class="bi bi-journal-richtext"></i> Read Paper</a>` : ''}
+                ${details.docsLink && details.docsLink !== '#' ? `<a href="${details.docsLink}" class="btn-outlined" target="_blank"><i class="bi bi-easel"></i> Learn More</a>` : ''}
+              </div>
             </div>
           </div>
 
@@ -289,7 +301,7 @@
                 <p class="lead">${details.overviewBase}</p>
 
                 <div class="project-badges" style="margin-top: 15px;">
-                  ${details.badgesHtml}
+                  ${badgesHtml}
                 </div>
 
                 <div class="accordion project-accordion" id="portfolio-details-projectAccordion">
@@ -350,10 +362,7 @@
                 </div>
               </div>
 
-              <div class="cta-buttons" data-aos="fade-up" data-aos-delay="400">
-                <a href="${details.liveProjectLink}" class="btn-view-project" target="_blank">View Live Project</a>
-                <a href="${details.codeLink}" class="btn-next-project" target="_blank">View Code <i class="bi bi-github"></i></a>
-              </div>
+
             </div>
           </div>
         </div>
