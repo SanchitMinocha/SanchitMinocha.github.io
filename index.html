@@ -2,6 +2,15 @@
 <html lang="en">
 
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KWL5J6E2MZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-KWL5J6E2MZ');
+  </script>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Index - Style Bootstrap Template</title>
@@ -11,7 +20,7 @@
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
@@ -114,15 +123,15 @@
 
               <div class="hero-stats" data-aos="fade-up" data-aos-delay="200">
                 <div class="stat-item">
-                  <span class="purecounter" data-purecounter-start="0" data-purecounter-end="6" data-purecounter-duration="2">0</span>
+                  <span class="purecounter" data-purecounter-start="0" data-purecounter-end="7" data-purecounter-duration="2">0</span>
                   <span class="stat-label">Years Experience</span>
                 </div>
                 <div class="stat-item">
-                  <span class="purecounter" data-purecounter-start="0" data-purecounter-end="13" data-purecounter-duration="2">0</span>
+                  <span class="purecounter" data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="2">0</span>
                   <span class="stat-label">Papers Published</span>
                 </div>
                 <div class="stat-item">
-                  <span class="purecounter" data-purecounter-start="0" data-purecounter-end="70" data-purecounter-duration="2">0</span>
+                  <span class="purecounter" data-purecounter-start="0" data-purecounter-end="80" data-purecounter-duration="2">0</span>
                   <span class="stat-label">Citations</span>
                 </div>
               </div>
@@ -133,10 +142,10 @@
               </div>
 
               <div class="social-links" data-aos="fade-up" data-aos-delay="400">
-                <a href="#"><i class="bi bi-twitter"></i></a>
-                <a href="#"><i class="bi bi-linkedin"></i></a>
-                <a href="#"><i class="bi bi-github"></i></a>
-                <a href="#"><i class="bi bi-instagram"></i></a>
+                <a href="https://scholar.google.com/citations?user=60hD2msAAAAJ&hl=en" target="_blank"><i class="fa-brands fa-google-scholar"></i></a>
+                <a href="https://www.linkedin.com/in/sanchitminochaiitr/" target="_blank"><i class="bi bi-linkedin"></i></a>
+                <a href="https://github.com/SanchitMinocha" target="_blank"><i class="bi bi-github"></i></a>
+                <a href="assets/data/Sanchit_Resume.pdf" target="_blank"><i class="bi bi-file-earmark-text"></i></a>
               </div>
             </div>
           </div>
@@ -291,6 +300,50 @@
       </div>
 
     </section><!-- /About Section -->
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio section">
+
+      <!-- Section Title -->
+      <div class="container section-title">
+        <h2>Portfolio</h2>
+        <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp The Work so far</p>
+      </div><!-- End Section Title -->
+
+      <div class="container-fluid" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+
+          <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="200">
+            <li data-filter="*" class="filter-active">
+              <i class="bi bi-grid-3x3"></i> All Projects
+            </li>
+            <li data-filter=".filter-ai-ml">
+              AI / ML
+            </li>
+            <li data-filter=".filter-software">
+              Software
+            </li>
+            <li data-filter=".filter-datasets">
+              Datasets
+            </li>
+            <li data-filter=".filter-visualization">
+              Visualization
+            </li>
+          </ul>
+
+          <div
+            class="row g-4 isotope-container"
+            id="portfolio-container"
+            data-aos="fade-up"
+            data-aos-delay="300">
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- /Portfolio Section -->
 
     <!-- Publications Section -->
     <section id="publications" class="faq section">
@@ -1017,6 +1070,76 @@
   <!-- Main JS File -->
   <script src="assets/js/publications.js"></script>
   <script src="assets/js/main.js"></script>
+
+  <!-- Portfolio JS Items From JSON-->
+  <script>
+  async function loadPortfolioItems() {
+    const container = document.getElementById("portfolio-container");
+    if (!container) return;
+
+    try {
+      const response = await fetch("assets/data/portfolios.json");
+      const projects = await response.json();
+
+      container.innerHTML = projects.map(project => {
+        const filterClasses = (project.filters || [])
+          .map(filter => `filter-${filter}`)
+          .join(" ");
+
+        return `
+          <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item ${filterClasses}">
+            <article class="portfolio-entry">
+              <figure class="entry-image">
+                <img
+                  src="${project.coverImage}"
+                  class="img-fluid"
+                  alt="${project.title}"
+                  loading="lazy"
+                >
+                <div class="entry-overlay">
+                  <div class="overlay-content">
+                    <div class="entry-meta">${project.meta}</div>
+                    <h3 class="entry-title">${project.title}</h3>
+                    <div class="entry-links">
+                      <a
+                        href="${project.coverImage}"
+                        class="glightbox"
+                        data-gallery="${project.gallery || 'portfolio-gallery'}"
+                        data-glightbox="title: ${project.title}; description: ${project.description}"
+                      >
+                        <i class="bi bi-arrows-angle-expand"></i>
+                      </a>
+                      <a href="${project.detailPage}">
+                        <i class="bi bi-arrow-right"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </figure>
+            </article>
+          </div>
+        `;
+      }).join("");
+
+      if (typeof GLightbox === "function") {
+        GLightbox({ selector: ".glightbox" });
+      }
+
+      if (window.Isotope) {
+        const isoContainer = document.querySelector(".isotope-container");
+        new Isotope(isoContainer, {
+          itemSelector: ".isotope-item",
+          layoutMode: "masonry"
+        });
+      }
+    } catch (error) {
+      console.error("Failed to load portfolio items:", error);
+      container.innerHTML = "<p>Unable to load portfolio items right now.</p>";
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", loadPortfolioItems);
+</script>
 
 </body>
 

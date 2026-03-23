@@ -1,0 +1,178 @@
+[
+  {
+    "id": "rat",
+    "title": "Satellite-based Reservoir Monitoring",
+    "meta": "Python Package",
+    "description": "Developed RAT, a first-of-its-kind open-source satellite-based reservoir monitoring system that enables scalable, automated tracking of surface water dynamics across thousands of reservoirs globally. Built by integrating remote sensing, cloud computing, and data science, it replaces labor-intensive manual monitoring with a reproducible and real-time analytical pipeline.",
+    "coverImage": "assets/img/portfolio/portfolio_covers/Sat_Based_Res_Monitor.png",
+    "detailPage": "portfolio-details.html?project=rat",
+    "filters": ["software", "aiml"],
+    "gallery": "portfolio-gallery-software",
+    "details": {
+      "sliderImages": [
+        "assets/img/portfolio/rat/RAT_Applied_areas.jpeg",
+        "assets/img/portfolio/rat/inflow.png",
+        "assets/img/portfolio/rat/outflow.png",
+        "assets/img/portfolio/rat/surface_area.png"
+      ],
+      "galleryImages": [
+        "assets/img/portfolio/rat/RAT_WI_1.jpeg",
+        "assets/img/portfolio/rat/RAT_WI_2.jpeg",
+        "assets/img/portfolio/rat/RAT_WI_3.jpeg",
+        "assets/img/portfolio/rat/RAT_WI_4.jpeg",
+        "assets/img/portfolio/rat/RAT_3_Advancements.jpeg",
+        "assets/img/portfolio/rat/RAT_Concept.png"
+      ],
+      "techStack": ["Python", "Google Cloud Services", "Remote Sensing", "Machine Learning", "Cloud Computing"],
+      "category": "Software",
+      "date": "July 2023",
+      "client": "Open Source Contribution",
+      "projectTitle": "Satellite-based Reservoir Monitoring - RAT",
+      "websiteUrl": "https://depts.washington.edu/saswe/rat/",
+      "websiteLabel": "www.satellitedams.net",
+      "badgesHtml": "<a href=\"https://anaconda.org/conda-forge/rat\" target=\"_blank\"><img src=\"https://img.shields.io/badge/package-rat-51A1B0.svg\" alt=\"Package\"></a> <a href=\"https://anaconda.org/conda-forge/rat\" target=\"_blank\"><img src=\"https://img.shields.io/conda/dn/conda-forge/rat.svg\" alt=\"Downloads\"></a> <a href=\"https://anaconda.org/conda-forge/rat\" target=\"_blank\"><img src=\"https://img.shields.io/conda/vn/conda-forge/rat.svg\" alt=\"Version\"></a> <a href=\"https://anaconda.org/conda-forge/rat\" target=\"_blank\"><img src=\"https://img.shields.io/conda/pn/conda-forge/rat.svg\" alt=\"Platforms\"></a> <a href=\"https://rat-satellitedams.readthedocs.io/en/latest/?badge=latest\" target=\"_blank\"><img src=\"https://readthedocs.org/projects/rat-satellitedams/badge/?version=latest\" alt=\"Docs\"></a> <a href=\"https://anaconda.org/conda-forge/rat\" target=\"_blank\"><img src=\"https://anaconda.org/conda-forge/rat/badges/latest_release_date.svg\" alt=\"Release Date\"></a> <a href=\"https://github.com/UW-SASWE/RAT\" target=\"_blank\"><img src=\"https://img.shields.io/github/stars/UW-SASWE/RAT?style=social\"></a>",
+      "overviewBase": "RAT is a first-of-its-kind open-source satellite-based reservoir monitoring system that enables scalable, automated tracking of surface water dynamics across thousands of reservoirs globally. Built by integrating remote sensing, cloud computing, and data science, it replaces labor-intensive manual monitoring with a reproducible and real-time analytical pipeline.",
+      "overviewExpanded": "Reservoirs are critical for water security, yet consistent monitoring of their dynamics remains limited due to the high cost and effort of field-based observations. RAT addresses this gap by providing an end-to-end framework that leverages satellite imagery to monitor reservoir surface area and temporal variations at scale. The system integrates geospatial processing, cloud infrastructure, and automated workflows to generate consistent, high-resolution insights across regions. It is designed to be scalable, reproducible, and accessible to researchers, policymakers, and water managers worldwide.",
+      "challenge": "Traditional reservoir monitoring relies on in-situ measurements and manual surveys, which are expensive, infrequent, and often unavailable in many parts of the world. Existing satellite-based approaches are fragmented, lack standardization, and are difficult to scale across thousands of reservoirs. Additionally, processing large volumes of satellite data requires significant computational resources and robust pipelines, making it challenging to operationalize such systems for real-world applications.",
+      "solution": "RAT introduces a unified, scalable pipeline for reservoir monitoring using satellite remote sensing. It automates data ingestion, processing, and analysis, enabling consistent tracking of reservoir dynamics across space and time. By leveraging cloud-based infrastructure and optimized geospatial workflows, RAT transforms raw satellite imagery into actionable insights. Its open-source design ensures transparency, reproducibility, and extensibility, making it a foundational tool for global water resource monitoring.",
+      "featuresLeft": [
+        "First-of-its-kind",
+        "Scalable",
+        "Robust"
+      ],
+      "featuresRight": [
+        "Open-source",
+        "User-Friendly",
+        "End-to-End"
+      ],
+      "liveProjectLink": "https://depts.washington.edu/saswe/rat/",
+      "codeLink": "https://github.com/UW-SASWE/RAT"
+    }
+  },
+  {
+    "id": "grilss",
+    "title": "Global Reservoir Sedimentation Dataset",
+    "meta": "Dataset",
+    "description": "Built the first large-scale open-source dataset compiling reservoir sedimentation information from global sources.",
+    "coverImage": "assets/img/portfolio/portfolio_covers/GRILSS.png",
+    "detailPage": "portfolio-details.html?project=grilss",
+    "filters": ["datasets"],
+    "gallery": "portfolio-gallery-datasets",
+    "details": {
+      "sliderImages": [
+        "assets/img/portfolio/portfolio_covers/GRILSS.png"
+      ],
+      "galleryImages": [
+        "assets/img/portfolio/portfolio_covers/GRILSS.png"
+      ],
+      "techStack": ["Data Engineering", "Geospatial Analysis", "Python"],
+      "category": "Dataset",
+      "date": "October 2024",
+      "client": "Open Source Contribution",
+      "projectTitle": "Global Reservoir Sedimentation Dataset",
+      "websiteUrl": "#",
+      "websiteLabel": "Dataset Link",
+      "badgesHtml": "",
+      "overviewBase": "Built the first large-scale open-source dataset compiling reservoir sedimentation information from global sources.",
+      "overviewExpanded": "This comprehensive dataset brings together fragmented reservoir sedimentation records from around the world into a unified format. It enables researchers to analyze global trends in reservoir capacity loss and better predict the impacts of sedimentation on water supply, hydropower generation, and flood control infrastructures.",
+      "challenge": "Reservoir sedimentation data is notoriously fragmented, often existing in isolated regional databases, scientific literature, or hardcopy reports. The lack of a centralized, standardized dataset hinders global-scale hydrological modeling and long-term water resource planning.",
+      "solution": "We systematically compiled, cleaned, and standardized sedimentation records from diverse global sources to create a unified dataset. This involved extensive data harmonization and geospatial linking to ensure researchers have a reliable foundation for analyzing and modeling reservoir lifespan and sedimentation behavior globally.",
+      "featuresLeft": [
+        "Global Coverage",
+        "Standardized Format",
+        "Open-source"
+      ],
+      "featuresRight": [
+        "Geospatially Linked",
+        "Comprehensive Attributes",
+        "Ready for Modeling"
+      ],
+      "liveProjectLink": "#",
+      "codeLink": "#"
+    }
+  },
+  {
+    "id": "reclaim",
+    "title": "Reservoir Sedimentation Estimation Framework",
+    "meta": "AI/ML",
+    "description": "Built an AI-driven framework to estimate reservoir sedimentation at scale using geospatial and hydroclimatic features.",
+    "coverImage": "assets/img/portfolio/portfolio_covers/RECLAIM.png",
+    "detailPage": "portfolio-details.html?project=reclaim",
+    "filters": ["aiml", "software"],
+    "gallery": "portfolio-gallery-aiml",
+    "details": {
+      "sliderImages": [
+        "assets/img/portfolio/portfolio_covers/RECLAIM.png"
+      ],
+      "galleryImages": [
+        "assets/img/portfolio/portfolio_covers/RECLAIM.png"
+      ],
+      "techStack": ["Machine Learning", "Python", "Geospatial Modeling", "Data Science"],
+      "category": "AI/ML",
+      "date": "2023",
+      "client": "Research Initiative",
+      "projectTitle": "Reservoir Sedimentation Estimation Framework",
+      "websiteUrl": "#",
+      "websiteLabel": "Project Link",
+      "badgesHtml": "",
+      "overviewBase": "Built an AI-driven framework to estimate reservoir sedimentation at scale using geospatial and hydroclimatic features.",
+      "overviewExpanded": "RECLAIM is an innovative machine learning framework designed to predict reservoir sedimentation rates globally. By leveraging a vast array of geospatial, hydroclimatic, and geomorphological features, it provides estimates for reservoirs where direct measurement data is unavailable.",
+      "challenge": "Directly measuring reservoir sedimentation is costly and time-consuming, leaving thousands of reservoirs globally without reliable sedimentation data. Traditional empirical models often fail to capture the complex, non-linear interactions between catchment characteristics and sediment yield across different hydroclimatic zones.",
+      "solution": "We developed a robust AI-driven estimation framework trained on compiled global sedimentation records. The model integrates diverse geospatial features such as land cover, topography, and climate data to accurately predict sedimentation rates, providing a scalable solution for estimating capacity loss globally.",
+      "featuresLeft": [
+        "Machine Learning Driven",
+        "Scalable Estimation",
+        "High Accuracy"
+      ],
+      "featuresRight": [
+        "Multi-modal Feature Integration",
+        "Global Relevance",
+        "Automated Pipeline"
+      ],
+      "liveProjectLink": "#",
+      "codeLink": "#"
+    }
+  },
+  {
+    "id": "glors",
+    "title": "Reconstruction of Reservoir Sedimentation Rates",
+    "meta": "Dataset",
+    "description": "Reconstructed global reservoir sedimentation rates from fragmented historical records and supporting hydrologic attributes.",
+    "coverImage": "assets/img/portfolio/portfolio_covers/GLoRS.png",
+    "detailPage": "portfolio-details.html?project=glors",
+    "filters": ["datasets", "aiml"],
+    "gallery": "portfolio-gallery-datasets",
+    "details": {
+      "sliderImages": [
+        "assets/img/portfolio/portfolio_covers/GLoRS.png"
+      ],
+      "galleryImages": [
+        "assets/img/portfolio/portfolio_covers/GLoRS.png"
+      ],
+      "techStack": ["Data Reconstruction", "Hydrological Modeling", "Python", "Statistics"],
+      "category": "Dataset",
+      "date": "2023",
+      "client": "Academic Research",
+      "projectTitle": "Reconstruction of Reservoir Sedimentation Rates",
+      "websiteUrl": "#",
+      "websiteLabel": "Publication Link",
+      "badgesHtml": "",
+      "overviewBase": "Reconstructed global reservoir sedimentation rates from fragmented historical records and supporting hydrologic attributes.",
+      "overviewExpanded": "GLoRS represents a major effort to reconstruct and synthesize global reservoir sedimentation rates. By fusing historical records with modern hydrologic attributes, it offers a robust reconstructed dataset that helps in understanding long-term capacity loss in the world's reservoirs.",
+      "challenge": "Historical sedimentation records are frequently plagued by missing data, inconsistent measurement techniques, and irregular sampling intervals. This makes it difficult to ascertain long-term trends and robustly quantify the rate of capacity loss on a global scale.",
+      "solution": "We utilized advanced statistical and data reconstruction techniques to interpolate missing data and harmonize fragmented historical records. Coupled with supporting hydrologic attributes, the resulting reconstructed dataset provides a continuously estimated timeline of sedimentation rates for reservoirs globally.",
+      "featuresLeft": [
+        "Data Reconstruction",
+        "Historical Synthesis",
+        "Statistical Modeling"
+      ],
+      "featuresRight": [
+        "Long-term Trends",
+        "Harmonized Records",
+        "Hydrologic Context"
+      ],
+      "liveProjectLink": "#",
+      "codeLink": "#"
+    }
+  }
+]

@@ -453,7 +453,7 @@ h6 {
   display: flex;
   flex-wrap: wrap;
   list-style: none;
-  padding: 0;
+  padding-right: 14px;
   margin: 0;
   font-size: 14px;
   font-weight: 400;
@@ -1800,6 +1800,11 @@ section,
 /*--------------------------------------------------------------
 # Portfolio Section
 --------------------------------------------------------------*/
+.project-badges img {
+  margin: 4px 6px 4px 0;
+  height: 19px;
+}
+
 .portfolio .portfolio-filters {
   display: flex;
   justify-content: center;
@@ -1880,40 +1885,78 @@ section,
 .portfolio .portfolio-entry .entry-image .entry-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.08) 20%, rgba(0, 0, 0, 0.72) 100%);
   display: flex;
   align-items: flex-end;
-  padding: 30px;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 24px;
 }
 
 .portfolio .portfolio-entry .entry-image .entry-overlay .overlay-content {
   width: 100%;
-  transform: translateY(20px);
+  transform: translateY(0);
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .portfolio .portfolio-entry .entry-image .entry-overlay .entry-meta {
   color: var(--accent-color);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
+  opacity: 1;
 }
 
 .portfolio .portfolio-entry .entry-image .entry-overlay .entry-title {
   color: var(--contrast-color);
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 600;
-  margin: 0 0 20px;
+  line-height: 1.25;
+  margin: 0;
 }
 
 .portfolio .portfolio-entry .entry-image .entry-overlay .entry-links {
   display: flex;
-  gap: 15px;
+  gap: 12px;
+  margin-top: 16px;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transform: translateY(10px);
+  transition: all 0.35s ease;
+}
+
+.portfolio .portfolio-entry .entry-image .entry-overlay .entry-links a {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--accent-color);
+  border-radius: 12px;
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+
+.portfolio .portfolio-entry .entry-image .entry-overlay .entry-links a:hover {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  transform: translateY(-2px);
+}
+
+.portfolio .portfolio-entry:hover .entry-image img {
+  transform: scale(1.05);
+}
+
+.portfolio .portfolio-entry:hover .entry-image .entry-overlay .overlay-content {
+  transform: translateY(-10px);
+}
+
+.portfolio .portfolio-entry:hover .entry-image .entry-overlay .entry-links {
+  opacity: 1;
+  max-height: 60px;
+  transform: translateY(0);
 }
 
 .portfolio .portfolio-entry .entry-image .entry-overlay .entry-links a {
