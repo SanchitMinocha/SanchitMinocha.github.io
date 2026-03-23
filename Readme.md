@@ -8,7 +8,7 @@ The goal was to create a portfolio that is:
 - Clean and intuitive
 - Technically informative
 - Visually engaging without being distracting
-- Aligned with both academic and industry expectations
+- Aligned with both academic and industry audience
 
 ---
 
