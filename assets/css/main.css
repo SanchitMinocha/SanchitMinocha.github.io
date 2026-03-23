@@ -55,6 +55,15 @@
   --contrast-color: #ffffff;
 }
 
+.footer-background {
+  --background-color: #0d566c;
+  --default-color: #ffffff;
+  --heading-color: #ffffff;
+  --accent-color: #afcdf1;
+  --surface-color: #2973cc;
+  --contrast-color: #ffffff;
+}
+
 /* Smooth scroll */
 :root {
   scroll-behavior: smooth;
