@@ -186,66 +186,35 @@
 
     </section><!-- /Hero Section -->
 
-    <!-- Testimonials Section -->
+    <!-- Highlights Section -->
     <section id="testimonials" class="testimonials section">
-      <!-- Section Title -->
       <div class="container section-title">
         <h2>Highlights</h2>
-        <p><strong><em>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Selected achievements, industry recognition, and impactful work </em></strong></p>
-      </div><!-- End Section Title -->
+        <p>
+          <strong>
+            <em>
+              &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp The impact so far
+            </em>
+          </strong>
+        </p>
+      </div>
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
+        <!-- Featured Highlights -->
         <div class="row">
           <div class="col-12">
             <div class="critic-reviews" data-aos="fade-up" data-aos-delay="300">
-              <div class="row">
-                <div class="col-md-4">
-                  <div class="critic-review" data-url="https://cacm.acm.org/blogcacm/ai-to-the-rescue-of-the-worlds-reservoirs-filling-up-fast-with-sediment/">
+              <div class="row g-4" id="featured-highlights"></div>
+            </div>
+          </div>
+        </div>
 
-                    <div class="review-top">
-                      <div class="review-quote">"</div>
-                      <div class="media-header">
-                        <img src="assets/img/media/ACM_logo.png" class="img-fluid">
-                        <span class="critic-name">Communications of the ACM</span>
-                      </div>
-                    </div>
-
-                    <p>Featured publication on applying AI to address global reservoir sedimentation challenges</p>
-
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="critic-review" data-url="https://www.waterpowermagazine.com/analysis/hydro-pros-reflect-and-predict-11439255/?cf-view">
-
-                    <div class="review-top">
-                      <div class="review-quote">"</div>
-                      <div class="media-header">
-                        <img src="assets/img/media/IWPDC_logo.jpg" class="img-fluid">
-                        <span class="critic-name">International Water Power & Dam Construction</span>
-                      </div>
-                    </div>
-
-                    <p>Recognized in 2023 Hydro Industry Insights for developing satellite-based reservoir monitoring solutions with global applications</p>
-
-                  </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="critic-review" data-url="https://myemail.constantcontact.com/Meet-these-up-and-coming-water-resources-professionals-.html?soid=1011215259037&aid=Ivu_i5HJu5I">
-
-                    <div class="review-top">
-                      <div class="review-quote">"</div>
-                      <div class="media-header">
-                        <img src="assets/img/media/AWRA_logo.jpeg" class="img-fluid">
-                        <span class="critic-name">American Water Resources Association</span>
-                      </div>
-                    </div>
-
-                    <p>Recipient of People’s Choice Graduate Award, AWRA Annual Conference 2022</p>
-
-                  </div>
-                </div>
-              </div>
+        <!-- Recent Highlights Slider -->
+        <div class="row mt-4">
+          <div class="col-12">
+            <div class="section-subtitle mb-3">
+              <h5>Selected Highlights</h5>
             </div>
 
             <div class="testimonials-container">
@@ -262,11 +231,12 @@
                     "pagination": {
                       "el": ".swiper-pagination",
                       "type": "bullets",
-                      "clickable": true
+                      "clickable": true,
+                      "dynamicBullets": true
                     },
                     "breakpoints": {
                       "768": {
-                        "slidesPerView": 2
+                        "slidesPerView": 3
                       },
                       "992": {
                         "slidesPerView": 3
@@ -275,103 +245,15 @@
                   }
                 </script>
 
-                <div class="swiper-wrapper">
-                  <div class="swiper-slide">
-                    <div class="testimonial-item" data-url="https://medium.com/data-science-group-iitr/linear-regression-back-to-basics-e4819829d78b"">
-                      <p>
-                         Authored a foundational article on linear regression as part of a structured machine learning education series.
-                      </p>
-                      <div class="testimonial-profile">
-                        <img src="assets/img/media/DSG_logo.png" class="img-fluid rounded-circle">
-                        <div>
-                          <h3>Data Science Group, IIT Roorkee</h3>
-                          <h4>Applied Data Science</h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div><!-- End testimonial item -->
-
-                  <div class="swiper-slide">
-                    <div class="testimonial-item" data-url="https://www.waterpowermagazine.com/analysis/how-satellites-helped-debunk-2024-flood-myths/?cf-view"">
-                      <p>
-                        Published analysis demonstrating how satellite data helped correct misinformation during the 2024 India–Bangladesh flood event.
-                      </p>
-                      <div class="testimonial-profile">
-                        <img src="assets/img/media/IWPDC_logo.jpg" class="img-fluid rounded-circle">
-                        <div>
-                          <h3>International Water Power & Dam Construction</h3>
-                          <h4>Industry Impact</h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div><!-- End testimonial item -->
-
-                  <div class="swiper-slide">
-                    <div class="testimonial-item" data-url="https://www.cambridge.org/highereducation/books/satellite-remote-sensing-for-water-management/9BAD536732540E22295972E9A22CEA8B#overview"">
-                      <p>
-                        Contributed a tutorial on applying data science for reservoir monitoring in an undergraduate-level remote sensing textbook.".
-                      </p>
-                      <div class="testimonial-profile">
-                        <img src="assets/img/media/Cambridge_logo.png" class="img-fluid rounded-circle">
-                        <div>
-                          <h3>Cambridge University Press</h3>
-                          <h4>Applied Data Science</h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div><!-- End testimonial item -->
-
-                  <div class="swiper-slide">
-                    <div class="testimonial-item" data-url="https://www.waterpowermagazine.com/analysis/a-satellite-remote-sensing-perspective-on-water-resources-10867560/?cf-view"">
-                      <p>
-                        Conducted satellite-based impact analysis of the Belo Monte Dam, focusing on environmental and social implications in the Amazon Basin.
-                      </p>
-                      <div class="testimonial-profile">
-                        <img src="assets/img/media/IWPDC_logo.jpg" class="img-fluid rounded-circle">
-                        <div>
-                          <h3>International Water Power & Dam Construction</h3>
-                          <h4>Impact Analysis</h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div><!-- End testimonial item -->
-
-                  <div class="swiper-slide">
-                    <div class="testimonial-item" data-url="https://dev-ratmekong-servir.adpc.net"">
-                      <p>
-                        Co-developed a data-driven monitoring platform (RAT-Mekong) and trained technical experts for operational deployment.
-                      </p>
-                      <div class="testimonial-profile">
-                        <img src="assets/img/media/ADPC_logo.png" class="img-fluid rounded-circle">
-                        <div>
-                          <h3>Asian Disaster Preparedness Center</h3>
-                          <h4>Product Development</h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div><!-- End testimonial item -->
-
-                  <div class="swiper-slide">
-                    <div class="testimonial-item" data-url="https://www.waterpowermagazine.com/analysis/reimagining-dams-as-transit-hubs-visualising-global-water-networks-with-damnet/"">
-                      <p>
-                        Developed DamNet, an interactive visualization tool for exploring global water infrastructure and network connectivity.
-                      </p>
-                      <div class="testimonial-profile">
-                        <img src="assets/img/media/IWPDC_logo.jpg" class="img-fluid rounded-circle">
-                        <div>
-                          <h3>International Water Power & Dam Construction</h3>
-                          <h4>Data Visualization</h4>
-                        </div>
-                      </div>
-                    </div>
-                  </div><!-- End testimonial item -->
+                <div class="swiper-wrapper" id="recent-highlights"></div>
+                <div class="swiper-pagination"></div>
               </div>
-              <div class="swiper-pagination"> </div>
             </div>
           </div>
         </div>
+
       </div>
-    </section><!-- /Testimonials Section -->
+    </section>
 
     <!-- Portfolio Section -->
     <section id="portfolio" class="portfolio section">
@@ -422,7 +304,7 @@
 
       <div class="container section-title" data-aos="fade-up">
         <h2>Core Technical Skills</h2>
-        <p><strong><em>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Key skills shaping my work </em></strong></p>
+        <p><strong><em>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp The tools I use</em></strong></p>
       </div>
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -1063,7 +945,7 @@
         <!-- You can delete the links only if you've purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Developed & Modified by Sanchit Minocha | Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        Developed & Modified by Sanchit Minocha | Based on template from <a href="https://bootstrapmade.com/">BootstrapMade</a>
       </div>
     </div>
 
@@ -1087,6 +969,7 @@
   <script src="assets/js/publications.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/portfolios.js"></script>
+  <script src="assets/js/highlights.js"></script>
 
 </body>
 

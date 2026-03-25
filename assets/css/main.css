@@ -23,8 +23,8 @@
 :root { 
   --background-color: #F7FBFD; /* Background color for the entire website, including individual sections */
   --default-color: #2B3A41; /* Default color used for the majority of the text content across the entire website */
-  --heading-color: #2083A9; /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #50b9a6; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+  --heading-color: #276cdd; /* Color for headings, subheadings and title throughout the website */
+  --accent-color: #42ba80; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
   --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
   --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
 }
@@ -33,7 +33,7 @@
 :root {
   --nav-color: #2B3A41;  /* The default color of the main navmenu links */
   --nav-hover-color: #6b98a8; /* Applied to main navmenu links when they are hovered over or active */
-  --nav-mobile-background-color: #173038; /* Used as the background color for mobile navigation menu */
+  --nav-mobile-background-color: #102545; /* Used as the background color for mobile navigation menu */
   --nav-dropdown-background-color: #2083A9; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
   --nav-dropdown-color: #b5e3f1; /* Used for navigation links of the dropdown items in the navigation menu. */
   --nav-dropdown-hover-color: #ffffff; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
@@ -56,7 +56,7 @@
 }
 
 .footer-background {
-  --background-color: #0d566c;
+  --background-color: #153d2c;
   --default-color: #ffffff;
   --heading-color: #ffffff;
   --accent-color: #afcdf1;
@@ -1920,7 +1920,7 @@ section,
 }
 
 .portfolio .portfolio-entry .entry-image .entry-overlay .entry-meta {
-  color: var(--accent-color);
+  color: var(--heading-color);
   background: var(--surface-color);
   font-size: 12px;
   font-weight: 800;
@@ -2129,6 +2129,7 @@ section,
 }
 
 .testimonials .critic-reviews .critic-review {
+  position: relative;
   background-color: var(--surface-color);
   padding: 30px;
   border-radius: 15px;
@@ -2218,6 +2219,45 @@ section,
 
 /* Additional css for critic reviews to media mentions (end) */
 
+/* Additional css for highlights section (start) */
+.highlight-link {
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.highlight-link:hover {
+  transform: translateY(-4px);
+}
+
+.section-subtitle h5 {
+  font-weight: 600;
+  margin-bottom: 0;
+  opacity: 0.9;
+}
+
+.highlight-note-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+.highlight-note {
+  position: absolute;
+  bottom: 16px;
+  right: 30px;
+
+  display: inline-block;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  background: color-mix(in srgb, var(--accent-color), transparent 8%);
+  color: var(--contrast-color);
+  border-radius: 12px;
+  white-space: nowrap;
+}
+
+/* Additional css for highlights section (end) */
+
+
 
 .testimonials .testimonials-container {
   margin-bottom: 5px;
@@ -2228,7 +2268,17 @@ section,
   padding-bottom: 20px;
 }
 
+.testimonials-slider .swiper-slide {
+  height: auto;
+  display: flex;
+}
+
 .testimonials .testimonials-container .testimonial-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
   background-color: var(--surface-color);
   padding: 30px;
   border-radius: 10px;
@@ -2255,6 +2305,7 @@ section,
   margin-bottom: 20px;
   color: var(--default-color);
   line-height: 1.6;
+  flex-grow: 1;
 }
 
 .testimonials .testimonials-container .testimonial-item .testimonial-profile {
@@ -2416,7 +2467,7 @@ section,
 }
 
 .faq .faq-container .faq-item:not(.faq-active) .pub-citation .citation-authors {
-  color: var(--accent-color);
+  color: color-mix(in srgb, var(--default-color), transparent 3%);
   font-weight: 500;
 }
 
@@ -2450,7 +2501,7 @@ section,
 
 /* Title colors when expanded */
 .faq .faq-container .faq-item.faq-active h3 .pub-title {
-  color: var(--accent-color);
+  color: var(--heading-color);
 }
 
 /* Title */
