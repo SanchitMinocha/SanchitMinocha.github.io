@@ -24,8 +24,7 @@ The goal was to create a portfolio that is:
 
 This project builds upon a base template:
 
-- **Template Name:** Style  
-- **Template URL:** https://bootstrapmade.com/style-bootstrap-portfolio-template/  
+- **Template Name:** Style   
 - **Author:** BootstrapMade.com  
 - **License:** https://bootstrapmade.com/license/
 
