@@ -1,0 +1,92 @@
+{
+  "research": [
+    {
+      "name": "University of Washington",
+      "logo": "assets/img/media/uw_logo.png",
+      "url": "https://www.washington.edu",
+      "maxW": 160,
+      "maxH": 160
+    },
+    {
+      "name": "IIT Roorkee",
+      "logo": "assets/img/media/iitr_logo.svg",
+      "url": "https://www.iitr.ac.in",
+      "maxW": 115,
+      "maxH": 48
+    },
+    {
+      "name": "University of Leeds",
+      "logo": "assets/img/media/leeds_logo.png",
+      "url": "https://www.leeds.ac.uk",
+      "maxW": 140,
+      "maxH": 38
+    }
+  ],
+  "industry": [
+    {
+      "name": "NASA Jet Propulsion Laboratory",
+      "logo": "assets/img/media/nasa_jpl_logo.png",
+      "url": "https://www.jpl.nasa.gov",
+      "maxW": 155,
+      "maxH": 50
+    },
+    {
+      "name": "Schlumberger (SLB)",
+      "logo": "assets/img/media/slb_logo.png",
+      "url": "https://www.slb.com",
+      "maxW": 95,
+      "maxH": 36
+    },
+    {
+      "name": "Cairn Oil & Gas",
+      "logo": "assets/img/media/cairn_logo.png",
+      "url": "https://www.cairnindia.com",
+      "maxW": 160,
+      "maxH": 50
+    },
+    {
+      "name": "Rupeek",
+      "logo": "assets/img/media/rupeek_logo.png",
+      "url": "https://rupeek.com",
+      "maxW": 110,
+      "maxH": 40
+    }
+  ],
+  "collaborators": [
+    {
+      "name": "Asian Disaster Preparedness Center (ADPC)",
+      "logo": "assets/img/media/ADPC_logo.png",
+      "url": "https://www.adpc.net",
+      "maxW": 80,
+      "maxH": 52
+    },
+    {
+      "name": "Texas Water Development Board",
+      "logo": "assets/img/media/twdb_logo.png",
+      "url": "https://www.twdb.texas.gov",
+      "maxW": 110,
+      "maxH": 52
+    },
+    {
+      "name": "Bangladesh Water Development Board",
+      "logo": "assets/img/media/bwdb_logo.png",
+      "url": "https://www.bwdb.gov.bd",
+      "maxW": 105,
+      "maxH": 52
+    },
+    {
+      "name": "Mekong River Commission",
+      "logo": "assets/img/media/mrc_logo.png",
+      "url": "https://www.mrcmekong.org",
+      "maxW": 95,
+      "maxH": 52
+    },
+    {
+      "name": "USAID",
+      "logo": "assets/img/media/usaid_logo.png",
+      "url": "https://www.usaid.gov",
+      "maxW": 115,
+      "maxH": 44
+    }
+  ]
+}

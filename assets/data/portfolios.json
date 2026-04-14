@@ -153,9 +153,11 @@
     "date": "October 2025",
     "client": "Open Source Contribution",
     "projectTitle": "RECLAIM: Predicting Reservoir Capacity Loss",
-    "websiteUrl": "#",
-    "websiteLabel": "Real-Time ML Prediction Web App <span style='color:red'>- Coming Soon!</span>",
-    "badges": [],
+    "websiteUrl": "https://f-hossain-3.ce.washington.edu/reclaim/estimator",
+    "websiteLabel": "Real-Time ML Prediction Web App <span style='color: red;'>- Recently Launched!</span>",
+    "badges": [{"imgSrc": "https://img.shields.io/badge/Workflow-ML--Deployment-blue", "alt":"Pipeline Workflow"},
+    {"imgSrc": "https://img.shields.io/badge/python-3.10-blue.svg", "alt":"Python 3.10"},
+    {"imgSrc": "https://img.shields.io/badge/serving-Django--4.2-092e20", "alt":"Django serving"}],
     "overviewBase": "RECLAIM is a scalable machine learning framework that predicts reservoir sedimentation and capacity loss using satellite data, enabling cost-effective monitoring and risk assessment across large scale water infrastructure.",
 
   "overviewExpanded": "Reservoir sedimentation is a critical but under-monitored risk that directly impacts water supply, hydropower generation, and long-term infrastructure performance. As storage capacity declines, utilities and governments face significant economic losses and operational challenges. RECLAIM addresses this gap by combining historical sedimentation records with multi-decadal satellite observations and geospatial data to deliver scalable, data-driven predictions of capacity loss. By enabling rapid assessment across reservoirs globally, the framework supports proactive planning, reduces monitoring costs, and helps prevent costly failures in water resource systems—potentially influencing billions of dollars in infrastructure management and investment decisions.",
@@ -173,7 +175,7 @@
       "Python Package",
       "Potential to save billions of dollars"
     ],
-    "liveProjectLink": "https://libraries.io/pypi/pyreclaim",
+    "liveProjectLink": "https://f-hossain-3.ce.washington.edu/reclaim/estimator",
     "codeLink": "https://github.com/UW-SASWE/RECLAIM",
     "paperLink": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5623518",
     "docsLink": "https://reclaimio.readthedocs.io/en/latest/"
