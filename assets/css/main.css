@@ -14,16 +14,16 @@
 --------------------------------------------------------------*/
 /* Fonts */
 :root {
-  --default-font: "Roboto",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --heading-font: "Quicksand",  sans-serif;
-  --nav-font: "Open Sans",  sans-serif;
+  --default-font: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --heading-font: "Outfit", sans-serif;
+  --nav-font: "Open Sans", sans-serif;
 }
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
 :root { 
   --background-color: #F7FBFD; /* Background color for the entire website, including individual sections */
   --default-color: #2B3A41; /* Default color used for the majority of the text content across the entire website */
-  --heading-color: #276cdd; /* Color for headings, subheadings and title throughout the website */
+  --heading-color: rgb(39, 108, 221); /* Color for headings, subheadings and title throughout the website */
   --accent-color: #42ba80; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
   --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
   --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
@@ -63,6 +63,131 @@
   --surface-color: #2973cc;
   --contrast-color: #ffffff;
 }
+
+/*--------------------------------------------------------------
+# Color Themes
+# Six palettes — 4 light, 2 dark — applied via [data-theme] on <html>.
+# Toggle button wired in assets/js/theme.js.
+# To change which light/dark pair the button cycles through, edit
+# LIGHT_THEME / DARK_THEME at the top of theme.js.
+#
+# Light themes : ocean | amber | forest | rose
+# Dark  themes : midnight | aurora
+--------------------------------------------------------------*/
+
+/* ── Ocean (default light — blue/teal) ─────────────────────── */
+[data-theme="ocean"] {
+  --background-color:              #F7FBFD;
+  --default-color:                 #2B3A41;
+  --heading-color:                 #276cdd;
+  --accent-color:                  #42ba80;
+  --surface-color:                 #ffffff;
+  --contrast-color:                #ffffff;
+  --nav-color:                     #2B3A41;
+  --nav-hover-color:               #6b98a8;
+  --nav-mobile-background-color:   #102545;
+  --nav-dropdown-background-color: #2083A9;
+  --nav-dropdown-color:            #b5e3f1;
+  --nav-dropdown-hover-color:      #ffffff;
+}
+[data-theme="ocean"] .light-background  { --background-color: #f7faff; --surface-color: #ffffff; }
+[data-theme="ocean"] .dark-background   { --background-color: #065cc2; --default-color: #ffffff; --heading-color: #ffffff; --accent-color: #afcdf1; --surface-color: #2973cc; --contrast-color: #ffffff; }
+[data-theme="ocean"] .footer-background { --background-color: #153d2c; --default-color: #ffffff; --heading-color: #ffffff; --accent-color: #afcdf1; --surface-color: #1e5e3a; --contrast-color: #ffffff; }
+
+/* ── Amber (warm, earthy — orange/gold) ────────────────────── */
+[data-theme="amber"] {
+  --background-color:              #FDF8F0;
+  --default-color:                 #3D2B1F;
+  --heading-color:                 #B8560A;
+  --accent-color:                  #E8930F;
+  --surface-color:                 #ffffff;
+  --contrast-color:                #ffffff;
+  --nav-color:                     #3D2B1F;
+  --nav-hover-color:               #E8930F;
+  --nav-mobile-background-color:   #2C1A0E;
+  --nav-dropdown-background-color: #B8560A;
+  --nav-dropdown-color:            #FFD5A0;
+  --nav-dropdown-hover-color:      #ffffff;
+}
+[data-theme="amber"] .light-background  { --background-color: #FEF4E6; --surface-color: #ffffff; }
+[data-theme="amber"] .dark-background   { --background-color: #8B3A0A; --default-color: #ffffff; --heading-color: #FFE0A0; --accent-color: #FFB830; --surface-color: #C0560F; --contrast-color: #ffffff; }
+[data-theme="amber"] .footer-background { --background-color: #2C1A0E; --default-color: #ffffff; --heading-color: #FFD5A0; --accent-color: #E8930F; --surface-color: #3D2410; --contrast-color: #ffffff; }
+
+/* ── Forest (nature — green) ───────────────────────────────── */
+[data-theme="forest"] {
+  --background-color:              #F0F7F2;
+  --default-color:                 #1A3025;
+  --heading-color:                 #2D6A4F;
+  --accent-color:                  #52B788;
+  --surface-color:                 #ffffff;
+  --contrast-color:                #ffffff;
+  --nav-color:                     #1A3025;
+  --nav-hover-color:               #52B788;
+  --nav-mobile-background-color:   #0D2018;
+  --nav-dropdown-background-color: #2D6A4F;
+  --nav-dropdown-color:            #B7E4C7;
+  --nav-dropdown-hover-color:      #ffffff;
+}
+[data-theme="forest"] .light-background  { --background-color: #E8F5ED; --surface-color: #ffffff; }
+[data-theme="forest"] .dark-background   { --background-color: #1B4332; --default-color: #ffffff; --heading-color: #B7E4C7; --accent-color: #74C69D; --surface-color: #2D6A4F; --contrast-color: #ffffff; }
+[data-theme="forest"] .footer-background { --background-color: #0D2018; --default-color: #ffffff; --heading-color: #B7E4C7; --accent-color: #52B788; --surface-color: #1B4332; --contrast-color: #ffffff; }
+
+/* ── Rose (soft pink / rose-gold) ──────────────────────────── */
+[data-theme="rose"] {
+  --background-color:              #FDF5F7;
+  --default-color:                 #3D1F28;
+  --heading-color:                 #A8385C;
+  --accent-color:                  #D4547A;
+  --surface-color:                 #ffffff;
+  --contrast-color:                #ffffff;
+  --nav-color:                     #3D1F28;
+  --nav-hover-color:               #D4547A;
+  --nav-mobile-background-color:   #2C0E1A;
+  --nav-dropdown-background-color: #A8385C;
+  --nav-dropdown-color:            #FFD0DE;
+  --nav-dropdown-hover-color:      #ffffff;
+}
+[data-theme="rose"] .light-background  { --background-color: #FDE8EF; --surface-color: #ffffff; }
+[data-theme="rose"] .dark-background   { --background-color: #801035; --default-color: #ffffff; --heading-color: #FFD0DE; --accent-color: #FFB8CC; --surface-color: #A8385C; --contrast-color: #ffffff; }
+[data-theme="rose"] .footer-background { --background-color: #2C0E1A; --default-color: #ffffff; --heading-color: #FFD0DE; --accent-color: #D4547A; --surface-color: #3D1525; --contrast-color: #ffffff; }
+
+/* ── Midnight (dark — GitHub-style blue) ───────────────────── */
+[data-theme="midnight"] {
+  --background-color:              #0D1117;
+  --default-color:                 #C9D1D9;
+  --heading-color:                 #58A6FF;
+  --accent-color:                  #3FB950;
+  --surface-color:                 #161B22;
+  --contrast-color:                #ffffff;
+  --nav-color:                     #C9D1D9;
+  --nav-hover-color:               #58A6FF;
+  --nav-mobile-background-color:   #010409;
+  --nav-dropdown-background-color: #1C2128;
+  --nav-dropdown-color:            #8B949E;
+  --nav-dropdown-hover-color:      #ffffff;
+}
+[data-theme="midnight"] .light-background  { --background-color: #161B22; --surface-color: #21262D; }
+[data-theme="midnight"] .dark-background   { --background-color: #1C2128; --default-color: #E6EDF3; --heading-color: #79C0FF; --accent-color: #56D364; --surface-color: #2D333B; --contrast-color: #ffffff; }
+[data-theme="midnight"] .footer-background { --background-color: #010409; --default-color: #8B949E; --heading-color: #58A6FF; --accent-color: #3FB950; --surface-color: #161B22; --contrast-color: #ffffff; }
+
+/* ── Aurora (dark — deep teal / space) ─────────────────────── */
+[data-theme="aurora"] {
+  --background-color:              #0B1120;
+  --default-color:                 #B2C8D8;
+  --heading-color:                 #64DFDF;
+  --accent-color:                  #80FFDB;
+  --surface-color:                 #111E30;
+  --contrast-color:                #ffffff;
+  --nav-color:                     #B2C8D8;
+  --nav-hover-color:               #80FFDB;
+  --nav-mobile-background-color:   #060D18;
+  --nav-dropdown-background-color: #111E30;
+  --nav-dropdown-color:            #64DFDF;
+  --nav-dropdown-hover-color:      #ffffff;
+}
+[data-theme="aurora"] .light-background  { --background-color: #111E30; --surface-color: #172640; }
+[data-theme="aurora"] .dark-background   { --background-color: #172640; --default-color: #D0E8F2; --heading-color: #80FFDB; --accent-color: #64DFDF; --surface-color: #1E3050; --contrast-color: #ffffff; }
+[data-theme="aurora"] .footer-background { --background-color: #060D18; --default-color: #6B8FA8; --heading-color: #64DFDF; --accent-color: #80FFDB; --surface-color: #0B1120; --contrast-color: #ffffff; }
 
 /* Smooth scroll */
 :root {
@@ -435,6 +560,40 @@ h6 {
 }
 
 /*--------------------------------------------------------------
+# Theme Toggle Button
+--------------------------------------------------------------*/
+.theme-toggle {
+  position: fixed;
+  right: 15px;
+  bottom: 70px; /* sits just above the scroll-top button */
+  z-index: 99999;
+  background-color: var(--surface-color);
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 65%);
+  color: var(--heading-color);
+  width: 44px;
+  height: 44px;
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s;
+  box-shadow: 0 2px 10px color-mix(in srgb, var(--default-color), transparent 80%);
+}
+
+.theme-toggle i {
+  font-size: 18px;
+  line-height: 0;
+  pointer-events: none;
+}
+
+.theme-toggle:hover {
+  background-color: var(--accent-color);
+  color: var(--contrast-color);
+  border-color: var(--accent-color);
+}
+
+/*--------------------------------------------------------------
 # Disable aos animation delay on mobile devices
 --------------------------------------------------------------*/
 @media screen and (max-width: 768px) {
@@ -529,13 +688,15 @@ section,
 # Hero Section
 --------------------------------------------------------------*/
 .hero {
-  padding: 120px 0;
+  padding: 50px 0 0; /* bottom padding removed — affiliation band is the footer */
   position: relative;
   overflow: hidden;
   min-height: 100vh;
   display: flex;
-  align-items: center;
+  flex-direction: column;  /* stack: content row + affiliation band */
+  justify-content: center;
 }
+
 
 .hero::before {
   content: "";
@@ -548,6 +709,7 @@ section,
   background-size: cover;
   opacity: 0.08;
   z-index: 1;
+  pointer-events: none;  /* must not block clicks/hover on affiliation or tech strip */
 }
 
 .hero .container {
@@ -564,12 +726,13 @@ section,
 
 @media (max-width: 576px) {
   .hero .hero-content {
-    padding: 40px 20px;
+    padding: 80px 20px;
   }
 }
 
 .hero .content-wrapper {
   max-width: 600px;
+  padding-top: 15px;  /* align badge top with photo top on desktop */
 }
 
 .hero .hero-title {
@@ -577,6 +740,8 @@ section,
   font-weight: 700;
   margin-bottom: 1.5rem;
   line-height: 1.2;
+  /* Reserve height for 2 lines — prevents layout shift as typed prefix changes length */
+  min-height: calc(3.5rem * 1.2 * 2);
 }
 
 @media (max-width: 768px) {
@@ -599,28 +764,28 @@ section,
 .hero .lead {
   font-size: 1.2rem;
   color: color-mix(in srgb, var(--default-color), transparent 20%);
-  margin-bottom: 3rem;
+  margin-bottom: 1.75rem;
   line-height: 1.6;
 }
 
 @media (max-width: 768px) {
   .hero .lead {
     font-size: 1.1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.25rem;
   }
 }
 
 .hero .hero-stats {
   display: flex;
   gap: 2rem;
-  margin-bottom: 3rem;
+  margin-bottom: 1.75rem;
 }
 
 @media (max-width: 768px) {
   .hero .hero-stats {
     justify-content: center;
     gap: 1.5rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.25rem;
   }
 }
 
@@ -640,7 +805,7 @@ section,
 .hero .hero-stats .stat-item .purecounter {
   font-size: 2rem;
   font-weight: 700;
-  color: var(--accent-color);
+  color: color-mix(in srgb, var(--heading-color) 15%, var(--accent-color) 85%);
   line-height: 1;
 }
 
@@ -650,23 +815,31 @@ section,
   margin-top: 0.25rem;
 }
 
-.hero .hero-actions {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 3rem;
+/* Outer wrapper: column flex — buttons on top, socials centred below */
+.hero-cta-block {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
 }
 
 @media (max-width: 768px) {
-  .hero .hero-actions {
-    justify-content: center;
-    margin-bottom: 2rem;
+  .hero-cta-block {
+    align-items: center;
+    width: 100%;
   }
+}
+
+.hero .hero-actions {
+  display: flex;
+  gap: 1rem;
 }
 
 @media (max-width: 576px) {
   .hero .hero-actions {
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
   }
 }
 
@@ -679,14 +852,15 @@ section,
 }
 
 .hero .hero-actions .btn.btn-primary {
-  background-color: var(--accent-color);
-  color: var(--contrast-color);
-  border: 2px solid var(--accent-color);
+  background-color: transparent;
+  color: var(--heading-color);
+  border: 2px solid var(--heading-color);
 }
 
 .hero .hero-actions .btn.btn-primary:hover {
-  background-color: transparent;
-  color: var(--accent-color);
+  background-color: var(--accent-color);
+  color: var(--contrast-color);
+  border: 2px solid var(--accent-color);
 }
 
 .hero .hero-actions .btn.btn-outline {
@@ -739,9 +913,9 @@ section,
 .hero .hero-image {
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  padding: 60px 30px;
+  padding: 15px 30px 30px;
 }
 
 @media (max-width: 991px) {
@@ -753,8 +927,9 @@ section,
 
 .hero .image-container {
   position: relative;
-  max-width: 500px;
+  max-width: 480px;
   width: 100%;
+  margin: 0 auto;
 }
 
 .hero .hero-main-image {
@@ -3540,4 +3715,538 @@ section,
 --------------------------------------------------------------*/
 .starter-section {
   /* Add your styles here */
+}
+
+/*--------------------------------------------------------------
+# SM Animated Preloader / Splash Screen
+--------------------------------------------------------------*/
+#preloader {
+  position: fixed;
+  inset: 0;
+  background: #080e1c;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.85s cubic-bezier(0.4, 0, 0.2, 1),
+              visibility 0.85s ease;
+}
+
+#preloader.pl-loaded {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.pl-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+}
+
+/* --- Ring --- */
+.pl-logo-wrap {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pl-ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.pl-ring-track {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.07);
+  stroke-width: 2;
+}
+
+.pl-ring-progress {
+  fill: none;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  /* circumference of r=72: 2 * π * 72 ≈ 452.4 */
+  stroke-dasharray: 453;
+  stroke-dashoffset: 453;
+  animation: pl-draw-ring 1.1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
+  filter: drop-shadow(0 0 10px rgba(39, 108, 221, 0.7));
+}
+
+@keyframes pl-draw-ring {
+  to { stroke-dashoffset: 0; }
+}
+
+/* --- SM Monogram --- */
+.pl-monogram {
+  display: flex;
+  align-items: center;
+  font-family: "Outfit", sans-serif;
+  font-weight: 700;
+  font-size: 74px;
+  line-height: 1;
+  letter-spacing: -6px;
+  user-select: none;
+}
+
+.pl-s {
+  color: #276cdd;
+  opacity: 0;
+  display: inline-block;
+  transform: translateX(-22px);
+  animation: pl-slide-s 0.55s cubic-bezier(0.23, 1, 0.32, 1) 1.25s forwards;
+  text-shadow: 0 0 28px rgba(39, 108, 221, 0.8);
+}
+
+.pl-m {
+  color: #42ba80;
+  opacity: 0;
+  display: inline-block;
+  transform: translateX(22px);
+  animation: pl-slide-m 0.55s cubic-bezier(0.23, 1, 0.32, 1) 1.5s forwards;
+  text-shadow: 0 0 28px rgba(66, 186, 128, 0.8);
+}
+
+@keyframes pl-slide-s {
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pl-slide-m {
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* --- Name --- */
+.pl-name {
+  color: rgba(255, 255, 255, 0.88);
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 7px;
+  text-transform: uppercase;
+  opacity: 0;
+  animation: pl-fade-up 0.65s ease 2.0s forwards;
+}
+
+/* --- Tagline --- */
+.pl-tagline {
+  color: rgba(255, 255, 255, 0.5);
+  font-family: "Open Sans", sans-serif;
+  font-size: 13px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  opacity: 0;
+  animation: pl-fade-up 0.65s ease 2.3s forwards;
+}
+
+@keyframes pl-fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 480px) {
+  .pl-monogram { font-size: 58px; }
+  .pl-logo-wrap { width: 130px; height: 130px; }
+  .pl-name { font-size: 12px; letter-spacing: 5px; }
+}
+
+/*--------------------------------------------------------------
+# Social Icons Row (below hero CTAs)
+--------------------------------------------------------------*/
+.hero-socials-row {
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  align-self: center;  /* centre under the wider CTA buttons row */
+}
+
+.hero-social-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1.5px solid color-mix(in srgb, var(--accent-color), transparent 55%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: color-mix(in srgb, var(--default-color), transparent 25%);
+  font-size: 14px;
+  text-decoration: none;
+  transition: border-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.hero-social-btn:hover {
+  border-color: var(--heading-color);
+  color: var(--heading-color);
+  transform: translateY(-3px);
+}
+
+/*--------------------------------------------------------------
+# Role Fader — Hero Title
+--------------------------------------------------------------*/
+.hero-title-dual {
+  font-family: var(--heading-font);
+  font-size: 3.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  /* Reserve two full lines so layout never shifts during transitions */
+  min-height: calc(3.5rem * 1.2 * 2);
+}
+
+.dt-line {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;  /* clip the slide so text doesn't escape the line box */
+}
+
+.dt-text {
+  display: inline-block;  /* required for transform to apply */
+}
+
+.dt-text-1 { color: var(--accent-color);  }  /* green */
+.dt-text-2 { color: var(--heading-color); }  /* blue  */
+
+/* Exit: fade up */
+.dt-text.dt-out {
+  animation: dt-fade-out 0.42s ease forwards;
+}
+
+/* Enter: rise from below */
+.dt-text.dt-in {
+  animation: dt-fade-in 0.42s ease forwards;
+}
+
+@keyframes dt-fade-out {
+  from { opacity: 1; transform: translateY(0);     }
+  to   { opacity: 0; transform: translateY(-14px); }
+}
+
+@keyframes dt-fade-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* Blinking cursor for typewriter/stagger/scramble modes */
+.dt-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 0.82em;
+  background: currentColor;
+  margin-left: 3px;
+  vertical-align: -0.05em;
+  animation: dt-blink 0.8s step-end infinite;
+}
+
+@keyframes dt-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@media (max-width: 768px) {
+  .hero-title-dual {
+    font-size: 2.5rem;
+    min-height: calc(2.5rem * 1.2 * 2);
+  }
+  .dt-line { white-space: normal; }
+}
+
+@media (max-width: 576px) {
+  .hero-title-dual {
+    font-size: 1.9rem;
+    min-height: calc(1.9rem * 1.2 * 2);
+  }
+}
+
+/*--------------------------------------------------------------
+# Hero — Availability Badge & Subrole
+--------------------------------------------------------------*/
+.hero-availability {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: color-mix(in srgb, var(--accent-color), transparent 90%);
+  border: 1px solid var(--accent-color);
+  border-radius: 20px;
+  padding: 5px 16px;
+  font-size: 13px;
+  font-family: var(--nav-font);
+  font-weight: 500;
+  color: var(--accent-color);
+  margin-bottom: 20px;
+  cursor: default;
+}
+
+.avail-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--accent-color);
+  border-radius: 50%;
+  flex-shrink: 0;
+  animation: avail-pulse 2s ease-in-out infinite;
+}
+
+@keyframes avail-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent-color), transparent 55%); }
+  50%       { box-shadow: 0 0 0 7px color-mix(in srgb, var(--accent-color), transparent 20%); }
+}
+
+.hero .hero-subrole {
+  font-family: var(--nav-font);
+  font-size: 14px;
+  font-weight: 400;
+  color: color-mix(in srgb, var(--default-color), transparent 35%);
+  letter-spacing: 0.5px;
+  margin-top: -0.75rem;
+  margin-bottom: 1.2rem;
+}
+
+/*--------------------------------------------------------------
+# Tech Stack Marquee Strip
+--------------------------------------------------------------*/
+.tech-strip {
+  padding: 13px 0;
+  background: var(--surface-color);
+  border-top: 1px solid rgba(39, 108, 221, 0.10);
+  border-bottom: 1px solid rgba(39, 108, 221, 0.10);
+  overflow: visible;  /* allow hovered chips to lift above the strip edge */
+  position: relative;
+  z-index: 10;  /* decisively above affiliation section (z-index: 2) */
+  isolation: isolate;  /* ensure a definite stacking context */
+}
+
+/* Fade edges */
+.tech-strip::before,
+.tech-strip::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.tech-strip::before {
+  left: 0;
+  background: linear-gradient(to right, var(--surface-color) 20%, transparent);
+}
+
+.tech-strip::after {
+  right: 0;
+  background: linear-gradient(to left, var(--surface-color) 20%, transparent);
+}
+
+.tech-marquee-wrapper {
+  overflow-x: clip;    /* clip horizontal marquee overflow without locking overflow-y */
+  overflow-y: visible; /* let hovered chips lift upward past the wrapper edge */
+}
+
+.tech-marquee-inner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: max-content;
+  animation: marquee-scroll 38s linear infinite;
+}
+
+/* Pause the scroll whenever the cursor enters anywhere in the strip */
+.tech-strip:hover .tech-marquee-inner {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.tech-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 15px;
+  border-radius: 20px;
+  background: var(--background-color);
+  border: 1px solid rgba(39, 108, 221, 0.15);
+  color: var(--default-color);
+  font-size: 12.5px;
+  font-family: var(--default-font);
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
+}
+
+.tech-chip i {
+  color: var(--heading-color);
+  font-size: 12px;
+  transition: color 0.2s;
+}
+
+.tech-chip:hover {
+  background: color-mix(in srgb, var(--heading-color), transparent 88%);
+  border-color: var(--heading-color);
+  color: var(--heading-color);
+  transform: translateY(-2px);
+  position: relative;
+  z-index: 5;  /* lift above neighbouring chips within the strip */
+}
+
+.tech-chip:hover i {
+  color: var(--accent-color);
+}
+
+/*--------------------------------------------------------------
+# Affiliation — pinned bottom band inside hero section
+--------------------------------------------------------------*/
+.affiliation-section {
+  padding: 0;
+  background: color-mix(in srgb, var(--surface-color), var(--background-color) 40%);
+  border-top: 1px solid rgba(39, 108, 221, 0.10);
+  margin-top: auto;  /* pushes band to the bottom when hero is taller than content */
+  width: 100%;
+  position: relative;
+  z-index: 2;  /* above hero::before overlay */
+}
+
+.affiliation-section .container {
+  max-width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+  
+
+}
+
+/* Columns sized by logo count — Research(3) · Industry(4) · Collaborators(5) */
+.affil-grid {
+  display: grid;
+  grid-template-columns: 5fr 5.5fr 5.5fr;
+}
+
+/* Each column cell */
+.affil-cell {
+  padding: 2px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;       /* centre everything horizontally */
+  border-right: 1px solid rgba(39, 108, 221, 0.08);
+  transition: background 0.25s ease;
+}
+.affil-cell:last-child {
+  border-right: none;
+}
+
+/* Centered category label */
+.affil-label {
+  font-family: var(--nav-font);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  text-align: center;
+  color: color-mix(in srgb, var(--default-color), transparent 48%);
+  margin: 0 0 16px 0;
+}
+
+/* Logo row — centered, wraps if needed */
+.affil-logos-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  min-height: 52px;   /* prevent layout shift while JS renders */
+}
+
+/* Logo anchor */
+.affil-logo-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+/* Logo image — muted tint at rest that sits with the site's blue palette */
+.affil-logo {
+  display: block;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  /*
+   * grayscale(1)  : strip all colour so logos don't compete
+   * sepia(0.25)   : add a faint warm-cool haze instead of cold grey
+   * opacity(0.42) : subdued, reads as background not foreground
+   */
+  filter: grayscale(1) sepia(0.25) opacity(0.58);
+  transition: filter 0.45s ease, transform 0.3s ease;
+  animation: logo-bob 3.5s ease-in-out infinite;
+}
+
+@keyframes logo-bob {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-4px); }
+}
+
+/* Stagger the bob so logos don't all bounce in sync */
+.affil-logo-link:nth-child(1) .affil-logo { animation-delay: 0s; }
+.affil-logo-link:nth-child(2) .affil-logo { animation-delay: 0.5s; }
+.affil-logo-link:nth-child(3) .affil-logo { animation-delay: 1.0s; }
+.affil-logo-link:nth-child(4) .affil-logo { animation-delay: 1.5s; }
+.affil-logo-link:nth-child(5) .affil-logo { animation-delay: 2.0s; }
+
+/* Pause bob on hover so the lift-on-hover transform isn't fighting the animation */
+.affil-logo-link:hover .affil-logo { animation-play-state: paused; }
+
+/*
+ * Hover the ENTIRE affiliation section → every logo goes full colour
+ * simultaneously. No per-cell, no scroll trigger — clean and intentional.
+ */
+.affiliation-section:hover .affil-logo {
+  filter: grayscale(0) opacity(1);
+}
+
+/* Individual logo: lift on hover (bob is paused so this runs cleanly) */
+.affil-logo-link:hover .affil-logo {
+  transform: translateY(-4px);
+}
+
+/*--------------------------------------------------------------
+# Affiliation Logo Color Mode
+# Controlled by AFFIL_LOGO_COLORED in assets/js/experience.js.
+# Set to true → JS adds .affil-logos-colored → full-colour logos.
+# Set to false (default) → grayscale/muted treatment below.
+--------------------------------------------------------------*/
+.affiliation-section.affil-logos-colored .affil-logo,
+.affiliation-section.affil-logos-colored:hover .affil-logo,
+.affiliation-section.affil-logos-colored .affil-logo-link:hover .affil-logo {
+  filter: none;  /* override all grayscale/sepia/opacity filters */
+  opacity: 1;
+}
+
+/* ── Mobile ──────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* Stack to single column; each section gets a bottom separator */
+  .affil-grid {
+    grid-template-columns: 1fr;
+  }
+  .affil-cell {
+    border-right: none;
+    border-bottom: 1px solid rgba(39, 108, 221, 0.08);
+    padding: 18px 16px;
+  }
+  .affil-cell:last-child { border-bottom: none; }
+  .affil-logos-row { gap: 14px; }
+}
+
+@media (max-width: 480px) {
+  .affil-cell { padding: 14px 12px; }
+  .affil-logos-row { gap: 10px; }
 }

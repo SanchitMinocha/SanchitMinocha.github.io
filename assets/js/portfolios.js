@@ -19,7 +19,7 @@ try {
 
     return `
         <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item ${filterClasses}">
-        <article class="portfolio-entry">
+        <article class="portfolio-entry" style="cursor:pointer" onclick="window.open('${project.detailPage}', '_blank')">
             <figure class="entry-image">
             <img
                 src="${project.coverImage}"
@@ -37,10 +37,11 @@ try {
                     class="glightbox"
                     data-gallery="${project.gallery || 'portfolio-gallery'}"
                     data-glightbox="title: ${project.title}; description: ${project.description}"
+                    onclick="event.stopPropagation()"
                     >
                     <i class="bi bi-arrows-angle-expand"></i>
                     </a>
-                    <a href="${project.detailPage}" target="_blank">
+                    <a href="${project.detailPage}" target="_blank" onclick="event.stopPropagation()">
                     <i class="bi bi-arrow-right"></i>
                     </a>
                 </div>

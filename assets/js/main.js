@@ -10,6 +10,277 @@
   "use strict";
 
   /**
+   * SM Animated Preloader
+   * Waits for both the page to load AND a minimum display time so the full
+   * animation plays before fading out. Re-initialises PureCounter after
+   * removal so hero stats animate from 0 when they become visible.
+   */
+  // ─── Hero Title Animation ──────────────────────────────────────────────────
+  // Pick one of these 5 modes for the hero title animation:
+  //
+  //   'dual-typewriter'  — both rows type in sequence with a single moving cursor
+  //   'typewriter-slide' — row 1 types with cursor; row 2 slides/fades in
+  //   'stagger-chars'    — each character fades in with a stagger delay
+  //   'word-by-word'     — words slide up one-by-one, row 1 then row 2
+  //   'scramble-resolve' — characters scramble through random glyphs before resolving
+  //
+  const HERO_TITLE_MODE = 'typewriter-slide';
+
+  // Title pairs: [row-1 green text, row-2 blue text]
+  const HERO_TITLE_PAIRS = [
+    ['Machine Learning', 'Engineer'  ],
+    ['Data & ML',        'Scientist' ],
+    ['Geospatial AI',    'Engineer' ],
+    ['Remote Sensing',   'Scientist' ]
+  ];
+
+  // Timing (ms) — adjust to taste
+  const HERO_TITLE_OPTS = {
+    holdMs:     3000,  // how long each pair is displayed
+    transMs:     420,  // exit/enter fade duration
+    typeMs:       70,  // ms per character (typewriter modes)
+    staggerMs:    42,  // ms between chars/words (stagger & word-by-word modes)
+    scrambleMs:   28,  // ms per scramble frame (scramble-resolve mode)
+  };
+
+  class HeroTitleAnimator {
+    constructor(el1, el2, pairs, opts, mode) {
+      this.el1   = el1;
+      this.el2   = el2;
+      this.pairs = pairs;
+      this.opts  = Object.assign({ holdMs:3000, transMs:420, typeMs:70, staggerMs:42, scrambleMs:28 }, opts);
+      this.mode  = mode || 'dual-typewriter';
+      this.idx   = 0;
+
+      const cursorModes = ['dual-typewriter', 'typewriter-slide', 'stagger-chars', 'scramble-resolve'];
+      this._cursor = cursorModes.includes(this.mode) ? this._makeCursor() : null;
+
+      this._startPair(0);
+    }
+
+    _makeCursor() {
+      const c = document.createElement('span');
+      c.className = 'dt-cursor';
+      return c;
+    }
+
+    _startPair(i) {
+      const [t1, t2] = this.pairs[i];
+      this.el1.textContent = '';
+      this.el2.textContent = '';
+      const dispatch = {
+        'dual-typewriter':  () => this._modeDualTypewriter(t1, t2),
+        'typewriter-slide': () => this._modeTypewriterSlide(t1, t2),
+        'stagger-chars':    () => this._modeStaggerChars(t1, t2),
+        'word-by-word':     () => this._modeWordByWord(t1, t2),
+        'scramble-resolve': () => this._modeScrambleResolve(t1, t2),
+      };
+      (dispatch[this.mode] || dispatch['dual-typewriter'])();
+    }
+
+    // ── Mode 1: dual-typewriter ──────────────────────────────────────────────
+    // Row 1 types char-by-char with cursor; cursor then jumps to row 2 and it types.
+    _modeDualTypewriter(t1, t2) {
+      const cur = this._cursor;
+      this.el1.appendChild(cur);
+      this._typeInto(this.el1, t1, cur, () => {
+        this.el2.appendChild(cur);          // cursor jumps to row 2
+        this._typeInto(this.el2, t2, cur, () => {
+          this._holdAndCycle(cur);
+        });
+      });
+    }
+
+    // ── Mode 2: typewriter-slide ─────────────────────────────────────────────
+    // Row 1 types with cursor; row 2 slides/fades in; cursor stays on row 1.
+    _modeTypewriterSlide(t1, t2) {
+      const cur = this._cursor;
+      this.el1.appendChild(cur);
+      this._typeInto(this.el1, t1, cur, () => {
+        this.el2.textContent = t2;
+        this.el2.classList.add('dt-in');
+        setTimeout(() => this.el2.classList.remove('dt-in'), this.opts.transMs);
+        this._holdAndCycle(cur);
+      });
+    }
+
+    // ── Mode 3: stagger-chars ────────────────────────────────────────────────
+    // Each character fades in with a stagger delay, row 1 then row 2; cursor blinks at end.
+    _modeStaggerChars(t1, t2) {
+      const cur = this._cursor;
+      this._staggerFade(this.el1, t1, () => {
+        this._staggerFade(this.el2, t2, () => {
+          this.el2.appendChild(cur);
+          this._holdAndCycle(cur);
+        });
+      });
+    }
+
+    // ── Mode 4: word-by-word ─────────────────────────────────────────────────
+    // Words from row 1 then row 2 slide up and fade in, one word at a time.
+    _modeWordByWord(t1, t2) {
+      this._revealWords(this.el1, t1.split(' '), () => {
+        this._revealWords(this.el2, t2.split(' '), () => {
+          this._holdAndCycle(null);
+        });
+      });
+    }
+
+    // ── Mode 5: scramble-resolve ─────────────────────────────────────────────
+    // Characters scramble through random glyphs before resolving to the real char.
+    _modeScrambleResolve(t1, t2) {
+      const cur = this._cursor;
+      this._scrambleTo(this.el1, t1, () => {
+        this._scrambleTo(this.el2, t2, () => {
+          this.el2.appendChild(cur);
+          this._holdAndCycle(cur);
+        });
+      });
+    }
+
+    // ── Shared helpers ────────────────────────────────────────────────────────
+
+    // Type `text` into `el` keeping `cursor` node at the end.
+    _typeInto(el, text, cursor, done) {
+      const node = document.createTextNode('');
+      el.insertBefore(node, cursor);
+      let i = 0;
+      const step = () => {
+        if (i < text.length) {
+          node.textContent += text[i++];
+          this._typeTimer = setTimeout(step, this.opts.typeMs);
+        } else if (done) done();
+      };
+      step();
+    }
+
+    // Fade each character in with a stagger delay.
+    _staggerFade(el, text, done) {
+      el.textContent = '';
+      const chars = [...text];
+      chars.forEach((ch, i) => {
+        const s = document.createElement('span');
+        s.textContent   = ch === ' ' ? '\u00A0' : ch;
+        s.style.cssText = `opacity:0;display:inline-block;transition:opacity ${Math.round(this.opts.transMs * 0.6)}ms ease`;
+        el.appendChild(s);
+        setTimeout(() => { s.style.opacity = '1'; }, i * this.opts.staggerMs + 60);
+      });
+      setTimeout(done, chars.length * this.opts.staggerMs + this.opts.transMs + 80);
+    }
+
+    // Reveal words one-by-one with a slide-up effect.
+    _revealWords(el, words, done) {
+      el.textContent = '';
+      words.forEach((word, i) => {
+        const s = document.createElement('span');
+        s.textContent   = (i > 0 ? '\u00A0' : '') + word;
+        s.style.cssText = `opacity:0;display:inline-block;transform:translateY(16px);transition:opacity ${this.opts.transMs}ms ease,transform ${this.opts.transMs}ms ease`;
+        el.appendChild(s);
+        setTimeout(() => {
+          s.style.opacity   = '1';
+          s.style.transform = 'translateY(0)';
+        }, i * this.opts.staggerMs * 3 + 60);
+      });
+      setTimeout(done, words.length * this.opts.staggerMs * 3 + this.opts.transMs + 80);
+    }
+
+    // Scramble each character through random glyphs before resolving.
+    _scrambleTo(el, text, done) {
+      const CHARS    = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789#@$%';
+      const result   = Array.from(text).map(c => (c === ' ' ? ' ' : '·'));
+      const resolved = result.map(c => c === ' ');
+      let resolvedCount = resolved.filter(Boolean).length;
+
+      const render = () => {
+        el.textContent = '';
+        result.forEach((ch, i) => {
+          const s = document.createElement('span');
+          s.textContent = ch;
+          if (!resolved[i]) s.style.cssText = 'opacity:0.35;color:var(--accent-color)';
+          el.appendChild(s);
+        });
+      };
+
+      const resolveChar = (i) => {
+        if (text[i] === ' ') return;
+        let frames = 0;
+        const max  = 4 + Math.floor(Math.random() * 5);
+        const tick = () => {
+          if (frames++ < max) {
+            result[i] = CHARS[Math.floor(Math.random() * CHARS.length)];
+            render();
+            setTimeout(tick, this.opts.scrambleMs);
+          } else {
+            result[i]   = text[i];
+            resolved[i] = true;
+            resolvedCount++;
+            render();
+            if (resolvedCount === text.length && done) done();
+          }
+        };
+        tick();
+      };
+
+      render();
+      Array.from(text).forEach((_, i) => {
+        setTimeout(() => resolveChar(i), i * this.opts.staggerMs * 2);
+      });
+    }
+
+    // Hold current pair for holdMs, then fade out and advance to the next pair.
+    _holdAndCycle(cursor) {
+      this._timer = setTimeout(() => {
+        if (cursor && cursor.parentNode) cursor.parentNode.removeChild(cursor);
+        this.el1.classList.add('dt-out');
+        this.el2.classList.add('dt-out');
+        setTimeout(() => {
+          this.el1.classList.remove('dt-out');
+          this.el2.classList.remove('dt-out');
+          this.idx = (this.idx + 1) % this.pairs.length;
+          this._startPair(this.idx);
+        }, this.opts.transMs);
+      }, this.opts.holdMs);
+    }
+  }
+
+  function initDualTyper() {
+    const el1 = document.querySelector('.dt-text-1');
+    const el2 = document.querySelector('.dt-text-2');
+    if (!el1 || !el2) return;
+    new HeroTitleAnimator(el1, el2, HERO_TITLE_PAIRS, HERO_TITLE_OPTS, HERO_TITLE_MODE);
+  }
+
+  // ─── SM Animated Preloader ─────────────────────────────────────────────────
+  const preloader = document.getElementById('preloader');
+  if (preloader) {
+    const MIN_DISPLAY_MS = 3000;
+    let pageReady = false;
+    let minTimePassed = false;
+
+    function tryHidePreloader() {
+      if (!pageReady || !minTimePassed) return;
+      preloader.classList.add('pl-loaded');
+      setTimeout(() => {
+        if (preloader.parentNode) preloader.remove();
+        // Show static zeros immediately so counters don't flash old values
+        document.querySelectorAll('.purecounter').forEach(el => { el.textContent = '0'; });
+        // Start dual typewriter now that the hero is fully revealed
+        initDualTyper();
+        // Delay counter animation — lets the user read the badge + title first
+        setTimeout(() => { new PureCounter(); }, 1);
+      }, 900); // matches CSS fade-out transition duration
+    }
+
+    window.addEventListener('load', () => { pageReady = true; tryHidePreloader(); });
+    setTimeout(() => { minTimePassed = true; tryHidePreloader(); }, MIN_DISPLAY_MS);
+  } else {
+    // No preloader (e.g. direct section link) — start typer immediately
+    window.addEventListener('load', initDualTyper);
+  }
+
+  // Logo IntersectionObserver is handled by experience.js after logos are rendered.
+
+  /**
    * Apply .scrolled class to the body as the page is scrolled down
    */
   function toggleScrolled() {
@@ -96,8 +367,9 @@
 
   /**
    * Initiate Pure Counter
+   * Skipped here — started with a delay inside the preloader callback
+   * so the counters animate after the hero is fully revealed.
    */
-  new PureCounter();
 
   /**
    * Init typed.js
@@ -109,9 +381,9 @@
     new Typed('.typed', {
       strings: typed_strings,
       loop: true,
-      typeSpeed: 100,
-      backSpeed: 50,
-      backDelay: 2000
+      typeSpeed: 65,
+      backSpeed: 35,
+      backDelay: 2200
     });
   }
 
