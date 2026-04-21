@@ -5,21 +5,24 @@
       "logo": "assets/img/media/uw_logo.png",
       "url": "https://www.washington.edu",
       "maxW": 160,
-      "maxH": 160
+      "maxH": 160,
+      "tagline": "PhD & MS · ML for global water infrastructure"
     },
     {
       "name": "IIT Roorkee",
       "logo": "assets/img/media/iitr_logo.svg",
       "url": "https://www.iitr.ac.in",
       "maxW": 115,
-      "maxH": 48
+      "maxH": 48,
+      "tagline": "B.Tech & M.Tech · Department Rank-1 · Gold Medal"
     },
     {
       "name": "University of Leeds",
       "logo": "assets/img/media/leeds_logo.png",
       "url": "https://www.leeds.ac.uk",
       "maxW": 140,
-      "maxH": 38
+      "maxH": 130,
+      "tagline": "Exchange Researcher · Fractals · Clustering"
     }
   ],
   "industry": [
@@ -28,28 +31,32 @@
       "logo": "assets/img/media/nasa_jpl_logo.png",
       "url": "https://www.jpl.nasa.gov",
       "maxW": 155,
-      "maxH": 50
+      "maxH": 50,
+      "tagline": "Summer Intern · Satellite ML Pipelines"
     },
     {
       "name": "Schlumberger (SLB)",
       "logo": "assets/img/media/slb_logo.png",
       "url": "https://www.slb.com",
       "maxW": 95,
-      "maxH": 36
+      "maxH": 36,
+      "tagline": "Data Scientist · Geospatial Analytics"
     },
     {
       "name": "Cairn Oil & Gas",
       "logo": "assets/img/media/cairn_logo.png",
       "url": "https://www.cairnindia.com",
       "maxW": 160,
-      "maxH": 50
+      "maxH": 50,
+      "tagline": "ML Engineer · Azure ML Pipelines for Oil Forecasting"
     },
     {
       "name": "Rupeek",
       "logo": "assets/img/media/rupeek_logo.png",
       "url": "https://rupeek.com",
       "maxW": 110,
-      "maxH": 40
+      "maxH": 40,
+      "tagline": "Data Engineer · SQL & Data Viz · Tableau"
     }
   ],
   "collaborators": [
@@ -58,35 +65,40 @@
       "logo": "assets/img/media/ADPC_logo.png",
       "url": "https://www.adpc.net",
       "maxW": 80,
-      "maxH": 52
+      "maxH": 52,
+      "tagline": "Flood Risk · Early Warning Systems"
     },
     {
       "name": "Texas Water Development Board",
       "logo": "assets/img/media/twdb_logo.png",
       "url": "https://www.twdb.texas.gov",
       "maxW": 110,
-      "maxH": 52
+      "maxH": 52,
+      "tagline": "Reservoir Evaporation Monitoring · Policy Insights"
     },
     {
       "name": "Bangladesh Water Development Board",
       "logo": "assets/img/media/bwdb_logo.png",
       "url": "https://www.bwdb.gov.bd",
       "maxW": 105,
-      "maxH": 52
+      "maxH": 52,
+      "tagline": "Flood Forecasting · RAT Deployment"
     },
     {
       "name": "Mekong River Commission",
       "logo": "assets/img/media/mrc_logo.png",
       "url": "https://www.mrcmekong.org",
       "maxW": 95,
-      "maxH": 52
+      "maxH": 52,
+      "tagline": "Transboundary Water Monitoring · Regional Analytics"
     },
     {
       "name": "USAID",
       "logo": "assets/img/media/usaid_logo.png",
       "url": "https://www.usaid.gov",
       "maxW": 115,
-      "maxH": 44
+      "maxH": 44,
+      "tagline": "Climate Resilience · Data Equity for developing nations"
     }
   ]
 }

@@ -48,19 +48,21 @@ const AFFIL_LOGO_COLORED = true;
     container.innerHTML = items
       .map(
         (item, i) => `
-      <a href="${item.url}"
-         target="_blank"
-         rel="noopener noreferrer"
-         class="affil-logo-link"
-         title="${item.name}"
-         style="animation-delay:${(i * 0.5).toFixed(1)}s">
-        <img src="${item.logo}"
-             alt="${item.name}"
-             class="affil-logo"
-             loading="lazy"
-             style="max-width:${item.maxW}px; max-height:${item.maxH}px;"
-             onerror="this.closest('.affil-logo-link').style.display='none'">
-      </a>`
+      <div class="affil-logo-item" style="animation-delay:${(i * 0.5).toFixed(1)}s">
+        <a href="${item.url}"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="affil-logo-link"
+           title="${item.name}">
+          <img src="${item.logo}"
+               alt="${item.name}"
+               class="affil-logo"
+               loading="lazy"
+               style="max-width:${item.maxW}px; max-height:${item.maxH}px;"
+               onerror="this.closest('.affil-logo-item').style.display='none'">
+        </a>
+        ${item.tagline ? `<span class="affil-tagline">${item.tagline}</span>` : ''}
+      </div>`
       )
       .join("");
   }
