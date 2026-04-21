@@ -15,7 +15,9 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -30,7 +32,7 @@
   <link href="assets/css/main.css" rel="stylesheet">
 
   <!-- Theme: apply saved preference immediately to prevent flash -->
-  <script>(function(){var t=localStorage.getItem('sm-theme');if(t)document.documentElement.setAttribute('data-theme',t);}());</script>
+  <script>(function () { var t = localStorage.getItem('sm-theme'); if (t) document.documentElement.setAttribute('data-theme', t); }());</script>
 
   <!-- =======================================================
   * Template Name: Style
@@ -68,7 +70,8 @@
         <div class="social-links text-center">
           <a href="https://www.linkedin.com/in/sanchitminochaiitr/" target="_blank"><i class="bi bi-linkedin"></i></a>
           <a href="https://github.com/SanchitMinocha" target="_blank"><i class="bi bi-github"></i></a>
-          <a href="https://scholar.google.com/citations?user=60hD2msAAAAJ&hl=en" target="_blank"><i class="fa-brands fa-google-scholar"></i></a>
+          <a href="https://scholar.google.com/citations?user=60hD2msAAAAJ&hl=en" target="_blank"><i
+              class="fa-brands fa-google-scholar"></i></a>
           <a href="assets/data/Sanchit_Resume.pdf" target="_blank"><i class="bi bi-file-earmark-text"></i></a>
           <a href="https://orcid.org/0009-0007-1969-7521" target="_blank"><i class="ai ai-orcid"></i></a>
           <a href="https://www.youtube.com/@sanchitminocha479" target="_blank"><i class="bi bi-youtube"></i></a>
@@ -138,7 +141,8 @@
   </footer>
 
   <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
   <!-- Theme Toggle -->
   <button id="theme-toggle" class="theme-toggle" title="Switch Theme" aria-label="Switch Theme">
@@ -169,7 +173,7 @@
       const urlParams = new URLSearchParams(window.location.search);
       const projectId = urlParams.get('project');
       const container = document.getElementById('portfolio-details-container');
-      
+
       if (!projectId || !container) {
         if (container) container.innerHTML = '<p>Project not specified.</p>';
         return;
@@ -179,41 +183,41 @@
         const response = await fetch('assets/data/portfolios.json');
         const projects = await response.json();
         const project = projects.find(p => p.id === projectId);
-        
+
         if (!project || !project.details) {
           container.innerHTML = '<p>Project details not found.</p>';
           return;
         }
-        
+
         const details = project.details;
-        
+
         // Build Swiper Slides
-        const swiperSlides = details.sliderImages.map(img => 
+        const swiperSlides = details.sliderImages.map(img =>
           `<div class="swiper-slide"><img src="${img}" alt="${project.title} Image" class="img-fluid"></div>`
         ).join('');
-        
+
         // Build Gallery Thumbnails
-        const galleryThumbs = details.galleryImages.map(img => 
+        const galleryThumbs = details.galleryImages.map(img =>
           `<div class="col-3"><img src="${img}" alt="Gallery Image" class="img-fluid glightbox"></div>`
         ).join('');
-        
+
         // Build Tech Stack Badges
-        const techStack = details.techStack.map(tech => 
+        const techStack = details.techStack.map(tech =>
           `<span>${tech}</span>`
         ).join('');
-        
+
         // Build Features Left
-        const featuresLeft = details.featuresLeft.map(feat => 
+        const featuresLeft = details.featuresLeft.map(feat =>
           `<li><i class="bi bi-check2-circle"></i> ${feat}</li>`
         ).join('');
-        
+
         // Build Features Right
-        const featuresRight = details.featuresRight.map(feat => 
+        const featuresRight = details.featuresRight.map(feat =>
           `<li><i class="bi bi-check2-circle"></i> ${feat}</li>`
         ).join('');
-        
+
         // Build Badges from list
-        const badgesHtml = (details.badges || []).map(badge => 
+        const badgesHtml = (details.badges || []).map(badge =>
           `<a href="${badge.url}" target="_blank"><img src="${badge.imgSrc}" alt="${badge.alt}" style="margin:4px 6px 4px 0; height:22px;"></a>`
         ).join('');
 
@@ -364,7 +368,7 @@
           </div>
         </div>
         `;
-        
+
         // Re-initialize swiper after dynamic content is added
         if (window.Swiper) {
           const swiperElement = document.querySelector('.init-swiper');
@@ -376,18 +380,74 @@
             }
           }
         }
-        
+
         // Re-initialize GLightbox
         if (typeof GLightbox === 'function') {
           GLightbox({ selector: '.glightbox' });
         }
-        
+
       } catch (error) {
         console.error('Error loading project details:', error);
         container.innerHTML = '<p>Error loading project details.</p>';
       }
     });
   </script>
+
+  <!-- AI Chatbot -->
+  <div id="cb-popup">
+    <span class="cb-popup-icon">👋</span>
+    <span class="cb-popup-text">Hey! Talk to My AI Assistant</span>
+    <button id="cb-popup-dismiss" aria-label="Dismiss">&times;</button>
+  </div>
+
+  <button id="cb-launcher" aria-label="Open AI Assistant"></button>
+
+  <div id="cb-window" role="dialog" aria-label="AI Assistant Chat">
+    <div class="cb-header">
+      <div class="cb-header-info">
+        <div class="cb-header-avatar" id="cb-header-avatar"></div>
+        <div class="cb-header-text">
+          <h4>Pikachu &nbsp;·&nbsp; Sanchit's AI Assistant</h4>
+          <div class="cb-header-status">
+            <span class="cb-online-dot"></span>
+            <span class="cb-status-text">Online &nbsp;·&nbsp; Ask me anything</span>
+          </div>
+        </div>
+      </div>
+      <div class="cb-header-actions">
+        <button id="cb-close" aria-label="Close chat"><i class="bi bi-x-lg"></i></button>
+      </div>
+    </div>
+
+    <div class="cb-model-bar">
+      <div class="cb-model-track">
+        <div id="cb-model-pill"></div>
+        <button class="cb-model-btn" data-model="local">
+          <span class="cb-model-btn-name">🏠 Local AI</span>
+          <span class="cb-model-btn-desc">Unlimited · Slightly slower</span>
+        </button>
+        <button class="cb-model-btn active" data-model="cloud">
+          <span class="cb-model-btn-name">⚡ Groq Cloud</span>
+          <span class="cb-model-btn-desc">Fast · Rate-limited</span>
+        </button>
+      </div>
+      <select id="cb-length" aria-label="Response length">
+        <option value="short">✦ Short</option>
+        <option value="long">✦ Long</option>
+      </select>
+    </div>
+
+    <div id="cb-messages"></div>
+
+    <div class="cb-input-area">
+      <input id="cb-input" type="text" placeholder="Ask about research, projects…" autocomplete="off">
+      <button id="cb-send" aria-label="Send message">
+        <i class="bi bi-send-fill"></i>
+      </button>
+    </div>
+  </div>
+
+  <script src="assets/js/chatbot.js"></script>
 
 </body>
 

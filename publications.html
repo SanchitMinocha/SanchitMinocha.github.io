@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,7 +9,9 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
@@ -21,7 +24,7 @@
   <link href="assets/css/main.css" rel="stylesheet" />
 
   <!-- Theme: apply saved preference immediately to prevent flash -->
-  <script>(function(){var t=localStorage.getItem('sm-theme');if(t)document.documentElement.setAttribute('data-theme',t);}());</script>
+  <script>(function () { var t = localStorage.getItem('sm-theme'); if (t) document.documentElement.setAttribute('data-theme', t); }());</script>
 </head>
 
 <body>
@@ -50,7 +53,8 @@
         <div class="social-links text-center">
           <a href="https://www.linkedin.com/in/sanchitminochaiitr/" target="_blank"><i class="bi bi-linkedin"></i></a>
           <a href="https://github.com/SanchitMinocha" target="_blank"><i class="bi bi-github"></i></a>
-          <a href="https://scholar.google.com/citations?user=60hD2msAAAAJ&hl=en" target="_blank"><i class="fa-brands fa-google-scholar"></i></a>
+          <a href="https://scholar.google.com/citations?user=60hD2msAAAAJ&hl=en" target="_blank"><i
+              class="fa-brands fa-google-scholar"></i></a>
           <a href="assets/data/Sanchit_Resume.pdf" target="_blank"><i class="bi bi-file-earmark-text"></i></a>
           <a href="https://orcid.org/0009-0007-1969-7521" target="_blank"><i class="ai ai-orcid"></i></a>
           <a href="https://www.youtube.com/@sanchitminocha479" target="_blank"><i class="bi bi-youtube"></i></a>
@@ -124,17 +128,18 @@
 
   <footer id="footer" class="footer mt-5">
     <div class="copyright text-center ">
-        <p>© <strong class="px-1 sitename">Sanchit Minocha</strong> <span>2022-2026. All Rights Reserved.</span></p>
-      </div>
-      <div class="social-links d-flex justify-content-center">
-        <a href="https://www.youtube.com/@sanchitminocha479"><i class="bi bi-youtube"></i></a>
-        <a href="https://www.instagram.com/sat.chit.n.bliss/"><i class="bi bi-instagram"></i></a>
-        <a href="https://www.linkedin.com/in/sanchitminochaiitr/"><i class="bi bi-linkedin"></i></a>
-      </div>
+      <p>© <strong class="px-1 sitename">Sanchit Minocha</strong> <span>2022-2026. All Rights Reserved.</span></p>
+    </div>
+    <div class="social-links d-flex justify-content-center">
+      <a href="https://www.youtube.com/@sanchitminocha479"><i class="bi bi-youtube"></i></a>
+      <a href="https://www.instagram.com/sat.chit.n.bliss/"><i class="bi bi-instagram"></i></a>
+      <a href="https://www.linkedin.com/in/sanchitminochaiitr/"><i class="bi bi-linkedin"></i></a>
+    </div>
   </footer>
- 
+
   <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
   <!-- Theme Toggle -->
   <button id="theme-toggle" class="theme-toggle" title="Switch Theme" aria-label="Switch Theme">
@@ -166,5 +171,63 @@
     // Render all publications on this page (expanded by default)
     renderPublications(null, 'pub-list', false);
   </script>
+
+  <!-- AI Chatbot -->
+  <div id="cb-popup">
+    <span class="cb-popup-icon">👋</span>
+    <span class="cb-popup-text">Hey! Talk to My AI Assistant</span>
+    <button id="cb-popup-dismiss" aria-label="Dismiss">&times;</button>
+  </div>
+
+  <button id="cb-launcher" aria-label="Open AI Assistant"></button>
+
+  <div id="cb-window" role="dialog" aria-label="AI Assistant Chat">
+    <div class="cb-header">
+      <div class="cb-header-info">
+        <div class="cb-header-avatar" id="cb-header-avatar"></div>
+        <div class="cb-header-text">
+          <h4>Pikachu &nbsp;·&nbsp; Sanchit's AI Assistant</h4>
+          <div class="cb-header-status">
+            <span class="cb-online-dot"></span>
+            <span class="cb-status-text">Online &nbsp;·&nbsp; Ask me anything</span>
+          </div>
+        </div>
+      </div>
+      <div class="cb-header-actions">
+        <button id="cb-close" aria-label="Close chat"><i class="bi bi-x-lg"></i></button>
+      </div>
+    </div>
+
+    <div class="cb-model-bar">
+      <div class="cb-model-track">
+        <div id="cb-model-pill"></div>
+        <button class="cb-model-btn" data-model="local">
+          <span class="cb-model-btn-name">🏠 Local AI</span>
+          <span class="cb-model-btn-desc">Unlimited · Slightly slower</span>
+        </button>
+        <button class="cb-model-btn active" data-model="cloud">
+          <span class="cb-model-btn-name">⚡ Groq Cloud</span>
+          <span class="cb-model-btn-desc">Fast · Rate-limited</span>
+        </button>
+      </div>
+      <select id="cb-length" aria-label="Response length">
+        <option value="short">✦ Short</option>
+        <option value="long">✦ Long</option>
+      </select>
+    </div>
+
+    <div id="cb-messages"></div>
+
+    <div class="cb-input-area">
+      <input id="cb-input" type="text" placeholder="Ask about research, projects…" autocomplete="off">
+      <button id="cb-send" aria-label="Send message">
+        <i class="bi bi-send-fill"></i>
+      </button>
+    </div>
+  </div>
+
+  <script src="assets/js/chatbot.js"></script>
+
 </body>
+
 </html>
