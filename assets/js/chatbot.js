@@ -1,8 +1,10 @@
 const CB_API = 'https://f-hossain-3.ce.washington.edu/scb/api/chat';
 
 const CB_MODELS = {
-  local: { id: 'phi3:mini',            label: '🏠 Local AI',   desc: 'Unlimited · Slightly slower' },
-  cloud: { id: 'llama-3.3-70b-versatile', label: '⚡ Groq Cloud', desc: 'Fast · Rate-limited' }
+  local:      { id: 'phi3:mini',                label: '🏠 Local AI'   },
+  groq:       { id: 'llama-3.3-70b-versatile',  label: '⚡ Groq'       },
+  openrouter: { id: 'openai/gpt-oss-20b:free',  label: '🌐 OpenRouter' },
+  cerebras:   { id: 'llama3.1-8b',              label: '🧠 Cerebras'   },
 };
 
 const CB_WELCOME = "Hi there! 👋 I'm Pikachu, Sanchit's personal AI assistant, trained on his research, publications, and projects. What would you like to know?";
@@ -15,12 +17,12 @@ const CB_SUGGESTIONS = [
 ];
 
 // Change CB_CLOUD_LIMIT to adjust how many cloud messages before switching to Local AI
-const CB_CLOUD_LIMIT = 10;
+const CB_CLOUD_LIMIT = 15;
 
 // Change these to adjust response length token limits
 const CB_MAX_TOKENS = { short: 500, long: 800 };
 
-let cbModel = 'cloud';
+let cbModel = 'groq';
 let cbConvId = null;
 let cbCloudMsgCount = 0;
 
@@ -171,8 +173,7 @@ function cbInit() {
   const sendBtn      = document.getElementById('cb-send');
   const popup        = document.getElementById('cb-popup');
   const popupDismiss = document.getElementById('cb-popup-dismiss');
-  const modelBtns    = document.querySelectorAll('.cb-model-btn');
-  const modelPill    = document.getElementById('cb-model-pill');
+  const modelSelect  = document.getElementById('cb-model-select');
   const headerAvatar = document.getElementById('cb-header-avatar');
 
   if (!launcher) return;
@@ -241,16 +242,14 @@ function cbInit() {
     sendBtn.classList.toggle('has-text', input.value.trim().length > 0);
   });
 
-  /* Sliding model toggle */
-  modelBtns.forEach((btn, i) => {
-    btn.addEventListener('click', () => {
-      modelBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active'); cbModel = btn.dataset.model;
-      if (modelPill) modelPill.style.transform = `translateX(${i * 100}%)`;
+  /* Model dropdown */
+  if (modelSelect) {
+    modelSelect.value = cbModel;
+    modelSelect.addEventListener('change', () => {
+      cbModel = modelSelect.value;
+      cbCloudMsgCount = 0;
     });
-  });
-  modelBtns.forEach(b => b.classList.toggle('active', b.dataset.model === cbModel));
-  if (modelPill) modelPill.style.transform = 'translateX(100%)';
+  }
 
   /* Popup */
   popupDismiss.addEventListener('click', () => cbHidePopup(popup, true));
@@ -307,14 +306,12 @@ async function cbHandleSend(messages, input) {
     const data = await res.json();
     typing.remove();
 
-    if (cbModel === 'cloud') {
+    if (cbModel !== 'local') {
       cbCloudMsgCount++;
       if (cbCloudMsgCount >= CB_CLOUD_LIMIT) {
         cbModel = 'local';
-        const modelBtns = document.querySelectorAll('.cb-model-btn');
-        const pill      = document.getElementById('cb-model-pill');
-        modelBtns.forEach(b => b.classList.toggle('active', b.dataset.model === 'local'));
-        if (pill) pill.style.transform = 'translateX(0%)';
+        const sel = document.getElementById('cb-model-select');
+        if (sel) sel.value = 'local';
       }
     }
     cbConvId = data.conversation_id || null;

@@ -1192,17 +1192,12 @@
     </div>
 
     <div class="cb-model-bar">
-      <div class="cb-model-track">
-        <div id="cb-model-pill"></div>
-        <button class="cb-model-btn" data-model="local">
-          <span class="cb-model-btn-name">🏠 Local AI</span>
-          <span class="cb-model-btn-desc">Unlimited · Slightly slower</span>
-        </button>
-        <button class="cb-model-btn active" data-model="cloud">
-          <span class="cb-model-btn-name">⚡ Groq Cloud</span>
-          <span class="cb-model-btn-desc">Fast · Rate-limited</span>
-        </button>
-      </div>
+      <select id="cb-model-select" aria-label="AI model">
+        <option value="groq" selected>⚡ Groq — llama-3.3-70b</option>
+        <option value="openrouter">🌐 OpenRouter — GPT-OSS 20B</option>
+        <option value="cerebras">🧠 Cerebras — llama3.1-8b</option>
+        <option value="local">🏠 Local AI — phi3:mini</option>
+      </select>
       <select id="cb-length" aria-label="Response length">
         <option value="short">✦ Short</option>
         <option value="long">✦ Long</option>
