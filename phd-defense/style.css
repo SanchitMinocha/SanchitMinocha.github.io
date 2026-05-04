@@ -330,6 +330,7 @@ main {
 .btn-tertiary {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
     padding: 12px 28px;
     border-radius: 6px;
@@ -2148,11 +2149,68 @@ main {
 
 @media (max-width: 768px) {
     .hero {
-        padding: 2rem 1rem;
+        padding: 1.5rem 1rem;
+        justify-content: flex-start;
+        min-height: 100svh;
+        height: auto;
+    }
+
+    .hero-content {
+        margin-top: 0;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem; /* Space between groups */
+        width: 100%;
+    }
+
+    /* Group spacing and visibility */
+    .hero-welcome,
+    .hero-details,
+    .hero-actions-group {
+        width: 100%;
+        flex-shrink: 0;
+    }
+
+    .hero-tag {
+        margin-bottom: 1rem;
     }
 
     .hero-name {
-        font-size: clamp(32px, 6vw, 48px);
+        font-size: clamp(28px, 8vw, 42px);
+        margin-bottom: 0.25rem;
+    }
+
+    .hero-subtitle {
+        font-size: 15px;
+        margin-bottom: 0.5rem;
+    }
+
+    .hero-school {
+        margin-bottom: 0.75rem;
+    }
+
+    .hero-divider {
+        margin: 0.5rem auto 0.75rem;
+    }
+
+    .hero-title {
+        font-size: 17px;
+        margin-bottom: 0;
+    }
+
+    .hero-meta {
+        margin-bottom: 0;
+        gap: 6px;
+    }
+
+    .meta-pill {
+        padding: 8px 12px;
+    }
+
+    .hero-actions {
+        margin-bottom: 0;
+        gap: 0.75rem;
     }
 
     .hero-actions {
@@ -2160,9 +2218,13 @@ main {
     }
 
     .btn-primary,
-    .btn-secondary {
+    .btn-secondary,
+    .btn-tertiary {
         width: 100%;
+        display: flex;
         justify-content: center;
+        align-items: center;
+        text-align: center;
     }
 
     #cb-window {
@@ -2183,25 +2245,8 @@ main {
 }
 
 @media (max-width: 480px) {
-    .hero {
-        padding: 1.5rem 1rem;
-    }
-
-    .hero-tag {
-        font-size: 9px;
-        padding: 4px 12px;
-    }
-
     .hero-meta {
         flex-direction: column;
-    }
-
-    .meta-pill {
-        width: 100%;
-    }
-
-    .section {
-        padding: 2rem 1rem;
     }
 
     .modal-content {
