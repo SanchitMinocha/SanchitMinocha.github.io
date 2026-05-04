@@ -27,7 +27,11 @@ let cbConvId = null;
 let cbCloudMsgCount = 0;
 
 /* ── Image registry ── */
-const P = 'assets/img/chat_icon/';
+// Determine path prefix (relative or absolute)
+// For local file:/// development in subfolders, we need '../'
+const CB_IS_PHD = window.location.pathname.includes('/phd-defense/');
+const P = CB_IS_PHD ? '../assets/img/chat_icon/' : 'assets/img/chat_icon/';
+
 const CB_IMG = {
   launcherCycle:  [`${P}pikachu-bounce.gif`, `${P}pikachu_ears.gif`, `${P}pikachu_ya.gif`],
   launcherHover:  `${P}pikachu-hey.png`,
