@@ -2172,6 +2172,11 @@ main {
         bottom: 80px;
     }
 
+    /* Hide chatbot popup on mobile */
+    #cb-popup {
+        display: none !important;
+    }
+
     .section {
         padding: 3rem 1.5rem;
     }
@@ -2212,9 +2217,8 @@ main {
     }
 
     #cb-popup {
-        right: auto; left: 14px; bottom: 167px;
+        display: none !important;
     }
-    #cb-popup::after { display: none; }
 }
 
 /* =========================================
@@ -2433,10 +2437,9 @@ body.reveal-complete #cb-launcher {
     transition: opacity 0.5s ease;
 }
 
-/* Let the popup appear if intended */
+/* Let the popup appear if intended (via .show class) */
 body.reveal-complete #cb-popup {
     visibility: visible;
-    opacity: 1;
 }
 
 /* Ensure window overrides visibility when opened */
