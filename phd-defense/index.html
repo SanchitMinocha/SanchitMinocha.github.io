@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Final PhD Defense: Sanchit Minocha</title>
+    <meta name="description" content="You are invited to the Final PhD Defense of Sanchit Minocha. May 8, 2026 at 11 AM PST. From Sediment to Storage: Tracking the World's Reservoirs.">
+
+    <!-- Google Fonts: DM Serif Display, DM Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- AOS (Animate On Scroll) CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.min.css">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- REVEAL OVERLAY (Invite Opening) -->
+    <div id="reveal-overlay">
+        <div class="envelope-flap envelope-flap-top"></div>
+        <div class="envelope-flap envelope-flap-bottom"></div>
+        <div class="reveal-flap reveal-flap-left"></div>
+        <div class="reveal-flap reveal-flap-right"></div>
+        <div class="reveal-content">
+            <div class="reveal-seal" id="reveal-seal">
+                <div class="seal-inner">
+                    <svg class="seal-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                        <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                    </svg>
+                </div>
+                <div class="reveal-instruction">Open Invitation</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================
+         CHATBOT WIDGET (from main site)
+         Must match index.html structure exactly
+         =================================== -->
+
+    <!-- Popup notification -->
+    <div id="cb-popup">
+        <span class="cb-popup-icon">👋</span>
+        <span class="cb-popup-text">Ask me about the defense!</span>
+        <button id="cb-popup-dismiss" aria-label="Dismiss">&times;</button>
+    </div>
+
+    <!-- Launcher button (image injected by chatbot.js) -->
+    <button id="cb-launcher" aria-label="Open AI Assistant"></button>
+
+    <!-- Chat window -->
+    <div id="cb-window" role="dialog" aria-label="AI Assistant Chat">
+        <div class="cb-header">
+            <div class="cb-header-info">
+                <div class="cb-header-avatar" id="cb-header-avatar"></div>
+                <div class="cb-header-text">
+                    <h4>Pikachu · Sanchit's AI</h4>
+                    <div class="cb-header-status">
+                        <span class="cb-online-dot"></span>
+                        <span class="cb-status-text">Online</span>
+                    </div>
+                </div>
+            </div>
+            <div class="cb-header-actions">
+                <button id="cb-close" aria-label="Close chat"><i class="bi bi-x-lg">✕</i></button>
+            </div>
+        </div>
+
+        <div class="cb-model-bar">
+            <select id="cb-model-select" aria-label="AI model">
+                <option value="groq" selected>⚡ Groq</option>
+                <option value="openrouter">🌐 OpenRouter</option>
+                <option value="cerebras">🧠 Cerebras</option>
+                <option value="local">🏠 Local</option>
+            </select>
+            <select id="cb-length" aria-label="Response length">
+                <option value="short">Short</option>
+                <option value="long" selected>Long</option>
+            </select>
+        </div>
+
+        <div id="cb-messages"></div>
+
+        <div class="cb-input-area">
+            <input id="cb-input" type="text" placeholder="Ask about research…" autocomplete="off">
+            <button id="cb-send" aria-label="Send message">Send</button>
+        </div>
+    </div>
+
+    <!-- ===================================
+         PAGE CONTENT
+         =================================== -->
+    <main>
+
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <!-- Background layers -->
+            <div class="hero-bg"></div>
+
+            <!-- Animated water ripple rings -->
+            <div class="ripple-container">
+                <div class="ripple"></div>
+                <div class="ripple"></div>
+                <div class="ripple"></div>
+                <div class="ripple"></div>
+                <div class="ripple"></div>
+            </div>
+
+            <!-- Floating sediment particles -->
+            <div class="particle" style="width:4px;height:4px;bottom:30%;left:25%;animation-delay:0s;animation-duration:7s;"></div>
+            <div class="particle" style="width:3px;height:3px;bottom:20%;left:60%;animation-delay:1.5s;animation-duration:9s;"></div>
+            <div class="particle" style="width:5px;height:5px;bottom:25%;left:40%;animation-delay:3s;animation-duration:6s;"></div>
+            <div class="particle" style="width:3px;height:3px;bottom:35%;left:75%;animation-delay:2s;animation-duration:8s;"></div>
+            <div class="particle" style="width:4px;height:4px;bottom:15%;left:15%;animation-delay:4s;animation-duration:10s;"></div>
+
+            <!-- Hero content -->
+            <div class="hero-content">
+                <div class="hero-tag">You Are Invited to the Final PhD Defense of</div>
+
+                <h1 class="hero-name">
+                    <span class="name-first">Sanchit</span>
+                    <span class="name-middle">Minocha</span>
+                    <span class="hero-cap">🎓</span>
+                </h1>
+
+                <p class="hero-subtitle">A 4-Year Journey in Research & Discovery</p>
+
+                <p class="hero-degree">Civil &amp; Environmental Engineering: Data Science</p>
+                <p class="hero-school">University of Washington</p> <!-- Make this larger -->
+
+                <div class="hero-divider"></div>
+
+                <p class="hero-title">
+                    <em>"From Sediment to Storage:<br>Tracking the World's Reservoirs"</em>
+                </p>
+
+                <!-- Meta pills -->
+                <div class="hero-meta">
+                    <div class="meta-pill">
+                        <span class="meta-pill-label">📅 Date</span>
+                        <span class="meta-pill-val">Friday, May 8, 2026</span>
+                    </div>
+                    <div class="meta-pill">
+                        <span class="meta-pill-label">⏰ Time</span>
+                        <span class="meta-pill-val">11:00 AM PDT<br> or <br> 11:30 PM IST</span>
+                    </div>
+                    <div class="meta-pill">
+                        <span class="meta-pill-label">📍 Room</span>
+                        <span class="meta-pill-val">ECE 303, <br>University of Washington</span>
+                    </div>
+                </div>
+
+                <!-- CTA Buttons -->
+                <div class="hero-actions">
+                    <button class="btn-primary" onclick="openRSVP()">
+                        <span class="btn-icon">✨</span> RSVP Now
+                    </button>
+                    <button class="btn-secondary btn-zoom" onclick="openZoom()">
+                        <svg class="zoom-logo" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <rect width="64" height="64" rx="14" fill="#2D8CFF"/>
+                            <path d="M8 20C8 17.8 9.8 16 12 16H38C40.2 16 42 17.8 42 20V38C42 40.2 40.2 42 38 42H12C9.8 42 8 40.2 8 38V20Z" fill="white"/>
+                            <path d="M44 25.5L56 19V45L44 38.5V25.5Z" fill="white"/>
+                        </svg>
+                        Join via Zoom
+                    </button>
+                    <a href="#directions" class="btn-tertiary">
+                        <svg class="icon-directions" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="10" r="3"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+                        Get Directions
+                    </a>
+                </div>
+
+                <!-- Add to Calendar -->
+                <div class="hero-cal">
+                    <div class="cal-label">Save the date</div>
+                    <div class="cal-buttons">
+                        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=PhD+Defense+%E2%80%94+Sanchit+Minocha&dates=20260508T180000Z/20260508T200000Z&details=From+Sediment+to+Storage%3A+Tracking+the+World%27s+Reservoirs%0A%0AZoom%3A+https%3A%2F%2Fwashington.zoom.us%2Fj%2F97867307714&location=ECE+303%2C+Paul+G.+Allen+Center%2C+University+of+Washington" target="_blank" class="cal-chip">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 4h-1V2h-2v2H8V2H6v2H5C3.9 4 3 4.9 3 6v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/></svg>
+                            Google
+                        </a>
+                        <a href="#" onclick="downloadICS(event)" class="cal-chip">
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 4h-1V2h-2v2H8V2H6v2H5C3.9 4 3 4.9 3 6v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/></svg>
+                            Apple / Outlook
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Countdown Timer -->
+                <div class="countdown-timer" id="countdown-timer"></div>
+            </div>
+
+            <!-- Scroll hint -->
+            <div class="scroll-hint">↓ scroll</div>
+        </section>
+
+        <!-- RSVP ATTENDEES PREVIEW -->
+        <section class="attendees-preview" id="attendees-preview" style="display: none;">
+            <div class="attendees-container">
+                <div class="attendees-header">
+                    <h3 class="attendees-title">Who's Coming</h3>
+                    <p class="attendees-subtitle" id="attendees-count"></p>
+                </div>
+                <div class="attendees-grid" id="attendees-list"></div>
+            </div>
+        </section>
+
+        <!-- RSVP MODAL -->
+        <div id="rsvp-modal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeRSVP()">✕</button>
+
+                <div id="rsvp-form-container">
+                    <h2>Be There for the Moment</h2>
+                    <p class="rsvp-subtitle">Let Sanchit know you'll be celebrating this milestone with him. The full process (presentation + exam) takes about 2 hours, and he'll be free to celebrate right after!</p>
+
+                    <form id="rsvp-form">
+                        <div class="form-group">
+                            <label for="rsvp-name">Your Name</label>
+                            <input type="text" id="rsvp-name" placeholder="e.g. Jane Smith" required minlength="2" autocomplete="name">
+                        </div>
+
+                        <div class="form-group">
+                            <label>How will you join?</label>
+                            <div class="attendance-toggle">
+                                <button type="button" class="toggle-btn active" id="btn-inperson" onclick="selectAttendanceMode('inperson')">
+                                    <span class="toggle-icon">🏛️</span>
+                                    <span class="toggle-label">In Person</span>
+                                    <span class="toggle-sub">ECE 303 · UW Campus</span>
+                                </button>
+                                <button type="button" class="toggle-btn" id="btn-online" onclick="selectAttendanceMode('online')">
+                                    <span class="toggle-icon">🌐</span>
+                                    <span class="toggle-label">Online</span>
+                                    <span class="toggle-sub">Via Zoom</span>
+                                </button>
+                            </div>
+                            <input type="hidden" id="attendance-mode" value="inperson">
+                        </div>
+
+                        <button type="submit" class="btn-rsvp">Count Me In 🎓</button>
+                    </form>
+
+                    <div class="rsvp-list-section" id="rsvp-list-section" style="display: none;">
+                        <h3>Who's coming</h3>
+                        <div class="rsvp-list" id="rsvp-list"></div>
+                        <p class="rsvp-count" id="rsvp-count"></p>
+                    </div>
+                </div>
+
+                <div id="rsvp-success" class="rsvp-success" style="display: none;">
+                    <div class="success-icon">🎓</div>
+                    <p id="success-msg">See you there!</p>
+                    <p class="success-sub" id="success-sub">Your name has been added. See you May 8!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- RESEARCH SECTION -->
+        <section class="section research-section">
+            <div class="section-eyebrow">Research Overview</div>
+            <h2 class="section-heading">The Work</h2>
+
+            <!-- Domain icon strip -->
+            <div class="domain-icons">
+                <div class="domain-icon-item">
+                    <!-- Dam -->
+                    <svg class="domain-svg" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="18" y="8" width="12" height="32" rx="1" fill="currentColor" opacity="0.15"/>
+                        <rect x="20" y="8" width="8" height="32" rx="1" fill="currentColor" opacity="0.5"/>
+                        <rect x="6" y="38" width="36" height="4" rx="1" fill="currentColor"/>
+                        <rect x="18" y="6" width="12" height="4" rx="1" fill="currentColor" opacity="0.7"/>
+                        <path d="M6 34 Q12 30 18 34 Q24 38 30 34 Q36 30 42 34" stroke="currentColor" stroke-width="2" fill="none" opacity="0.5"/>
+                    </svg>
+                    <span>Dams &amp; Reservoirs</span>
+                </div>
+                <div class="domain-icon-divider"></div>
+                <div class="domain-icon-item">
+                    <!-- Satellite -->
+                    <svg class="domain-svg" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="20" y="18" width="10" height="10" rx="2" fill="currentColor" opacity="0.8" transform="rotate(45 25 23)"/>
+                        <rect x="6" y="20" width="14" height="6" rx="2" fill="currentColor" opacity="0.6"/>
+                        <rect x="28" y="20" width="14" height="6" rx="2" fill="currentColor" opacity="0.6"/>
+                        <circle cx="25" cy="23" r="3" fill="currentColor"/>
+                        <line x1="25" y1="30" x2="25" y2="42" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2 2" opacity="0.5"/>
+                        <circle cx="25" cy="42" r="2" fill="currentColor" opacity="0.4"/>
+                    </svg>
+                    <span>Satellites</span>
+                </div>
+                <div class="domain-icon-divider"></div>
+                <div class="domain-icon-item">
+                    <!-- AI / ML brain -->
+                    <svg class="domain-svg" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16 28 C10 28 8 22 12 18 C11 12 17 9 22 12 C24 8 30 8 32 12 C37 11 40 17 37 21 C40 25 37 31 32 30 C30 34 24 35 22 31 C18 33 14 31 16 28Z" fill="currentColor" opacity="0.2" stroke="currentColor" stroke-width="1.5"/>
+                        <circle cx="22" cy="20" r="1.5" fill="currentColor"/>
+                        <circle cx="28" cy="20" r="1.5" fill="currentColor"/>
+                        <circle cx="25" cy="25" r="1.5" fill="currentColor"/>
+                        <line x1="22" y1="20" x2="25" y2="25" stroke="currentColor" stroke-width="1" opacity="0.7"/>
+                        <line x1="28" y1="20" x2="25" y2="25" stroke="currentColor" stroke-width="1" opacity="0.7"/>
+                        <line x1="22" y1="20" x2="28" y2="20" stroke="currentColor" stroke-width="1" opacity="0.7"/>
+                    </svg>
+                    <span>AI &amp; Machine Learning</span>
+                </div>
+                <div class="domain-icon-divider"></div>
+                <div class="domain-icon-item">
+                    <!-- Globe / water -->
+                    <svg class="domain-svg" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="24" cy="24" r="16" stroke="currentColor" stroke-width="1.8" opacity="0.5"/>
+                        <ellipse cx="24" cy="24" rx="7" ry="16" stroke="currentColor" stroke-width="1.5" opacity="0.5"/>
+                        <path d="M8 24 Q16 20 24 24 Q32 28 40 24" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                        <path d="M10 18 Q18 15 24 18 Q30 21 38 18" stroke="currentColor" stroke-width="1.2" fill="none" opacity="0.5"/>
+                        <path d="M10 30 Q18 27 24 30 Q30 33 38 30" stroke="currentColor" stroke-width="1.2" fill="none" opacity="0.5"/>
+                    </svg>
+                    <span>Global Scale</span>
+                </div>
+            </div>
+
+            <div class="abstract-container">
+                <!-- Plain abstract — rewritten in 3 punchy sentences -->
+                <div class="abstract-plain">
+                    <p class="abstract-lead">Every major dam in the world is slowly filling up with mud — and almost nobody is tracking it.</p>
+                    <p>Rivers carry sediment downstream and deposit it in reservoirs over time, quietly eroding the water storage we rely on for drinking, farming, and electricity. This research uses satellite imagery and machine learning to monitor any reservoir across the globe — detecting this invisible loss without expensive on-the-ground surveys, and giving water managers the tools to plan before it's too late.</p>
+                </div>
+
+                <button class="btn-toggle" onclick="toggleAbstract()">
+                    Read Full Technical Abstract →
+                </button>
+
+                <div class="abstract-technical" id="abstract-technical" style="display: none;">
+                    <p>
+                        Reservoirs formed by dams underpin global water, food, and energy security, yet their long-term viability is increasingly threatened by sedimentation — the gradual infilling of storage capacity by deposited sediment.
+                    </p>
+                    <p>
+                        This dissertation develops an integrated framework combining satellite remote sensing, hydrological modeling, machine learning, and curated field observations:
+                    </p>
+                    <ul>
+                        <li><strong>RAT 3.0:</strong> Scalable open-source system estimating reservoir dynamics from satellite observations</li>
+                        <li><strong>GRILSS:</strong> Global dataset of sedimentation rates for 1,000+ reservoirs</li>
+                        <li><strong>RECLAIM:</strong> Machine learning model with R²=0.86 estimating sedimentation rates</li>
+                        <li><strong>GLoRS:</strong> First global assessment of reservoir sedimentation (1984–2023)</li>
+                    </ul>
+                    <p>
+                        Major reservoirs are losing storage at ~0.42% per year. These tools enable global-scale estimation without costly surveys, supporting resilient water infrastructure planning.
+                    </p>
+                </div>
+
+                <div class="keyword-strip">
+                    <span class="keyword kw-blue">Machine Learning</span>
+                    <span class="keyword kw-sand">Remote Sensing</span>
+                    <span class="keyword kw-blue">Water Resources</span>
+                    <span class="keyword kw-green">Climate Resilience</span>
+                </div>
+
+                <!-- Subtle portfolio link -->
+                <div class="research-portfolio-link">
+                    <a href="https://sanchitminocha.github.io" target="_blank" class="portfolio-link-inline">
+                        Explore more of Sanchit's work
+                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- DEFENSE TIMELINE SECTION -->
+        <section class="section timeline-section">
+            <div class="section-eyebrow">The Format</div>
+            <h2 class="section-heading">Defense Timeline</h2>
+            
+            <div class="timeline-container">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-info">
+                        <h3 class="timeline-title">Public Presentation <span class="timeline-duration">40–45 mins</span></h3>
+                        <p class="timeline-desc">Sanchit will present his doctoral research, "From Sediment to Storage," briefing the findings of his 4-year research work. It is okay if you have to leave after this presentation.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-info">
+                        <h3 class="timeline-title">Q&A Session <span class="timeline-duration">15 mins</span></h3>
+                        <p class="timeline-desc">An open floor for questions from the audience and the supervisory committee members.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item timeline-item--closed">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-info">
+                        <h3 class="timeline-title">Closed Examination <span class="timeline-duration">1 hour</span></h3>
+                        <p class="timeline-desc">Following the public session, the committee will meet privately with Sanchit for the oral examination.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item timeline-item--success">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-info">
+                        <h3 class="timeline-title">Celebration & Greetings</h3>
+                        <p class="timeline-desc">The formal process concludes roughly 2 hours after the start. Sanchit looks forward to celebrating this milestone with everyone as he (hopefully!) completes his doctoral journey.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LOCATION & DIRECTIONS -->
+        <section class="section location-section" id="directions">
+            <div class="section-eyebrow">Getting There</div>
+            <h2 class="section-heading">Location</h2>
+
+            <div class="location-grid">
+                <div class="loc-card">
+                    <div class="loc-card-label">📍 In Person</div>
+                    <div class="loc-card-val">ECE 303</div>
+                    <div class="loc-card-sub">Electrical & Computer Engineering Building, UW Campus</div>
+                </div>
+                <div class="loc-card">
+                    <div class="loc-card-label">💻 Online</div>
+                    <div class="loc-card-val">
+                        <button class="btn-zoom-join" onclick="openZoom()">
+                            <svg class="zoom-logo-sm" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <rect width="64" height="64" rx="14" fill="#2D8CFF"/>
+                                <path d="M8 20C8 17.8 9.8 16 12 16H38C40.2 16 42 17.8 42 20V38C42 40.2 40.2 42 38 42H12C9.8 42 8 40.2 8 38V20Z" fill="white"/>
+                                <path d="M44 25.5L56 19V45L44 38.5V25.5Z" fill="white"/>
+                            </svg>
+                            Join on Zoom
+                        </button>
+                    </div>
+                    <div class="loc-card-sub">Meeting ID: 978 6730 7714</div>
+                </div>
+            </div>
+
+            <div class="map-embed">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1344.92!2d-122.30783!3d47.65333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x549014ed3251f07f%3A0x12de8b2d1ad8504a!2sPaul%20G.%20Allen%20Center%20for%20Computer%20Science%20%26%20Engineering!5e0!3m2!1sen!2sus!4v1725984721234" width="100%" height="400" style="border:none;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+            <!-- Map open-in actions -->
+            <div class="map-actions-row">
+                <a href="https://www.google.com/maps/place/Paul+G.+Allen+Center+for+Computer+Science+%26+Engineering/@47.6533334,-122.3082757,17z/data=!3m2!4b1!5s0x549014ed330e447f:0xe4ab6ef29ca22230!4m6!3m5!1s0x549014ed3251f07f:0x12de8b2d1ad8504a!8m2!3d47.6533298!4d-122.3056954!16s%2Fg%2F11kghr6khn?hl=en-US&entry=ttu" target="_blank" class="map-action-btn map-google">
+                    <svg width="16" height="16" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M24 4C15.16 4 8 11.16 8 20C8 31.5 24 44 24 44C24 44 40 31.5 40 20C40 11.16 32.84 4 24 4Z" fill="#EA4335"/><circle cx="24" cy="20" r="7" fill="white"/></svg>
+                    Open in Google Maps
+                </a>
+                <a href="maps://?q=Paul+G.+Allen+Center+for+Computer+Science+and+Engineering,+Seattle,+WA" class="map-action-btn map-apple">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.7 9.05 7.36c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.3 2.99-2.54 4.04zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+                    Open in Apple Maps
+                </a>
+            </div>
+
+            <div style="margin-top: 2rem;">
+                <p class="section-eyebrow">Once You're Inside</p>
+                <ul class="directions-list">
+                    <li class="dir-item">
+                        <div class="dir-num">1</div>
+                        <div class="dir-text"><strong>Enter via main entrance:</strong> Go to the Paul Allen Center / ECE Building main entrance on Stevens Way</div>
+                    </li>
+                    <li class="dir-item">
+                        <div class="dir-num">2</div>
+                        <div class="dir-text"><strong>Head inside and turn right:</strong> Head into the building and turn right</div>
+                    </li>
+                    <li class="dir-item">
+                        <div class="dir-num">3</div>
+                        <div class="dir-text"><strong>Find the elevator:</strong> Walk toward the end of the hallway. On your right, you'll see an elevator</div>
+                    </li>
+                    <li class="dir-item">
+                        <div class="dir-num">4</div>
+                        <div class="dir-text"><strong>Take elevator to Floor 3:</strong> Not 3M, just Floor 3</div>
+                    </li>
+                    <li class="dir-item">
+                        <div class="dir-num">5</div>
+                        <div class="dir-text"><strong>Exit and turn left:</strong> Step out and take a left. Continue down the hallway</div>
+                    </li>
+                    <li class="dir-item">
+                        <div class="dir-num">6</div>
+                        <div class="dir-text"><strong>Find ECE 303:</strong> The room is at the end of the hallway on your right. Look for the defense sign!</div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Parking Details -->
+            <div class="parking-section">
+                <div class="parking-header">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg>
+                    Parking Nearby
+                </div>
+                <div class="parking-grid">
+                    <div class="parking-card">
+                        <div class="parking-card-title">Central Parking Garage</div>
+                        <div class="parking-card-detail">Closest paid garage — a 3-min walk from the Allen Center. Enter from 15th Ave NE.</div>
+                        <div class="parking-card-note">~$3–5 / hr &nbsp;·&nbsp; Pay at kiosk or ParkMobile</div>
+                    </div>
+                    <div class="parking-card">
+                        <div class="parking-card-title">E1 Lot (Visitor Parking)</div>
+                        <div class="parking-card-detail">Short-term visitor spots along Stevens Way NE, right next to the Allen Center entrance.</div>
+                        <div class="parking-card-note">Limited spots &nbsp;·&nbsp; Check posted hours</div>
+                    </div>
+                    <div class="parking-card parking-card--tip">
+                        <div class="parking-card-title">💡 Pro Tip</div>
+                        <div class="parking-card-detail">UW parking fills up fast on weekdays. Consider the Link Light Rail to <strong>U District Station</strong> (10-min walk) or a rideshare drop-off on Stevens Way.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMMITTEE SECTION -->
+        <section class="section committee-section">
+            <div class="section-eyebrow">Supervisory Committee</div>
+            <h2 class="section-heading">The Committee</h2>
+
+            <div class="committee-list">
+                <div class="committee-row committee-row--chair">
+                    <div class="member-avatar">FH</div>
+                    <div class="member-info">
+                        <p class="member-name">Faisal Hossain</p>
+                        <span class="member-badge badge-chair">Chair</span>
+                    </div>
+                </div>
+                <div class="committee-row">
+                    <div class="member-avatar">BN</div>
+                    <div class="member-info">
+                        <p class="member-name">Bart Nijssen</p>
+                        <span class="member-badge badge-member">Member</span>
+                    </div>
+                </div>
+                <div class="committee-row">
+                    <div class="member-avatar">EI</div>
+                    <div class="member-info">
+                        <p class="member-name">Erkan Istanbulluoglu</p>
+                        <span class="member-badge badge-member">Member</span>
+                    </div>
+                </div>
+                <div class="committee-row">
+                    <div class="member-avatar member-avatar--gsr">SW</div>
+                    <div class="member-info">
+                        <p class="member-name">Steven Walters</p>
+                        <span class="member-badge badge-gsr">Graduate Student Representative</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <p>Questions or need accessibility accommodations?</p>
+            <p>
+                <a href="mailto:msanchit@uw.edu">msanchit@uw.edu</a> ·
+                <a href="https://sanchitminocha.github.io">sanchitminocha.github.io</a>
+            </p>
+            <p style="margin-top: 2rem; font-size: 12px; opacity: 0.6;">
+                🎓 A celebration of research, resilience, and discovery
+            </p>
+        </footer>
+
+    </main>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+    <!-- Firebase Config (user-provided) -->
+    <script src="firebase-config.js"></script>
+
+    <!-- AOS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.min.js"></script>
+
+    <!-- Chatbot path fixer (adjusts ../assets/ to /assets/) -->
+    <script src="chatbot-init.js"></script>
+
+    <!-- Chatbot (from parent site) -->
+    <script src="../assets/js/chatbot.js"></script>
+
+    <!-- Custom App Script -->
+    <script src="app.js"></script>
+
+</body>
+</html>
