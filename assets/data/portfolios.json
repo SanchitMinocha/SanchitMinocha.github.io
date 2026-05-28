@@ -246,5 +246,64 @@
     "paperLink": "https://www.waterpowermagazine.com/analysis/reimagining-dams-as-transit-hubs-visualising-global-water-networks-with-damnet/",
     "docsLink": "https://www.youtube.com/watch?v=ZrleaaAS06Q"
   }
+},
+  {
+  "id": "gtm-automation",
+  "title": "GTM Automation Tool: AI-Powered Lead Enrichment",
+  "meta": "End-to-End Sales Automation · LLM Pipeline",
+  "tagline": "9+ APIs integrated · Auto lead scoring · Personalized outreach",
+  "impact": "End-to-end AI sales pipeline that enriches inbound leads with 9+ free APIs, scores them automatically, and generates personalized cold emails — cutting manual prospecting time for property management sales teams.",
+  "hoverGif": "assets/img/portfolio/gtm-automation/gtm_automation_demo.gif",
+  "description": "An AI-powered inbound lead enrichment and outreach tool built for property management sales teams. Integrates 9+ free APIs to enrich leads, automatically scores them based on fit and intent signals, and uses LLMs to generate personalized cold emails — delivering a fully automated end-to-end GTM pipeline.",
+  "coverImage": "assets/img/portfolio/gtm-automation/gtm_tool_1.png",
+  "detailPage": "portfolio-details.html?project=gtm-automation",
+  "filters": ["AI / ML", "Software"],
+  "gallery": "portfolio-gallery",
+  "details": {
+    "sliderImages": [
+        "assets/img/portfolio/gtm-automation/gtm_automation_demo.gif"
+      ],
+    "galleryImages": [
+        "assets/img/portfolio/gtm-automation/gtm_tool_1.png",
+        "assets/img/portfolio/gtm-automation/gtm_tool_2.png",
+        "assets/img/portfolio/gtm-automation/gtm_tool_3.png",
+        "assets/img/portfolio/gtm-automation/gtm_tool_4.png",
+        "assets/img/portfolio/gtm-automation/gtm_tool_5.png",
+        "assets/img/portfolio/gtm-automation/gtm_tool_6.png"
+      ],
+    "techStack": [
+      "Python",
+      "LLMs",
+      "API Integration",
+      "Lead Scoring",
+      "Automation",
+      "Data Enrichment"
+    ],
+    "category": "AI/ML | Software | Automation",
+    "date": "April 2026",
+    "client": "Open Source Project",
+    "projectTitle": "GTM Automation Tool: AI-Powered Lead Enrichment",
+    "websiteUrl": "https://www.youtube.com/watch?v=XOr76QpTy8U&t=363s",
+    "websiteLabel": "Watch Demo",
+    "badges": [],
+    "overviewBase": "An AI-powered inbound lead enrichment tool that automates the full GTM pipeline for property management sales — from data enrichment to personalized outreach email generation.",
+    "overviewExpanded": "Sales teams in property management spend significant time manually researching inbound leads and crafting personalized outreach. This tool automates that entire workflow: it ingests inbound leads, enriches each one using 9+ free APIs to gather company, contact, and intent data, scores them based on fit signals, and generates tailored cold emails using LLMs. The result is a fully automated, end-to-end pipeline that reduces manual effort while improving outreach quality and conversion potential.",
+    "challenge": "Inbound lead follow-up in property management sales is slow and inconsistent — reps spend hours manually researching leads, assessing fit, and writing personalized emails. This manual process creates bottlenecks, leads to missed opportunities, and results in generic outreach that underperforms. There was no lightweight, open-source tool that combined multi-source lead enrichment, automated scoring, and LLM-powered personalization into a single pipeline.",
+    "solution": "The GTM Automation Tool addresses this by building a modular pipeline that pulls data from multiple free APIs to enrich each lead, applies a scoring model to rank them by fit and intent, and uses an LLM to draft personalized emails that reference specific pain points detected during enrichment. The fully automated workflow reduces prospecting time from hours to seconds while improving the relevance and quality of outreach.",
+    "featuresLeft": [
+      "9+ Free API Integrations",
+      "Automated Lead Scoring",
+      "Pain-Point Detection"
+    ],
+    "featuresRight": [
+      "LLM-Powered Email Generation",
+      "End-to-End Pipeline",
+      "Open Source"
+    ],
+    "liveProjectLink": "https://www.youtube.com/watch?v=XOr76QpTy8U&t=363s",
+    "codeLink": "https://github.com/SanchitMinocha/GTM_Automation_Tool",
+    "paperLink": "",
+    "docsLink": ""
+  }
 }
 ]
