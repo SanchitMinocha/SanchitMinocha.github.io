@@ -38,10 +38,19 @@
   {
     "title": "Has Hydropower Strengthened or Undermined Agriculture in the Asian Green Revolution?",
     "authors": "Sarath Suresh, Faisal Hossain and <strong>Sanchit Minocha</strong>",
-    "journal": "Nature Sustainability (In Review), 2026.",
+    "journal": "Earth's Future (In Review), 2026.",
     "doi": "",
     "pdf": "",
-    "abstract": "",
+    "abstract": "The rapid and global expansion of hydropower infrastructure, together with recent high-profile flooding and crop loss events linked to their operations, has raised concerns about the trade-offs these systems impose on downstream agriculture. Despite many studies on isolated incidents, the net systematic impact of hydropower on the food-energy-water nexus remains poorly quantified at scale. Here we present a multi-decadal, data-driven assessment of the downstream agricultural responses of hydropower sites located in developing countries central to the Asian Green Revolution. We introduce the Agricultural Impact Score (AIS), a composite anomaly-based metric that fuses satellite observations, modelled reservoir releases, climate variability, and newly available global irrigation network information to quantify downstream hydro-agricultural impacts. A profound asymmetry emerges: 86.1% of hydropower dams exhibit net positive agricultural outcomes, while negative impacts are localized to just 13.9% of sites. Positive effects are spatially widespread and primarily reflect enhanced growing-season productivity and effective regulation of hydrologic variability. In contrast, negative outcomes frequently correspond to operational misalignments and failure to regulate extreme inflows. Nearly 40% of sites experiencing dam-induced floods showed delayed agricultural productivity benefits consistent with sediment deposition on downstream croplands. Hydropower sites in India are overwhelmingly associated with positive agricultural outcomes, whereas China shows comparatively lower prevalence of positive impacts with greater variability, consistent with stronger hydropower and multipurpose operational priorities. These findings indicate that hydropower reservoirs more often enhance than undermine downstream agriculture, while highlighting the need for context-specific operations to mitigate flood risk.",
+    "year": "2026"
+  },
+  {
+    "title": "How Well Can the Surface Water and Ocean Topography (SWOT) Satellite Mission Observe Irrigation Canals of the Asian Green Revolution?",
+    "authors": "Mridul Sharma, Faisal Hossain, Sarath Suresh, Tamlin Pavelsky, <strong>Sanchit Minocha</strong>, and Shahzaib Khan",
+    "journal": "Geophysical Research Letters (In Review), 2026.",
+    "doi": "",
+    "pdf": "",
+    "abstract": "The capability of the Surface Water and Ocean Topography (SWOT) satellite for observing irrigation canals has remained relatively unexplored. Here, we assessed SWOT observability of irrigation canal networks of the Asian Green Revolution region and adjacent countries. A total length of 840,693 km of canals was analyzed. We applied SWOT pixel cloud observations aligned along canal geometry available from the Global Registry of Agricultural Irrigation Network (GRAIN) dataset. A confidence level metric for observability of canals was developed to quantify the ability of SWOT to observe individual irrigation canal segments. Approximately 25% reported high-confidence (208,148 km), 37% (314,958 km) moderate, and 38% (317,587 km) low confidence of observability. Observability was found to be highest in the Indus Basin (Pakistan), Indo-Gangetic Plain (India), Ganges-Brahmaputra delta (Bangladesh), North China Plain (China) and Central Myanmar. Our study indicated that many Asian countries can potentially benefit from SWOT-based irrigation canal water monitoring.",
     "year": "2026"
   },
   {

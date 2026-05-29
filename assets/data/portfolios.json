@@ -69,7 +69,7 @@
     "tagline": "AGU Best Dataset Award · 1,000+ reservoirs · LLM-powered extraction",
     "impact": "Won AGU's Best Dataset Award — world's first AI-curated sedimentation dataset, unlocking $B-scale infrastructure risk models across 1,000+ global reservoirs.",
     "hoverGif": "assets/img/portfolio/grilss/grilss_visualiser.gif",
-    "description": "GRILSS is the world's first open dataset of global reservoir sedimentation records — 1,000+ reservoirs compiled from hundreds of multilingual documents using LLM-powered extraction and Agentic AI. Recognized with the AGU Impactful Earth Science Dataset Award. Enables large-scale ML modeling of infrastructure risk worth billions annually.",
+    "description": "GRILSS is the world's first open dataset of global reservoir sedimentation records — 1,000+ reservoirs compiled from hundreds of multilingual documents using LLM-powered extraction and Agentic AI. Recognized with the AGU Impactful Earth Science Dataset Award. Enables large-scale ML modeling of infrastructure risk worth millions annually.",
     "coverImage": "assets/img/portfolio/grilss/grilss_WI_1.png",
     "detailPage": "portfolio-details.html?project=grilss",
     "filters": ["Datasets", "Visualization"],
@@ -108,7 +108,7 @@
         { "url": "https://github.com/UW-SASWE/GRILSS", "imgSrc": "https://img.shields.io/badge/Open%20Source-Available-brightgreen", "alt": "Open Source" }
       ],
       "overviewBase": "GRILSS is a global, structured dataset for reservoir sedimentation, transforming fragmented and inaccessible records into a scalable, searchable data asset for analysis and decision-making.",
-      "overviewExpanded": "Reservoir sedimentation directly impacts storage capacity, hydropower generation, and long-term infrastructure performance, yet data remains scattered and difficult to access. GRILSS addresses this by aggregating and standardizing sedimentation records for over 1,000 reservoirs worldwide into a unified, geospatially enabled dataset. By converting fragmented, multilingual sources into a structured and machine-readable format, the dataset enables large-scale analysis, modeling, and decision support. This improves visibility into sedimentation risks and has the potential to inform more efficient reservoir management, avoiding costly capacity losses and supporting billions of dollars in infrastructure planning and maintenance decisions.",
+      "overviewExpanded": "Reservoir sedimentation directly impacts storage capacity, hydropower generation, and long-term infrastructure performance, yet data remains scattered and difficult to access. GRILSS addresses this by aggregating and standardizing sedimentation records for over 1,000 reservoirs worldwide into a unified, geospatially enabled dataset. By converting fragmented, multilingual sources into a structured and machine-readable format, the dataset enables large-scale analysis, modeling, and decision support. This improves visibility into sedimentation risks and has the potential to inform more efficient reservoir management, avoiding costly capacity losses and supporting millions of dollars in infrastructure planning and maintenance decisions.",
       "challenge": "Sedimentation data is highly fragmented across reports, academic papers, and gray literature, often stored in non-standard formats and multiple languages. Key information is frequently buried in unstructured documents, making it difficult to extract, validate, and integrate at scale. Inconsistent naming conventions, missing spatial references, and lack of machine-readable formats further limit the ability to conduct global analyses or build reliable predictive models, leading to inefficient planning and increased operational risk.",
       "solution": "GRILSS uses a scalable data engineering pipeline that combines multilingual data extraction through large language models, and geospatial validation to standardize sedimentation records across diverse sources. The dataset unifies heterogeneous information into a consistent schema, links records to reservoir geometries, and enables direct integration into analytical workflows. A companion interactive visualizer, built using Agentic AI tools, further enhances accessibility, allowing stakeholders to explore trends and insights without specialized tools. By making sedimentation data usable at scale, GRILSS supports data-driven decision-making in reservoir management, infrastructure planning, and risk assessment.",
       "featuresLeft": [
@@ -169,7 +169,7 @@
     {"imgSrc": "https://img.shields.io/badge/serving-Django--4.2-092e20", "alt":"Django serving"}],
     "overviewBase": "RECLAIM is a scalable machine learning framework that predicts reservoir sedimentation and capacity loss using satellite data, enabling cost-effective monitoring and risk assessment across large scale water infrastructure.",
 
-  "overviewExpanded": "Reservoir sedimentation is a critical but under-monitored risk that directly impacts water supply, hydropower generation, and long-term infrastructure performance. As storage capacity declines, utilities and governments face significant economic losses and operational challenges. RECLAIM addresses this gap by combining historical sedimentation records with multi-decadal satellite observations and geospatial data to deliver scalable, data-driven predictions of capacity loss. By enabling rapid assessment across reservoirs globally, the framework supports proactive planning, reduces monitoring costs, and helps prevent costly failures in water resource systems—potentially influencing billions of dollars in infrastructure management and investment decisions.",
+  "overviewExpanded": "Reservoir sedimentation is a critical but under-monitored risk that directly impacts water supply, hydropower generation, and long-term infrastructure performance. As storage capacity declines, utilities and governments face significant economic losses and operational challenges. RECLAIM addresses this gap by combining historical sedimentation records with multi-decadal satellite observations and geospatial data to deliver scalable, data-driven predictions of capacity loss. By enabling rapid assessment across reservoirs globally, the framework supports proactive planning, reduces monitoring costs, and helps prevent costly failures in water resource systems—potentially influencing millions of dollars in infrastructure management and investment decisions.",
 
   "challenge": "Assessing reservoir sedimentation today, using bathymetric surveys, is similar to relying on CT scans in healthcare—highly accurate, but expensive, time-intensive, and impractical to use at scale. These surveys provide precise measurements, but most reservoirs are only surveyed occasionally due to cost and logistical constraints. As a result, operators lack continuous visibility into capacity loss across their assets. A more scalable approach—analogous to ultrasound—can provide faster, lower-cost insights, enabling frequent monitoring and better-informed decisions. Without such solutions, organizations face inefficient resource allocation, delayed interventions, and increased operational and financial risk.",
 
@@ -182,7 +182,7 @@
     "featuresRight": [
       "End-to-End ML Pipeline",
       "Python Package",
-      "Potential to save billions of dollars"
+      "Potential to save millions of dollars"
     ],
     "liveProjectLink": "https://f-hossain-3.ce.washington.edu/reclaim/estimator",
     "codeLink": "https://github.com/UW-SASWE/RECLAIM",
@@ -246,5 +246,189 @@
     "paperLink": "https://www.waterpowermagazine.com/analysis/reimagining-dams-as-transit-hubs-visualising-global-water-networks-with-damnet/",
     "docsLink": "https://www.youtube.com/watch?v=ZrleaaAS06Q"
   }
-}
+},
+  {
+  "id": "gtm-automation",
+  "title": "GTM Automation Tool: AI-Powered Lead Enrichment",
+  "meta": "End-to-End Sales Automation · LLM Pipeline",
+  "tagline": "9+ APIs integrated · Auto lead scoring · Personalized outreach",
+  "impact": "End-to-end AI sales pipeline that enriches inbound leads with 9+ free APIs, scores them automatically, and generates personalized cold emails — cutting manual prospecting time for property management sales teams.",
+  "hoverGif": "assets/img/portfolio/gtm-automation/gtm_automation_demo.gif",
+  "description": "An AI-powered inbound lead enrichment and outreach tool built for property management sales teams. Integrates 9+ free APIs to enrich leads, automatically scores them based on fit and intent signals, and uses LLMs to generate personalized cold emails — delivering a fully automated end-to-end GTM pipeline.",
+  "coverImage": "assets/img/portfolio/gtm-automation/gtm_tool_1.png",
+  "detailPage": "portfolio-details.html?project=gtm-automation",
+  "filters": ["AI / ML", "Software"],
+  "gallery": "portfolio-gallery",
+  "details": {
+    "sliderImages": [
+        "assets/img/portfolio/gtm-automation/gtm_automation_demo.gif"
+      ],
+    "galleryImages": [
+        "assets/img/portfolio/gtm-automation/gtm_tool_1.png",
+        "assets/img/portfolio/gtm-automation/gtm_tool_2.png",
+        "assets/img/portfolio/gtm-automation/gtm_tool_3.png",
+        "assets/img/portfolio/gtm-automation/gtm_tool_4.png",
+        "assets/img/portfolio/gtm-automation/gtm_tool_5.png",
+        "assets/img/portfolio/gtm-automation/gtm_tool_6.png"
+      ],
+    "techStack": [
+      "Python",
+      "LLMs",
+      "API Integration",
+      "Lead Scoring",
+      "Automation",
+      "Data Enrichment"
+    ],
+    "category": "AI/ML | Software | Automation",
+    "date": "April 2026",
+    "client": "Open Source Project",
+    "projectTitle": "GTM Automation Tool: AI-Powered Lead Enrichment",
+    "websiteUrl": "https://www.youtube.com/watch?v=XOr76QpTy8U&t=363s",
+    "websiteLabel": "Watch Demo",
+    "badges": [],
+    "overviewBase": "An AI-powered inbound lead enrichment tool that automates the full GTM pipeline for property management sales — from data enrichment to personalized outreach email generation.",
+    "overviewExpanded": "Sales teams in property management spend significant time manually researching inbound leads and crafting personalized outreach. This tool automates that entire workflow: it ingests inbound leads, enriches each one using 9+ free APIs to gather company, contact, and intent data, scores them based on fit signals, and generates tailored cold emails using LLMs. The result is a fully automated, end-to-end pipeline that reduces manual effort while improving outreach quality and conversion potential.",
+    "challenge": "Inbound lead follow-up in property management sales is slow and inconsistent — reps spend hours manually researching leads, assessing fit, and writing personalized emails. This manual process creates bottlenecks, leads to missed opportunities, and results in generic outreach that underperforms. There was no lightweight, open-source tool that combined multi-source lead enrichment, automated scoring, and LLM-powered personalization into a single pipeline.",
+    "solution": "The GTM Automation Tool addresses this by building a modular pipeline that pulls data from multiple free APIs to enrich each lead, applies a scoring model to rank them by fit and intent, and uses an LLM to draft personalized emails that reference specific pain points detected during enrichment. The fully automated workflow reduces prospecting time from hours to seconds while improving the relevance and quality of outreach.",
+    "featuresLeft": [
+      "9+ Free API Integrations",
+      "Automated Lead Scoring",
+      "Pain-Point Detection"
+    ],
+    "featuresRight": [
+      "LLM-Powered Email Generation",
+      "End-to-End Pipeline",
+      "Open Source"
+    ],
+    "liveProjectLink": "https://www.youtube.com/watch?v=XOr76QpTy8U&t=363s",
+    "codeLink": "https://github.com/SanchitMinocha/GTM_Automation_Tool",
+    "paperLink": "",
+    "docsLink": ""
+  }
+},
+  {
+  "id": "pikachu-ai",
+  "title": "Pikachu: Personal AI Assistant",
+  "meta": "RAG + LLM Chatbot · Deployed API",
+  "tagline": "RAG pipeline · Multi-LLM fallback · Live on personal website",
+  "impact": "A RAG-powered personal AI assistant deployed as a REST API and embedded on the portfolio — answers questions about Sanchit's research, projects, and career with context-aware, grounded responses.",
+  "hoverGif": "assets/img/portfolio/pikachi-ai/Pikachu_demo.gif",
+  "description": "Pikachu is a RAG + LLM personal chatbot deployed as a Flask API on an Apache server. It uses ChromaDB with BAAI/bge-base-en-v1.5 embeddings for retrieval and supports multi-LLM fallback across Groq, Cerebras, OpenRouter, HuggingFace, and Ollama. Embedded directly on the personal website — just open the chatbot and ask anything.",
+  "coverImage": "assets/img/portfolio/pikachi-ai/pikachu_1.png",
+  "detailPage": "portfolio-details.html?project=pikachu-ai",
+  "filters": ["AI / ML"],
+  "gallery": "portfolio-gallery",
+  "details": {
+    "sliderImages": [
+        "assets/img/portfolio/pikachi-ai/Pikachu_demo.gif"
+      ],
+    "galleryImages": [
+        "assets/img/portfolio/pikachi-ai/pikachu_1.png",
+        "assets/img/portfolio/pikachi-ai/pikachu_2.png",
+        "assets/img/portfolio/pikachi-ai/pikachu_3.png",
+        "assets/img/portfolio/pikachi-ai/pikachu_4.png"
+      ],
+    "techStack": [
+      "Python",
+      "Flask",
+      "RAG",
+      "ChromaDB",
+      "LLMs",
+      "Apache",
+      "NLP"
+    ],
+    "category": "AI/ML | NLP | RAG/LLM",
+    "date": "April 2026",
+    "client": "Personal Project",
+    "projectTitle": "Pikachu: Personal AI Assistant",
+    "websiteUrl": "https://sanchitminocha.github.io/",
+    "websiteLabel": "Try the Chatbot (live on website)",
+    "badges": [
+      { "imgSrc": "https://img.shields.io/badge/Python-3.10+-blue", "alt": "Python" },
+      { "imgSrc": "https://img.shields.io/badge/Flask-3.0-green", "alt": "Flask" },
+      { "imgSrc": "https://img.shields.io/badge/VectorDB-ChromaDB-orange", "alt": "ChromaDB" },
+      { "imgSrc": "https://img.shields.io/badge/LLM-Groq%20%2B%20Ollama-purple", "alt": "LLM" },
+      { "imgSrc": "https://img.shields.io/badge/Server-Apache%20mod__wsgi-red", "alt": "Apache" }
+    ],
+    "overviewBase": "Pikachu is a personal AI assistant that answers questions about Sanchit Minocha — his research, projects, publications, and career — using a RAG pipeline grounded in curated personal knowledge.",
+    "overviewExpanded": "Built as an end-to-end NLP engineering project, Pikachu combines retrieval-augmented generation with a multi-LLM fallback stack to deliver reliable, context-grounded answers. Queries are cleaned and embedded using BAAI/bge-base-en-v1.5 (ONNX, 768-dim), and ChromaDB retrieves the most relevant chunks via cosine similarity. Low-confidence chunks are discarded before the LLM sees them — ensuring the assistant says 'I don't know' rather than hallucinating. A follow-up detection mechanism preserves conversation context across multi-turn interactions. The API is deployed on an Apache server and embedded directly as a chatbot widget on the personal website.",
+    "challenge": "Personal portfolio websites are static by nature — visitors have no way to ask questions and get intelligent, contextual answers about the person's work. Building a personal AI assistant requires solving retrieval quality, hallucination prevention, follow-up context handling, and reliable serving across free-tier LLM backends that may be rate-limited or unavailable.",
+    "solution": "Pikachu solves this with a well-engineered RAG pipeline: queries are preprocessed to strip noise before embedding, follow-up detection injects prior conversation context for continuity, and a similarity threshold gates whether chunks are passed to the LLM at all. A five-backend fallback chain (Groq → Cerebras → OpenRouter → HuggingFace → Ollama) ensures availability. The result is a chatbot embedded directly on the portfolio — visitors can open it and ask anything.",
+    "featuresLeft": [
+      "RAG with semantic retrieval",
+      "Follow-up context detection",
+      "Similarity threshold filtering"
+    ],
+    "featuresRight": [
+      "5-backend LLM fallback chain",
+      "Deployed REST API",
+      "Embedded on live website"
+    ],
+    "liveProjectLink": "https://sanchitminocha.github.io/",
+    "codeLink": "https://github.com/SanchitMinocha/Pikachu-AI-Assistant",
+    "paperLink": "",
+    "docsLink": ""
+  }
+},
+  {
+    "id": "glors",
+    "title": "GLoRS: Global Long-term Reservoir Sedimentation",
+    "meta": "Global Dataset · Interactive Visualizer . Reconstructed using ML",
+    "tagline": "1,413 reservoirs tracked · 1984–2023 · Satellite + ML pipeline",
+    "impact": "First global dataset tracking annual sedimentation and capacity loss across 1,413 reservoirs from 1984–2023 — combining satellite observations, in-situ data, and ensemble ML to quantify a multi-million dollar infrastructure risk worldwide.",
+    "hoverGif": "assets/img/portfolio/glors/GLoRS_web_app.gif",
+    "description": "GLoRS is a global computational pipeline that tracks reservoir sedimentation and storage loss across 1,413 reservoirs from 1984 to 2023. It integrates satellite Earth observations (RAT 3.0), in-situ records (GRILSS), and ensemble ML (CatBoost, XGBoost, LightGBM) to produce annual capacity loss estimates — paired with an interactive visualizer for exploration.",
+    "coverImage": "assets/img/portfolio/glors/glors_WI_1.png",
+    "detailPage": "portfolio-details.html?project=glors",
+    "filters": ["Datasets", "Visualization"],
+    "gallery": "portfolio-gallery",
+    "details": {
+      "sliderImages": [
+        "assets/img/portfolio/glors/GLoRS_web_app.gif"
+      ],
+      "galleryImages": [
+        "assets/img/portfolio/glors/glors_WI_1.png",
+        "assets/img/portfolio/glors/glors_WI_2.png",
+        "assets/img/portfolio/glors/glors_WI_3.png"
+      ],
+      "techStack": [
+        "Python",
+        "Machine Learning",
+        "Remote Sensing",
+        "Geospatial Analysis",
+        "Data Engineering",
+        "CatBoost / XGBoost / LightGBM"
+      ],
+      "category": "Dataset | Visualization | AI/ML",
+      "date": "January 2026",
+      "client": "Open Source Contribution",
+      "projectTitle": "GLoRS: Global Long-term Reservoir Sedimentation",
+      "websiteUrl": "https://f-hossain-3.ce.washington.edu/reclaim/",
+      "websiteLabel": "Interactive Visualizer",
+      "badges": [
+        { "url": "https://github.com/UW-SASWE/GLoRS", "imgSrc": "https://img.shields.io/badge/License-CC%20BY%204.0-coral.svg", "alt": "License CC BY 4.0" },
+        { "url": "https://osf.io/2kf3r/", "imgSrc": "https://img.shields.io/badge/DOI-10.17605%2FOSF.IO%2F2KF3R-blue", "alt": "DOI" },
+        { "url": "https://github.com/UW-SASWE/GLoRS", "imgSrc": "https://img.shields.io/badge/Open%20Access-Available-blue", "alt": "Open Access" },
+        { "url": "https://github.com/UW-SASWE/GLoRS", "imgSrc": "https://img.shields.io/github/stars/UW-SASWE/GLoRS?style=social", "alt": "Stars" }
+      ],
+      "overviewBase": "GLoRS is a global dataset and ML pipeline that quantifies annual reservoir sedimentation and capacity loss across 1,413 reservoirs worldwide, spanning four decades of satellite and in-situ observations.",
+      "overviewExpanded": "Reservoir storage loss due to sedimentation is one of the most under-monitored threats to global water and energy infrastructure. GLoRS addresses this by combining multi-source geospatial data — satellite-derived surface water dynamics from RAT 3.0, sedimentation records from GRILSS, and land-use and soil data — into a unified, reproducible ML pipeline. The resulting dataset provides annual capacity loss estimates from 1984 to 2023 for 1,413 reservoirs across diverse climatic and geographic settings. Paired with an interactive visualizer, GLoRS makes four decades of reservoir change accessible to researchers, policymakers, and infrastructure planners.",
+      "challenge": "Long-term, spatially consistent records of reservoir sedimentation simply do not exist at the global scale. In-situ surveys are sparse and infrequent; satellite data alone cannot directly measure capacity loss; and integrating heterogeneous sources across decades requires significant data engineering. Without such a dataset, it is impossible to quantify trends, validate models, or assess the true scale of infrastructure risk from sedimentation.",
+      "solution": "GLoRS solves this through a reproducible computational pipeline that fuses satellite time-series (RAT 3.0), in-situ sedimentation benchmarks (GRILSS), soil and land-use covariates, and an ensemble of ML models to produce consistent annual sedimentation estimates. The pipeline is fully open-source and paired with an interactive web visualizer that allows users to explore sedimentation trends by reservoir, region, or time period — making the dataset actionable for both research and operational use.",
+      "featuresLeft": [
+        "1,413 reservoirs globally",
+        "Four decades of data (1984–2023)",
+        "Multi-source data fusion"
+      ],
+      "featuresRight": [
+        "Ensemble ML pipeline",
+        "Interactive visualizer",
+        "Open dataset (OSF DOI)"
+      ],
+      "liveProjectLink": "https://f-hossain-3.ce.washington.edu/reclaim/",
+      "codeLink": "https://github.com/UW-SASWE/GLoRS",
+      "paperLink": "",
+      "docsLink": "https://osf.io/2kf3r/"
+    }
+  }
 ]

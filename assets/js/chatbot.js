@@ -12,7 +12,7 @@ const CB_WELCOME = "Hi there! 👋 I'm Pikachu, Sanchit's personal AI assistant,
 const CB_SUGGESTIONS = [
   "What is Sanchit researching? 🔬",
   "What is Sanchit's expertise? 🛰️",
-  "Details of PhD defense 🚀",
+  "Show me Sanchit's best work 🚀",
   "Background & Education? 🎓"
 ];
 
@@ -53,7 +53,7 @@ let headerImg   = null;
 /* ── Helpers ── */
 function cbMakeImg(src, cls) {
   const img = document.createElement('img');
-  img.src = src; img.className = cls || ''; img.alt = 'Pikachu'; img.draggable = false;
+  img.src = src; img.className = cls || ''; img.alt = 'Pikachu'; img.draggable = false; img.loading = 'lazy';
   return img;
 }
 
