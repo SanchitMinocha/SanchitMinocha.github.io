@@ -12,7 +12,7 @@ const CB_WELCOME = "Hi there! 👋 I'm Pikachu, Sanchit's personal AI assistant,
 const CB_SUGGESTIONS = [
   "What is Sanchit researching? 🔬",
   "What is Sanchit's expertise? 🛰️",
-  "Details of PhD defense 🚀",
+  "Show me Sanchit's best work 🚀",
   "Background & Education? 🎓"
 ];
 
