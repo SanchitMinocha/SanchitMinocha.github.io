@@ -305,5 +305,69 @@
     "paperLink": "",
     "docsLink": ""
   }
+},
+  {
+  "id": "pikachu-ai",
+  "title": "Pikachu: Personal AI Assistant",
+  "meta": "RAG + LLM Chatbot · Deployed API",
+  "tagline": "RAG pipeline · Multi-LLM fallback · Live on personal website",
+  "impact": "A RAG-powered personal AI assistant deployed as a REST API and embedded on the portfolio — answers questions about Sanchit's research, projects, and career with context-aware, grounded responses.",
+  "hoverGif": "assets/img/portfolio/pikachi-ai/Pikachu_demo.gif",
+  "description": "Pikachu is a RAG + LLM personal chatbot deployed as a Flask API on an Apache server. It uses ChromaDB with BAAI/bge-base-en-v1.5 embeddings for retrieval and supports multi-LLM fallback across Groq, Cerebras, OpenRouter, HuggingFace, and Ollama. Embedded directly on the personal website — just open the chatbot and ask anything.",
+  "coverImage": "assets/img/portfolio/pikachi-ai/pikachu_1.png",
+  "detailPage": "portfolio-details.html?project=pikachu-ai",
+  "filters": ["AI / ML"],
+  "gallery": "portfolio-gallery",
+  "details": {
+    "sliderImages": [
+        "assets/img/portfolio/pikachi-ai/Pikachu_demo.gif"
+      ],
+    "galleryImages": [
+        "assets/img/portfolio/pikachi-ai/pikachu_1.png",
+        "assets/img/portfolio/pikachi-ai/pikachu_2.png",
+        "assets/img/portfolio/pikachi-ai/pikachu_3.png",
+        "assets/img/portfolio/pikachi-ai/pikachu_4.png"
+      ],
+    "techStack": [
+      "Python",
+      "Flask",
+      "RAG",
+      "ChromaDB",
+      "LLMs",
+      "Apache",
+      "NLP"
+    ],
+    "category": "AI/ML | NLP | RAG/LLM",
+    "date": "April 2026",
+    "client": "Personal Project",
+    "projectTitle": "Pikachu: Personal AI Assistant",
+    "websiteUrl": "https://sanchitminocha.github.io/",
+    "websiteLabel": "Try the Chatbot (live on website)",
+    "badges": [
+      { "imgSrc": "https://img.shields.io/badge/Python-3.10+-blue", "alt": "Python" },
+      { "imgSrc": "https://img.shields.io/badge/Flask-3.0-green", "alt": "Flask" },
+      { "imgSrc": "https://img.shields.io/badge/VectorDB-ChromaDB-orange", "alt": "ChromaDB" },
+      { "imgSrc": "https://img.shields.io/badge/LLM-Groq%20%2B%20Ollama-purple", "alt": "LLM" },
+      { "imgSrc": "https://img.shields.io/badge/Server-Apache%20mod__wsgi-red", "alt": "Apache" }
+    ],
+    "overviewBase": "Pikachu is a personal AI assistant that answers questions about Sanchit Minocha — his research, projects, publications, and career — using a RAG pipeline grounded in curated personal knowledge.",
+    "overviewExpanded": "Built as an end-to-end NLP engineering project, Pikachu combines retrieval-augmented generation with a multi-LLM fallback stack to deliver reliable, context-grounded answers. Queries are cleaned and embedded using BAAI/bge-base-en-v1.5 (ONNX, 768-dim), and ChromaDB retrieves the most relevant chunks via cosine similarity. Low-confidence chunks are discarded before the LLM sees them — ensuring the assistant says 'I don't know' rather than hallucinating. A follow-up detection mechanism preserves conversation context across multi-turn interactions. The API is deployed on an Apache server and embedded directly as a chatbot widget on the personal website.",
+    "challenge": "Personal portfolio websites are static by nature — visitors have no way to ask questions and get intelligent, contextual answers about the person's work. Building a personal AI assistant requires solving retrieval quality, hallucination prevention, follow-up context handling, and reliable serving across free-tier LLM backends that may be rate-limited or unavailable.",
+    "solution": "Pikachu solves this with a well-engineered RAG pipeline: queries are preprocessed to strip noise before embedding, follow-up detection injects prior conversation context for continuity, and a similarity threshold gates whether chunks are passed to the LLM at all. A five-backend fallback chain (Groq → Cerebras → OpenRouter → HuggingFace → Ollama) ensures availability. The result is a chatbot embedded directly on the portfolio — visitors can open it and ask anything.",
+    "featuresLeft": [
+      "RAG with semantic retrieval",
+      "Follow-up context detection",
+      "Similarity threshold filtering"
+    ],
+    "featuresRight": [
+      "5-backend LLM fallback chain",
+      "Deployed REST API",
+      "Embedded on live website"
+    ],
+    "liveProjectLink": "https://sanchitminocha.github.io/",
+    "codeLink": "https://github.com/SanchitMinocha/Pikachu-AI-Assistant",
+    "paperLink": "",
+    "docsLink": ""
+  }
 }
 ]

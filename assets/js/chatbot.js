@@ -53,7 +53,7 @@ let headerImg   = null;
 /* ── Helpers ── */
 function cbMakeImg(src, cls) {
   const img = document.createElement('img');
-  img.src = src; img.className = cls || ''; img.alt = 'Pikachu'; img.draggable = false;
+  img.src = src; img.className = cls || ''; img.alt = 'Pikachu'; img.draggable = false; img.loading = 'lazy';
   return img;
 }
 
