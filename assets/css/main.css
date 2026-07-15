@@ -2380,6 +2380,54 @@ section,
   margin-top: 8px;
 }
 
+/* Additional css for highlights section (end) */
+
+/* LinkedIn post cards (start) */
+.linkedin-post-card {
+  position: relative;
+  background-color: var(--surface-color);
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  height: 100%;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.linkedin-post-card:hover {
+  transform: translateY(-6px);
+}
+
+.linkedin-post-card-preview {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.linkedin-post-card-preview iframe {
+  pointer-events: none;
+}
+
+.linkedin-post-card-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.linkedin-post-card-date {
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--default-color);
+  opacity: 0.6;
+  text-align: right;
+}
+
+#linkedinPostModalBody iframe {
+  display: block;
+  border-radius: 8px;
+}
+/* LinkedIn post cards (end) */
+
 .highlight-note {
   position: absolute;
   bottom: 16px;
