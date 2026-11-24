@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import worker from '../src/worker.mjs';
+import { KNOWLEDGE_CHUNKS } from '../src/knowledge.mjs';
+import { retrieve } from '../src/retrieval.mjs';
 
 const origin = 'https://sanchitminocha.github.io';
 const env = {
@@ -12,7 +14,7 @@ const env = {
 };
 
 function request(body, options = {}) {
-  return new Request('https://worker.example/api/chat', {
+  return new Request(`https://worker.example${options.path || '/api/chat'}`, {
     method: options.method || 'POST',
     headers: {
       Origin: options.origin === undefined ? origin : options.origin,
@@ -22,6 +24,27 @@ function request(body, options = {}) {
     body: options.method === 'GET' ? undefined : JSON.stringify(body)
   });
 }
+
+test('the migrated corpus excludes stale and sensitive fields', () => {
+  const corpus = KNOWLEDGE_CHUNKS.map(item => item.text).join('\n');
+  assert.ok(KNOWLEDGE_CHUNKS.length > 40);
+  assert.doesNotMatch(corpus, /206[- )]436[- ]9521/);
+  assert.doesNotMatch(corpus, /date of birth/i);
+  assert.doesNotMatch(corpus, /F-1 visa|H1B|OPT-STEM/i);
+  assert.doesNotMatch(corpus, /msanchit@uw\.edu/i);
+  assert.match(corpus, /Postdoctoral Associate at the MIT Center/);
+});
+
+test('retrieval recognizes employment paraphrases and rejects partial keyword traps', async () => {
+  const employment = await retrieve([{ role: 'user', content: 'Where is he employed now?' }], {});
+  assert.equal(employment.answerable, true);
+  assert.match(employment.matches[0].text, /MIT|Massachusetts Institute of Technology/);
+
+  for (const question of ['Can he play the violin?', 'Give me weather tomorrow', 'What is his shoe size?']) {
+    const result = await retrieve([{ role: 'user', content: question }], {});
+    assert.equal(result.answerable, false, question);
+  }
+});
 
 test('rejects a foreign origin', async () => {
   const response = await worker.fetch(request({}, { origin: 'https://evil.example' }), env);
@@ -88,11 +111,14 @@ test('sends grounded context to Groq and returns only the reply', async () => {
       messages: [{ role: 'user', content: 'Tell me about RAT and reservoir monitoring' }]
     }), env);
     assert.equal(response.status, 200);
-    assert.deepEqual(await response.json(), { response: 'Sanchit uses satellite observations and machine learning.' });
+    const payload = await response.json();
+    assert.equal(payload.response, 'Sanchit uses satellite observations and machine learning.');
+    assert.equal(payload.answerable, true);
+    assert.equal(payload.retrieval_mode, 'lexical');
+    assert.ok(payload.sources.length > 0);
     assert.equal(upstreamBody.model, 'openai/gpt-oss-20b');
     assert.equal(upstreamBody.max_completion_tokens, 500);
     assert.match(upstreamBody.messages[0].content, /RAT: Satellite-based Reservoir Monitoring/);
-    assert.match(upstreamBody.messages[0].content, /MIT's Center for Sustainability Science and Strategy/);
   } finally {
     globalThis.fetch = originalFetch;
   }
@@ -102,10 +128,51 @@ test('does not expose provider error details', async () => {
   const originalFetch = globalThis.fetch;
   globalThis.fetch = async () => new Response('private provider detail', { status: 500 });
   try {
-    const response = await worker.fetch(request({ messages: [{ role: 'user', content: 'Hello' }] }), env);
+    const response = await worker.fetch(request({ messages: [{ role: 'user', content: 'Tell me about RAT reservoir monitoring' }] }), env);
     assert.equal(response.status, 502);
     assert.deepEqual(await response.json(), { error: 'The assistant is temporarily unavailable.' });
   } finally {
     globalThis.fetch = originalFetch;
   }
+});
+
+test('declines unsupported questions without calling Groq', async () => {
+  const originalFetch = globalThis.fetch;
+  let called = false;
+  globalThis.fetch = async () => { called = true; throw new Error('should not be called'); };
+  try {
+    const response = await worker.fetch(request({
+      messages: [{ role: 'user', content: "What color is Sanchit's car?" }]
+    }), env);
+    const payload = await response.json();
+    assert.equal(response.status, 200);
+    assert.equal(payload.answerable, false);
+    assert.match(payload.response, /don't have a verified answer/i);
+    assert.equal(called, false);
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
+
+test('does not disclose private information', async () => {
+  const response = await worker.fetch(request({
+    messages: [{ role: 'user', content: "What is Sanchit's phone number?" }]
+  }), env);
+  const payload = await response.json();
+  assert.equal(response.status, 200);
+  assert.equal(payload.answerable, false);
+  assert.equal(payload.reason, 'private-information');
+  assert.match(payload.response, /don't share/i);
+});
+
+test('retrieval inspection endpoint returns evidence without calling Groq', async () => {
+  const response = await worker.fetch(request({
+    messages: [{ role: 'user', content: 'What is RECLAIM?' }]
+  }, { path: '/api/retrieve' }), env);
+  const payload = await response.json();
+  assert.equal(response.status, 200);
+  assert.equal(payload.answerable, true);
+  assert.equal(payload.retrieval_mode, 'lexical');
+  assert.match(payload.matches[0].title, /RECLAIM/i);
+  assert.ok(payload.matches[0].excerpt.length > 20);
 });

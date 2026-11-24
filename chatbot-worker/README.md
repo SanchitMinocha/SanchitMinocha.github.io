@@ -2,6 +2,8 @@
 
 This Cloudflare Worker powers the chatbot on the main portfolio and PhD defense pages. It calls Groq from the server so the Groq API key is never shipped to the browser.
 
+The current version migrates the public-safe material from the original Pikachu Flask/ChromaDB project. It uses hybrid semantic and lexical retrieval over curated profile information, experience, education, skills, interests, stories, detailed projects, and publications. Cloudflare Workers AI generates BGE query embeddings, while a free Workers KV namespace caches the document index. Private fields from the old knowledge base are deliberately excluded.
+
 ## Deploy
 
 From the repository root:
@@ -25,3 +27,7 @@ python3 -m http.server 8000 --bind 127.0.0.1
 Then set `window.CHATBOT_API_URL` to `http://127.0.0.1:8787/api/chat` before `chatbot.js` loads.
 
 Run the Worker tests with `node --test chatbot-worker/test/worker.test.mjs`.
+
+## Inspect retrieval
+
+`POST /api/retrieve` accepts the same `messages` body as `/api/chat` and returns the selected passages, sources, retrieval scores, and whether the evidence threshold was met. It does not call Groq. Normal chat responses also include compact source metadata and an `answerable` flag.

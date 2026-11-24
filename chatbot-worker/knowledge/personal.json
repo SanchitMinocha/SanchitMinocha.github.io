@@ -1,0 +1,148 @@
+{
+  "profile": {
+    "name": "Sanchit Minocha",
+    "pronouns": "he/him",
+    "current_role": "Postdoctoral Associate at the MIT Center for Sustainability Science and Strategy (CS3)",
+    "location": "Cambridge, Massachusetts",
+    "professional_email": "msanchit@mit.edu",
+    "summary": "Sanchit works at the intersection of environment, society, and artificial intelligence. He develops computational approaches for human–Earth system science, sustainability, and evidence-based decision-making.",
+    "research_areas": [
+      "human–Earth system science",
+      "machine learning emulators of Earth and human systems models",
+      "climate impacts, adaptation, and resilience",
+      "geospatial data science and satellite Earth observation",
+      "water resources, reservoirs, and infrastructure sustainability",
+      "actionable science and evidence-based decision-making"
+    ],
+    "links": {
+      "website": "https://sanchitminocha.github.io/",
+      "mit_profile": "https://cs3.mit.edu/about-us/personnel/minocha-sanchit",
+      "github": "https://github.com/SanchitMinocha",
+      "linkedin": "https://www.linkedin.com/in/sanchitminochaiitr/",
+      "orcid": "https://orcid.org/0009-0007-1969-7521"
+    }
+  },
+  "education": [
+    {
+      "degree": "PhD in Civil and Environmental Engineering",
+      "institution": "University of Washington",
+      "period": "2024–2026",
+      "status": "completed",
+      "advisor": "Dr. Faisal Hossain",
+      "thesis": "From Sediment to Storage: Tracking the World's Reservoirs",
+      "focus": ["data science", "satellite remote sensing", "reservoir sedimentation", "machine learning"]
+    },
+    {
+      "degree": "Master of Science in Civil and Environmental Engineering",
+      "institution": "University of Washington",
+      "period": "2022–2023",
+      "focus": ["hydrology", "satellite remote sensing", "water resources"]
+    },
+    {
+      "degree": "Integrated M.Tech in Geophysical Technology",
+      "institution": "Indian Institute of Technology Roorkee",
+      "period": "2015–2020",
+      "recognition": ["Departmental Gold Medal", "Annual Excellence Award"],
+      "focus": ["geophysics", "data science", "machine learning"]
+    }
+  ],
+  "experience": [
+    {
+      "role": "Postdoctoral Associate",
+      "organization": "MIT Center for Sustainability Science and Strategy (CS3)",
+      "period": "2026–present",
+      "work": "Develops computational and machine-learning approaches for human–Earth systems, climate impacts, sustainability, and decision support."
+    },
+    {
+      "role": "Summer Intern",
+      "organization": "NASA Jet Propulsion Laboratory",
+      "period": "June–September 2025",
+      "work": "Worked on satellite machine-learning pipelines and benchmarked SWOT satellite observations for reservoir monitoring."
+    },
+    {
+      "role": "Graduate Research Assistant",
+      "organization": "SASWE Research Group, University of Washington",
+      "period": "2022–2026",
+      "work": "Developed satellite-based water-management tools including RAT, GRILSS, and RECLAIM, and supported training and collaboration with operational water agencies."
+    },
+    {
+      "role": "Data Geo-Scientist",
+      "organization": "Schlumberger (SLB)",
+      "period": "May 2021–March 2022",
+      "work": "Built geoscience data-management features, predictive tools, and reporting automation."
+    },
+    {
+      "role": "Graduate Engineer Trainee",
+      "organization": "Cairn Oil and Gas / Vedanta Limited",
+      "period": "October 2020–May 2021",
+      "work": "Implemented Azure Machine Learning workflows and forecasting models for subsurface and production applications."
+    }
+  ],
+  "skills": {
+    "programming_and_data": ["Python", "JavaScript", "SQL", "Bash", "Pandas", "NumPy", "xarray"],
+    "machine_learning": ["PyTorch", "TensorFlow", "scikit-learn", "XGBoost", "LightGBM", "CatBoost", "deep learning", "computer vision", "LLMs", "RAG"],
+    "geospatial": ["remote sensing", "satellite imagery", "Google Earth Engine", "GIS", "hydrological modeling", "time-series analysis"],
+    "engineering": ["Google Cloud", "Azure ML", "Docker", "CI/CD", "Django", "Flask", "Cloudflare Workers"],
+    "visualization": ["Plotly", "Dash", "D3.js", "Leaflet", "Streamlit", "Tableau", "Power BI", "Matplotlib"]
+  },
+  "interests": [
+    "poetry and creative writing",
+    "storytelling",
+    "chess",
+    "cooking",
+    "Pikachu is his favorite Pokémon",
+    "Mobile Legends is a favorite video game"
+  ],
+  "research_philosophy": [
+    "Research should be actionable: the best science helps solve real problems for real people.",
+    "LLMs are most useful when grounded in reliable data and context.",
+    "Sanchit values work that is used in the real world, not only published.",
+    "Open-source tools make scientific methods more transparent and accessible.",
+    "Environmental, social, and economic systems are interconnected, so sustainability questions benefit from systems thinking."
+  ],
+  "goals": [
+    "Advance computational human–Earth system science and interpretable machine-learning models.",
+    "Translate complex research models into reliable tools for climate and sustainability decisions.",
+    "Bridge research and real-world implementation through open and reusable scientific software.",
+    "Work on cross-domain problems where environment, society, economics, and AI interact."
+  ],
+  "stories": [
+    {
+      "title": "From monsoon maps to machine learning",
+      "text": "Growing up around disruptive monsoon flooding helped shape Sanchit's curiosity about water systems. During graduate research, that curiosity became a focus on combining hydrology, satellite observations, physical models, and machine learning. The experience reinforced his preference for systems that people can understand, extend, and use—not models judged only by accuracy metrics."
+    },
+    {
+      "title": "Where curiosity began",
+      "text": "Sanchit credits his mother, a high-school science teacher, with shaping his scientific curiosity. Everyday questions became lessons in observation, patience, and responsibility. He connects that early influence to his present emphasis on careful problem-solving and real-world impact."
+    }
+  ],
+  "additional_projects": [
+    {
+      "name": "Experimental Multi-Sensor Reservoir Area Estimation",
+      "description": "Combines Landsat-8, Sentinel-1, and Sentinel-2 observations in Google Earth Engine for robust reservoir surface-area estimation under varying cloud and sensor conditions.",
+      "url": "https://github.com/SanchitMinocha/Experimental-Multi-sensor-Reservoir-Area-Estimation"
+    },
+    {
+      "name": "SimFlow",
+      "description": "A simple distributed hydrological streamflow model built in Python for education and rapid experimentation.",
+      "url": "https://github.com/SanchitMinocha/SimFlow"
+    },
+    {
+      "name": "Facies Classification using Machine Learning",
+      "description": "A documented supervised-learning workflow for geological facies classification from well-log data.",
+      "url": "https://github.com/SanchitMinocha/Facies-Classification-using-Machine-Learning"
+    },
+    {
+      "name": "Google Earth Engine Tutorials",
+      "description": "Tutorials for using the Google Earth Engine Python API for hydrology and geospatial analysis.",
+      "url": "https://github.com/SanchitMinocha/Google-Earth-Engine-Tutorials"
+    }
+  ],
+  "assistant": {
+    "name": "Pikachu — Sanchit's AI Assistant",
+    "creator": "Sanchit Minocha",
+    "purpose": "A personal RAG assistant that answers grounded questions about Sanchit's public research, experience, projects, publications, interests, and professional perspective.",
+    "history": "The original version used Flask, ChromaDB, BGE embeddings, and several LLM backends on an Apache server. The current version uses a Cloudflare Worker, semantic retrieval, and Groq while preserving the richer curated knowledge base.",
+    "repository": "https://github.com/SanchitMinocha/Pikachu-AI-Assistant"
+  }
+}
