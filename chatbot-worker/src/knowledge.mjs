@@ -3,7 +3,7 @@ import publications from '../../assets/data/publications.json' with { type: 'jso
 import personal from '../knowledge/personal.json' with { type: 'json' };
 
 const SITE = 'https://sanchitminocha.github.io';
-export const KNOWLEDGE_VERSION = '2026-11-24-richer-v2';
+export const KNOWLEDGE_VERSION = '2026-11-24-richer-v3';
 
 function stripHtml(value = '') {
   return String(value).replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
