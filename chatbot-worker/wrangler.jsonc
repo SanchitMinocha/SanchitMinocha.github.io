@@ -5,6 +5,15 @@
   "compatibility_date": "2026-11-24",
   "workers_dev": true,
   "preview_urls": false,
+  "ai": {
+    "binding": "AI"
+  },
+  "kv_namespaces": [
+    {
+      "binding": "RAG_INDEX",
+      "id": "ce794a89c9094f9cb5a69e53729febff"
+    }
+  ],
   "vars": {
     "SITE_ORIGIN": "https://sanchitminocha.github.io",
     "ALLOW_LOCAL_PREVIEW": "true",

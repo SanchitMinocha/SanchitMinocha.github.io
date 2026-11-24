@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pikachu RAG Test Console</title>
+  <style>
+    :root { color-scheme: light dark; font-family: Inter, system-ui, sans-serif; }
+    body { margin: 0; background: #f4f6f8; color: #18222c; }
+    main { width: min(920px, calc(100% - 32px)); margin: 40px auto; }
+    h1 { margin-bottom: 6px; }
+    .subtitle { color: #5d6975; margin-top: 0; }
+    .panel { background: white; border: 1px solid #dbe1e6; border-radius: 16px; padding: 20px; box-shadow: 0 12px 32px rgba(24,34,44,.07); }
+    textarea { box-sizing: border-box; width: 100%; min-height: 92px; resize: vertical; border: 1px solid #bfc8d0; border-radius: 10px; padding: 12px; font: inherit; }
+    .actions, .examples { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    button { border: 1px solid #aeb8c1; border-radius: 999px; padding: 9px 14px; background: #fff; color: #18222c; cursor: pointer; }
+    button.primary { border-color: #205c64; background: #205c64; color: white; }
+    button:disabled { opacity: .55; cursor: wait; }
+    #status { min-height: 24px; color: #5d6975; margin: 18px 0 6px; }
+    #answer { white-space: pre-wrap; line-height: 1.6; font-size: 1.05rem; }
+    .source { border-top: 1px solid #e5e9ed; padding: 12px 0; }
+    .source a { color: #205c64; }
+    .metrics { color: #66727d; font-size: .85rem; }
+    details { margin-top: 18px; }
+    pre { overflow: auto; padding: 14px; border-radius: 10px; background: #111820; color: #d9e4ec; }
+    @media (prefers-color-scheme: dark) {
+      body { background: #111820; color: #e7edf2; }
+      .panel { background: #18222c; border-color: #34414c; }
+      .subtitle, #status, .metrics { color: #aeb8c1; }
+      textarea, button { background: #111820; color: #e7edf2; border-color: #52616e; }
+      button.primary { background: #68aeb1; color: #0b1419; }
+      .source { border-color: #34414c; }
+      .source a { color: #84c9cc; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Pikachu RAG Test Console</h1>
+    <p class="subtitle">Test generated answers or inspect the passages retrieved from Sanchit's curated public knowledge base.</p>
+    <section class="panel">
+      <label for="question"><strong>Question</strong></label>
+      <textarea id="question">What does Sanchit research at MIT?</textarea>
+      <div class="actions">
+        <button class="primary" id="ask">Test answer</button>
+        <button id="retrieve">Inspect retrieval only</button>
+      </div>
+      <div class="examples" aria-label="Example questions">
+        <button data-question="Tell me about RAT and why it matters.">RAT</button>
+        <button data-question="What are Sanchit's hobbies?">Hobbies</button>
+        <button data-question="Where is he employed now?">Current role</button>
+        <button data-question="What color is Sanchit's car?">Unknown-answer test</button>
+        <button data-question="What is Sanchit's phone number?">Privacy test</button>
+      </div>
+      <p id="status" aria-live="polite"></p>
+      <div id="answer"></div>
+      <div id="sources"></div>
+      <details>
+        <summary>Raw API response</summary>
+        <pre id="raw">No request yet.</pre>
+      </details>
+    </section>
+  </main>
+  <script>
+    const ENDPOINT = 'https://sanchit-portfolio-chatbot.coolboysanch.workers.dev';
+    const question = document.getElementById('question');
+    const status = document.getElementById('status');
+    const answer = document.getElementById('answer');
+    const sources = document.getElementById('sources');
+    const raw = document.getElementById('raw');
+    const actionButtons = [document.getElementById('ask'), document.getElementById('retrieve')];
+
+    document.querySelectorAll('[data-question]').forEach(button => {
+      button.addEventListener('click', () => { question.value = button.dataset.question; question.focus(); });
+    });
+
+    async function run(path) {
+      const text = question.value.trim();
+      if (!text) return;
+      actionButtons.forEach(button => { button.disabled = true; });
+      status.textContent = path === '/api/chat' ? 'Generating grounded answer…' : 'Retrieving evidence…';
+      answer.textContent = '';
+      sources.replaceChildren();
+      try {
+        const response = await fetch(`${ENDPOINT}${path}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ length: 'short', messages: [{ role: 'user', content: text }] })
+        });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || `HTTP ${response.status}`);
+        raw.textContent = JSON.stringify(data, null, 2);
+        answer.textContent = data.response || (data.answerable ? 'Evidence found.' : 'Evidence threshold not met.');
+        status.textContent = `Answerable: ${data.answerable} · Confidence: ${data.confidence ?? 'n/a'} · Mode: ${data.retrieval_mode || 'n/a'}`;
+        const items = data.sources || data.matches || [];
+        items.forEach(item => {
+          const section = document.createElement('section');
+          section.className = 'source';
+          const title = document.createElement('strong');
+          title.textContent = item.title;
+          section.appendChild(title);
+          if (item.url) {
+            section.append(' · ');
+            const link = document.createElement('a');
+            link.href = item.url;
+            link.target = '_blank';
+            link.rel = 'noopener';
+            link.textContent = item.source || 'Source';
+            section.appendChild(link);
+          }
+          const metrics = document.createElement('div');
+          metrics.className = 'metrics';
+          metrics.textContent = `score ${item.score ?? 'n/a'}${item.semantic !== undefined ? ` · semantic ${item.semantic} · lexical ${item.lexical} · coverage ${item.coverage}` : ''}`;
+          section.appendChild(metrics);
+          if (item.excerpt) {
+            const excerpt = document.createElement('p');
+            excerpt.textContent = item.excerpt;
+            section.appendChild(excerpt);
+          }
+          sources.appendChild(section);
+        });
+      } catch (error) {
+        status.textContent = 'Request failed';
+        answer.textContent = error.message;
+      } finally {
+        actionButtons.forEach(button => { button.disabled = false; });
+      }
+    }
+
+    document.getElementById('ask').addEventListener('click', () => run('/api/chat'));
+    document.getElementById('retrieve').addEventListener('click', () => run('/api/retrieve'));
+  </script>
+</body>
+</html>
