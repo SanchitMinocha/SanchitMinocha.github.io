@@ -1,11 +1,6 @@
-const CB_API = 'https://f-hossain-3.ce.washington.edu/scb/api/chat';
-
-const CB_MODELS = {
-  local:      { id: 'phi3:mini',                label: '🏠 Local AI'   },
-  groq:       { id: 'llama-3.3-70b-versatile',  label: '⚡ Groq'       },
-  openrouter: { id: 'openai/gpt-oss-20b:free',  label: '🌐 OpenRouter' },
-  cerebras:   { id: 'llama3.1-8b',              label: '🧠 Cerebras'   },
-};
+// Override window.CHATBOT_API_URL only when intentionally testing another Worker.
+const CB_API = window.CHATBOT_API_URL
+  || 'https://sanchit-portfolio-chatbot.coolboysanch.workers.dev/api/chat';
 
 const CB_WELCOME = "Hi there! 👋 I'm Pikachu, Sanchit's personal AI assistant, trained on his research, publications, and projects. What would you like to know?";
 
@@ -16,15 +11,9 @@ const CB_SUGGESTIONS = [
   "Background & Education? 🎓"
 ];
 
-// Change CB_CLOUD_LIMIT to adjust how many cloud messages before switching to Local AI
-const CB_CLOUD_LIMIT = 15;
-
-// Change these to adjust response length token limits
-const CB_MAX_TOKENS = { short: 500, long: 800 };
-
-let cbModel = 'groq';
-let cbConvId = null;
-let cbCloudMsgCount = 0;
+const CB_HISTORY_LIMIT = 8;
+const cbHistory = [];
+let cbSending = false;
 
 /* ── Image registry ── */
 // Determine path prefix (relative or absolute)
@@ -177,10 +166,14 @@ function cbInit() {
   const sendBtn      = document.getElementById('cb-send');
   const popup        = document.getElementById('cb-popup');
   const popupDismiss = document.getElementById('cb-popup-dismiss');
-  const modelSelect  = document.getElementById('cb-model-select');
   const headerAvatar = document.getElementById('cb-header-avatar');
+  const legacyModelSelect = document.getElementById('cb-model-select');
 
   if (!launcher) return;
+
+  // Keeps the new client compatible with older published page markup.
+  legacyModelSelect?.remove();
+  input.maxLength = 1600;
 
   /* Launcher image */
   launcherImg = cbMakeImg(CB_IMG.launcherCycle[0], 'cb-launcher-img');
@@ -204,6 +197,15 @@ function cbInit() {
   /* Welcome + chips */
   cbAddMsg(messages, CB_WELCOME, 'ai', CB_IMG.default);
   cbShowChips(messages, input);
+
+  if (!CB_API) {
+    input.disabled = true;
+    sendBtn.disabled = true;
+    input.placeholder = 'Assistant deployment in progress';
+    const status = document.querySelector('.cb-status-text');
+    if (status) status.textContent = 'Temporarily offline';
+    document.querySelector('.cb-online-dot')?.classList.add('offline');
+  }
 
   cbRestorePos(launcher, 'cb-launcher-pos');
 
@@ -246,15 +248,6 @@ function cbInit() {
     sendBtn.classList.toggle('has-text', input.value.trim().length > 0);
   });
 
-  /* Model dropdown */
-  if (modelSelect) {
-    modelSelect.value = cbModel;
-    modelSelect.addEventListener('change', () => {
-      cbModel = modelSelect.value;
-      cbCloudMsgCount = 0;
-    });
-  }
-
   /* Popup */
   popupDismiss.addEventListener('click', () => cbHidePopup(popup, true));
   if (!sessionStorage.getItem('cb-shown')) {
@@ -284,7 +277,11 @@ function cbShowChips(messages, input) {
 
 async function cbHandleSend(messages, input) {
   const text = input.value.trim();
-  if (!text) return;
+  if (!text || !CB_API || cbSending) return;
+  cbSending = true;
+  input.disabled = true;
+  const sendBtn = document.getElementById('cb-send');
+  if (sendBtn) sendBtn.disabled = true;
 
   const chips = document.getElementById('cb-chips');
   if (chips) { chips.style.opacity = '0'; setTimeout(() => chips.remove(), 200); }
@@ -296,29 +293,31 @@ async function cbHandleSend(messages, input) {
 
   try {
     const lengthSel = document.getElementById('cb-length');
-    const maxTok    = CB_MAX_TOKENS[(lengthSel?.value) || 'short'];
-    const body = { message: text, model: CB_MODELS[cbModel].id, max_tokens: maxTok };
-    if (cbConvId) body.conversation_id = cbConvId;
+    const body = {
+      length: lengthSel?.value === 'long' ? 'long' : 'short',
+      messages: [...cbHistory, { role: 'user', content: text }]
+    };
 
     const res = await fetch(CB_API, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body)
+      body: JSON.stringify(body),
+      signal: AbortSignal.timeout(25000)
     });
 
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
+    if (!res.ok) {
+      const error = new Error(`HTTP ${res.status}`);
+      error.userMessage = typeof data.error === 'string' ? data.error : null;
+      throw error;
+    }
     typing.remove();
 
-    if (cbModel !== 'local') {
-      cbCloudMsgCount++;
-      if (cbCloudMsgCount >= CB_CLOUD_LIMIT) {
-        cbModel = 'local';
-        const sel = document.getElementById('cb-model-select');
-        if (sel) sel.value = 'local';
-      }
-    }
-    cbConvId = data.conversation_id || null;
+    cbHistory.push(
+      { role: 'user', content: text },
+      { role: 'assistant', content: data.response }
+    );
+    if (cbHistory.length > CB_HISTORY_LIMIT) cbHistory.splice(0, cbHistory.length - CB_HISTORY_LIMIT);
 
     const emotion = cbDetectEmotion(data.response);
     cbAddMsg(messages, data.response, 'ai', CB_IMG[emotion]);
@@ -327,7 +326,14 @@ async function cbHandleSend(messages, input) {
   } catch (err) {
     typing.remove();
     console.error('[Chatbot]', err);
-    cbAddMsg(messages, "Oops, something went wrong. Try again or email msanchit@uw.edu", 'ai error', CB_IMG.default);
+    const message = err.userMessage
+      || 'The assistant is temporarily unavailable. Please try again or email msanchit@mit.edu.';
+    cbAddMsg(messages, message, 'ai error', CB_IMG.default);
+  } finally {
+    cbSending = false;
+    input.disabled = false;
+    if (sendBtn) sendBtn.disabled = false;
+    input.focus();
   }
 }
 

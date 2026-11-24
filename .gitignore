@@ -4,6 +4,9 @@
 .env
 .env.local
 .env.*.local
+.dev.vars
+.dev.vars.*
+.wrangler/
 
 # macOS
 .DS_Store
