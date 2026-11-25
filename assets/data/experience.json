@@ -1,6 +1,14 @@
 {
   "research": [
     {
+      "name": "Massachusetts Institute of Technology",
+      "logo": "assets/img/media/mit_logo.svg",
+      "url": "https://cs3.mit.edu/about-us/personnel/minocha-sanchit",
+      "maxW": 68,
+      "maxH": 36,
+      "tagline": "Postdoctoral Associate · MIT CS3"
+    },
+    {
       "name": "University of Washington",
       "logo": "assets/img/media/uw_logo.png",
       "url": "https://www.washington.edu",
