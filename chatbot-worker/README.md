@@ -4,6 +4,8 @@ This Cloudflare Worker powers the chatbot on the main portfolio and PhD defense 
 
 The current version migrates the public-safe material from the original Pikachu Flask/ChromaDB project. It uses hybrid semantic and lexical retrieval over curated profile information, experience, education, skills, interests, stories, detailed projects, and publications. Cloudflare Workers AI generates BGE query embeddings, while a free Workers KV namespace caches the document index. Private fields from the old knowledge base are deliberately excluded.
 
+Pikachu retains up to six prior conversation turns, reasons across retrieved passages instead of merely repeating them, and has an explicit conversational identity. Low-confidence retrieval no longer bypasses the language model: Pikachu can handle greetings, explain its role, and admit missing details naturally while the prompt still prevents invented biographical claims. The browser keeps the current tab's conversation in session storage so context survives navigation and reloads.
+
 ## Deploy
 
 From the repository root:

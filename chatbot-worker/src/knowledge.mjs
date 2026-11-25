@@ -3,7 +3,7 @@ import publications from '../../assets/data/publications.json' with { type: 'jso
 import personal from '../knowledge/personal.json' with { type: 'json' };
 
 const SITE = 'https://sanchitminocha.github.io';
-export const KNOWLEDGE_VERSION = '2026-11-24-richer-v3';
+export const KNOWLEDGE_VERSION = '2026-11-24-persona-v4';
 
 function stripHtml(value = '') {
   return String(value).replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
@@ -72,6 +72,19 @@ function buildPersonalChunks(chunks) {
   add(chunks, 'personal-interests', 'Interests and hobbies', `Sanchit's interests include ${list(personal.interests)}.`, {
     source: 'Curated personal profile', url: SITE, type: 'interests'
   });
+  add(chunks, 'personal-personality', 'Personality and working style', `Sanchit is ${list(personal.personality_traits)}.`, {
+    source: 'Pikachu knowledge base', url: SITE, type: 'personality'
+  });
+  add(chunks, 'personal-favorites', 'Personal interests and favorites', [
+    `Sanchit's favorite food is ${personal.favorites.food}.`,
+    `His favorite book is ${personal.favorites.book}.`,
+    `Television shows he enjoys include ${list(personal.favorites.television)}.`,
+    `His favorite Pokémon is ${personal.favorites.pokemon}, which inspired the name of his AI assistant.`,
+    `Video games he enjoys include ${list(personal.favorites.video_games)}.`
+  ].join(' '), { source: 'Pikachu knowledge base', url: SITE, type: 'interests' });
+  add(chunks, 'personal-philosophy', 'Personal philosophy', personal.personal_philosophy.join(' '), {
+    source: 'Pikachu knowledge base', url: SITE, type: 'philosophy'
+  });
   add(chunks, 'research-philosophy', 'Research philosophy', personal.research_philosophy.join(' '), {
     source: 'Curated personal profile', url: SITE, type: 'philosophy'
   });
@@ -87,7 +100,7 @@ function buildPersonalChunks(chunks) {
   }));
 
   const ai = personal.assistant;
-  add(chunks, 'about-pikachu', ai.name, `${ai.purpose} ${ai.history} Built by ${ai.creator}. Repository: ${ai.repository}`, {
+  add(chunks, 'about-pikachu', ai.name, `${ai.purpose} ${ai.identity} ${ai.history} Built by ${ai.creator}. Repository: ${ai.repository}`, {
     source: 'Pikachu project', url: ai.repository, type: 'assistant'
   });
 }

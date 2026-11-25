@@ -11,8 +11,31 @@ const CB_SUGGESTIONS = [
   "Background & Education? 🎓"
 ];
 
-const CB_HISTORY_LIMIT = 8;
-const cbHistory = [];
+const CB_HISTORY_LIMIT = 12;
+const CB_HISTORY_KEY = 'pikachu-conversation-v2';
+
+function cbLoadHistory() {
+  try {
+    const stored = JSON.parse(sessionStorage.getItem(CB_HISTORY_KEY) || '[]');
+    if (!Array.isArray(stored)) return [];
+    return stored.filter(item => (
+      item
+      && ['user', 'assistant'].includes(item.role)
+      && typeof item.content === 'string'
+      && item.content.trim()
+    )).slice(-CB_HISTORY_LIMIT);
+  } catch (_) {
+    return [];
+  }
+}
+
+function cbSaveHistory() {
+  try {
+    sessionStorage.setItem(CB_HISTORY_KEY, JSON.stringify(cbHistory.slice(-CB_HISTORY_LIMIT)));
+  } catch (_) {}
+}
+
+const cbHistory = cbLoadHistory();
 let cbSending = false;
 
 /* ── Image registry ── */
@@ -194,9 +217,17 @@ function cbInit() {
     headerAvatar.appendChild(headerImg);
   }
 
-  /* Welcome + chips */
-  cbAddMsg(messages, CB_WELCOME, 'ai', CB_IMG.default);
-  cbShowChips(messages, input);
+  /* Welcome, remembered conversation, and starter chips */
+  if (cbHistory.length) {
+    cbAddMsg(messages, "Welcome back! ⚡ I remember where we left off.", 'ai', CB_IMG.default);
+    cbHistory.forEach(turn => {
+      const avatar = turn.role === 'assistant' ? CB_IMG[cbDetectEmotion(turn.content)] : null;
+      cbAddMsg(messages, turn.content, turn.role === 'assistant' ? 'ai' : 'user', avatar);
+    });
+  } else {
+    cbAddMsg(messages, CB_WELCOME, 'ai', CB_IMG.default);
+    cbShowChips(messages, input);
+  }
 
   if (!CB_API) {
     input.disabled = true;
@@ -318,6 +349,7 @@ async function cbHandleSend(messages, input) {
       { role: 'assistant', content: data.response }
     );
     if (cbHistory.length > CB_HISTORY_LIMIT) cbHistory.splice(0, cbHistory.length - CB_HISTORY_LIMIT);
+    cbSaveHistory();
 
     const emotion = cbDetectEmotion(data.response);
     cbAddMsg(messages, data.response, 'ai', CB_IMG[emotion]);
