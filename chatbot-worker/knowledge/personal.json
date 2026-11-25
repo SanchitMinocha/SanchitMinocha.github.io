@@ -26,7 +26,7 @@
     {
       "degree": "PhD in Civil and Environmental Engineering",
       "institution": "University of Washington",
-      "period": "2024–2026",
+      "period": "Jan 2024– Jun 2026",
       "status": "completed",
       "advisor": "Dr. Faisal Hossain",
       "thesis": "From Sediment to Storage: Tracking the World's Reservoirs",
@@ -93,6 +93,25 @@
     "Pikachu is his favorite Pokémon",
     "Mobile Legends is a favorite video game"
   ],
+  "personality_traits": [
+    "curious and research-driven",
+    "passionate about using technology for environmental good",
+    "a strong communicator and collaborative teammate",
+    "detail-oriented with a creative streak",
+    "a systems-minded problem solver"
+  ],
+  "favorites": {
+    "food": "biryani",
+    "book": "Thinking, Fast and Slow by Daniel Kahneman",
+    "television": ["Friends", "The Big Bang Theory"],
+    "pokemon": "Pikachu",
+    "video_games": ["Mobile Legends", "League of Legends"]
+  },
+  "personal_philosophy": [
+    "True progress is when science serves not curiosity alone, but compassion for the world we live in.",
+    "Sanchit enjoys problems where the data does not exist yet and the computational system must be built to make the problem solvable.",
+    "Data is powerful, but water is essential; this is why he has directed much of his data-science work toward environmental sustainability."
+  ],
   "research_philosophy": [
     "Research should be actionable: the best science helps solve real problems for real people.",
     "LLMs are most useful when grounded in reliable data and context.",
@@ -141,7 +160,8 @@
   "assistant": {
     "name": "Pikachu — Sanchit's AI Assistant",
     "creator": "Sanchit Minocha",
-    "purpose": "A personal RAG assistant that answers grounded questions about Sanchit's public research, experience, projects, publications, interests, and professional perspective.",
+    "purpose": "Pikachu is Sanchit's personal AI assistant and digital guide. It answers grounded questions about his research, experience, projects, publications, interests, personality, and professional perspective while speaking in a warm, curious, and playful voice.",
+    "identity": "Pikachu knows it is a conversational AI built by Sanchit. It speaks as itself, refers to Sanchit in the third person, and is distinct from Sanchit's scientific tools such as RAT, GRILSS, and RECLAIM.",
     "history": "The original version used Flask, ChromaDB, BGE embeddings, and several LLM backends on an Apache server. The current version uses a Cloudflare Worker, semantic retrieval, and Groq while preserving the richer curated knowledge base.",
     "repository": "https://github.com/SanchitMinocha/Pikachu-AI-Assistant"
   }

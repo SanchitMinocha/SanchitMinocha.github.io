@@ -4,6 +4,7 @@ export const EMBEDDING_MODEL = '@cf/baai/bge-small-en-v1.5';
 export const INDEX_KEY = `semantic-index:${KNOWLEDGE_VERSION}:bge-small-cls`;
 const TOP_K = 6;
 const BATCH_SIZE = 32;
+const SYNTHESIS_PATTERN = /\b(bigger picture|connect|connection|theme|overall|why (does|is|it)|why matter|significance|philosophy)\b/i;
 
 const STOPWORDS = new Set(`a an and are as at be been being but by can could did do does for from had has have he her hers him his how i if in into is it its may me might more most my no not of on or our ours she should so than that the their theirs them they this those to too us was we were what when where which who why will with would you your yours about tell explain describe please sanchit minocha`.split(' '));
 
@@ -95,6 +96,9 @@ export function buildRetrievalQuery(messages) {
   if (/\b(hobby|hobbies|interest|favorite|favourite)\b/i.test(query)) {
     expansions.push('interests hobbies favorite');
   }
+  if (SYNTHESIS_PATTERN.test(query)) {
+    expansions.push('research philosophy current work MIT sustainability actionable science themes impact');
+  }
   if (expansions.length) query = `${query} ${expansions.join(' ')}`;
   return query.length >= 3 ? query : question;
 }
@@ -156,6 +160,8 @@ export async function retrievalStatus(env) {
 export async function retrieve(messages, env, topK = TOP_K) {
   const query = buildRetrievalQuery(messages);
   const queryTokens = tokens(query);
+  const latestQuestion = messages.at(-1)?.content || '';
+  const synthesisFollowUp = messages.length > 1 && SYNTHESIS_PATTERN.test(latestQuestion);
   let index = null;
   let queryVector = null;
 
@@ -167,7 +173,7 @@ export async function retrieve(messages, env, topK = TOP_K) {
     queryVector = null;
   }
 
-  const matches = KNOWLEDGE_CHUNKS.map((chunk, position) => {
+  const rankedMatches = KNOWLEDGE_CHUNKS.map((chunk, position) => {
     const lexicalRaw = lexicalScore(queryTokens, TOKENIZED_CHUNKS[position]);
     const lexical = normalizeLexical(lexicalRaw);
     const queryTerms = new Set(queryTokens);
@@ -179,11 +185,23 @@ export async function retrieve(messages, env, topK = TOP_K) {
       : 0;
     const score = queryVector ? (semantic * 0.82 + lexical * 0.18) : lexical;
     return { ...chunk, score, semantic, lexical, lexicalRaw, coverage };
-  }).sort((a, b) => b.score - a.score).slice(0, Math.min(Math.max(topK, 1), 10));
+  }).sort((a, b) => b.score - a.score);
+
+  let matches = rankedMatches.slice(0, Math.min(Math.max(topK, 1), 10));
+  if (synthesisFollowUp) {
+    const anchorIds = ['profile-current', 'research-philosophy'];
+    matches = matches.map(item => anchorIds.includes(item.id) ? { ...item, synthesisAnchor: true } : item);
+    for (const id of anchorIds) {
+      if (matches.some(item => item.id === id)) continue;
+      const anchor = rankedMatches.find(item => item.id === id);
+      if (anchor) matches.push({ ...anchor, synthesisAnchor: true });
+    }
+  }
 
   const top = matches[0] || { score: 0, semantic: 0, lexical: 0, lexicalRaw: 0 };
   const semanticAvailable = Boolean(queryVector);
-  const lexicalEvidence = top.lexical >= 0.34 && top.coverage >= 0.6;
+  const lexicalEvidence = (top.lexical >= 0.34 && top.coverage >= 0.6)
+    || (synthesisFollowUp && top.lexical >= 0.55 && top.coverage >= 0.3);
   const semanticEvidence = top.semantic >= 0.68 || (top.semantic >= 0.56 && top.coverage >= 0.5);
   const answerable = semanticAvailable ? semanticEvidence || lexicalEvidence : lexicalEvidence;
 
@@ -204,10 +222,13 @@ export async function retrieve(messages, env, topK = TOP_K) {
 
 export function selectGroundedMatches(result) {
   const topScore = result.matches[0]?.score || 0;
-  const cutoff = Math.max(0.45, topScore - 0.12);
-  return result.matches.filter((item, index) => index === 0 || (
-    item.score >= cutoff && (item.semantic >= 0.56 || item.coverage >= 0.25)
-  )).slice(0, 4);
+  const cutoff = Math.max(0.5, topScore - 0.22);
+  const anchors = result.matches.filter(item => item.synthesisAnchor);
+  const anchorIds = new Set(anchors.map(item => item.id));
+  const regular = result.matches.filter((item, index) => !anchorIds.has(item.id) && (index === 0 || (
+    item.score >= cutoff && (item.semantic >= 0.58 || item.coverage >= 0.25)
+  ))).slice(0, Math.max(1, 5 - anchors.length));
+  return [...regular, ...anchors].slice(0, 5);
 }
 
 export function formatRetrievedContext(result) {

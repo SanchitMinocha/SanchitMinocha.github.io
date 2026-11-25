@@ -33,6 +33,8 @@ test('the migrated corpus excludes stale and sensitive fields', () => {
   assert.doesNotMatch(corpus, /F-1 visa|H1B|OPT-STEM/i);
   assert.doesNotMatch(corpus, /msanchit@uw\.edu/i);
   assert.match(corpus, /Postdoctoral Associate at the MIT Center/);
+  assert.match(corpus, /favorite food is biryani/i);
+  assert.match(corpus, /Pikachu knows it is a conversational AI/i);
 });
 
 test('retrieval recognizes employment paraphrases and rejects partial keyword traps', async () => {
@@ -44,6 +46,19 @@ test('retrieval recognizes employment paraphrases and rejects partial keyword tr
     const result = await retrieve([{ role: 'user', content: question }], {});
     assert.equal(result.answerable, false, question);
   }
+});
+
+test('retrieval brings together project and philosophy evidence for bigger-picture follow-ups', async () => {
+  const result = await retrieve([
+    { role: 'user', content: 'Tell me about RAT and reservoir monitoring.' },
+    { role: 'assistant', content: 'RAT is the Reservoir Assessment Tool for satellite-based reservoir monitoring.' },
+    { role: 'user', content: 'Why does it matter, and how does that connect to the bigger picture of his work?' }
+  ], {});
+  assert.equal(result.answerable, true);
+  const types = new Set(result.matches.slice(0, 6).map(item => item.type));
+  assert.ok(types.has('profile'));
+  assert.ok(types.has('philosophy'));
+  assert.ok(types.has('publication') || types.has('project'));
 });
 
 test('rejects a foreign origin', async () => {
@@ -117,8 +132,36 @@ test('sends grounded context to Groq and returns only the reply', async () => {
     assert.equal(payload.retrieval_mode, 'lexical');
     assert.ok(payload.sources.length > 0);
     assert.equal(upstreamBody.model, 'openai/gpt-oss-20b');
-    assert.equal(upstreamBody.max_completion_tokens, 500);
+    assert.equal(upstreamBody.max_completion_tokens, 600);
+    assert.equal(upstreamBody.temperature, 0.5);
+    assert.match(upstreamBody.messages[0].content, /You are Pikachu/);
+    assert.match(upstreamBody.messages[0].content, /Treat retrieved evidence as knowledge to reason with/);
     assert.match(upstreamBody.messages[0].content, /RAT: Satellite-based Reservoir Monitoring/);
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
+
+test('passes prior turns to Pikachu for contextual follow-up reasoning', async () => {
+  const originalFetch = globalThis.fetch;
+  let upstreamBody;
+  globalThis.fetch = async (_url, init) => {
+    upstreamBody = JSON.parse(init.body);
+    return Response.json({ choices: [{ message: { content: 'It matters because RAT turns satellite observations into actionable reservoir information.' } }] });
+  };
+
+  try {
+    const conversation = [
+      { role: 'user', content: 'Tell me about RAT and reservoir monitoring.' },
+      { role: 'assistant', content: 'RAT is the Reservoir Assessment Tool for satellite-based reservoir monitoring.' },
+      { role: 'user', content: 'Why does it matter?' }
+    ];
+    const response = await worker.fetch(request({ messages: conversation }), env);
+    const payload = await response.json();
+    assert.equal(response.status, 200);
+    assert.equal(payload.answerable, true);
+    assert.deepEqual(upstreamBody.messages.slice(1), conversation);
+    assert.match(upstreamBody.messages[0].content, /Use the prior conversation turns/);
   } finally {
     globalThis.fetch = originalFetch;
   }
@@ -136,19 +179,29 @@ test('does not expose provider error details', async () => {
   }
 });
 
-test('declines unsupported questions without calling Groq', async () => {
+test('lets Pikachu handle unsupported questions naturally without inventing evidence', async () => {
   const originalFetch = globalThis.fetch;
   let called = false;
-  globalThis.fetch = async () => { called = true; throw new Error('should not be called'); };
+  let upstreamBody;
+  globalThis.fetch = async (_url, init) => {
+    called = true;
+    upstreamBody = JSON.parse(init.body);
+    return Response.json({
+      choices: [{ message: { content: "That detail isn't in my Pokédex yet, so I don't want to guess. ⚡" } }]
+    });
+  };
   try {
     const response = await worker.fetch(request({
-      messages: [{ role: 'user', content: "What color is Sanchit's car?" }]
+      messages: [{ role: 'user', content: 'Can Sanchit play the violin?' }]
     }), env);
     const payload = await response.json();
     assert.equal(response.status, 200);
     assert.equal(payload.answerable, false);
-    assert.match(payload.response, /don't have a verified answer/i);
-    assert.equal(called, false);
+    assert.match(payload.response, /Pokédex/i);
+    assert.equal(called, true);
+    assert.deepEqual(payload.sources, []);
+    assert.match(upstreamBody.messages[0].content, /No sufficiently reliable evidence was retrieved/);
+    assert.match(upstreamBody.messages[0].content, /do not invent a factual answer/);
   } finally {
     globalThis.fetch = originalFetch;
   }
